@@ -7,6 +7,7 @@ public class NhanVienDTO {
 	private String Passworld;
 	private String SDT;
 	private String DiaChi;
+	private String ChucVu;
 	
 	public NhanVienDTO() {
 		this.Ma_nv=null;
@@ -15,14 +16,16 @@ public class NhanVienDTO {
 		this.Passworld=null;
 		this.SDT=null;
 		this.DiaChi=null;
+		this.ChucVu=null;
 	}
-	public NhanVienDTO(String Ma_nv, String Ten_nv, String Email, String Password, String SDT, String Diachi) {
+	public NhanVienDTO(String Ma_nv, String Ten_nv, String Email, String Password, String SDT, String Diachi, String ChucVu) {
 		this.Ma_nv=Ma_nv;
 		this.Ten_nv=Ten_nv;
 		this.Email=Email;
 		this.Passworld=Passworld;
 		this.SDT=SDT;
 		this.DiaChi=DiaChi;
+		this.ChucVu=ChucVu;
 	}
 	public String getMa_nv() {
 		return Ma_nv;
@@ -59,6 +62,12 @@ public class NhanVienDTO {
 	}
 	public void setDiaChi(String diaChi) {
 		DiaChi = diaChi;
+	}
+	public String getChucVu() {
+		return ChucVu;
+	}
+	public void setChucVu(String chucVu) {
+		ChucVu = chucVu;
 	}
 
 }	

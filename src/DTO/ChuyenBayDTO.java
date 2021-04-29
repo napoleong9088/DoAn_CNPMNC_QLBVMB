@@ -1,90 +1,167 @@
 package DTO;
 
 import java.sql.Time;
-import java.util.Date;
+import java.sql.Date;
 
 public class ChuyenBayDTO {
-	private String ma_cb;
-    private String ma_tuyenbay;
-	private Date ngaygio;
-	private String thoigianbay;
-	private int soghehang1;
-	private int soghehang2;
-	private String ma_mb;
+	private String MaChuyenbay;
+	private String HangHK;
+	private String KyHieuMB;
+	private String TenMayBay;
+	private Date NgayBay;
+	private Time GioBay;
+	private String DiemDi;
+	private String DiemDen;
+	private String SanBayDi;
+	private String SanBayDen;
+	private String LoaiGhe;
+	private String SoGhe;
+	private int Gia;
+	private String QuyDinh;
  
 	public ChuyenBayDTO() {
-		this.ma_cb=null;
-		this.ma_tuyenbay=null;
-		this.ngaygio=null;
-		this.thoigianbay=null;
-		this.soghehang1=0;
-		this.soghehang2=0;
-		this.ma_mb=null;
+		this.MaChuyenbay=null;
+		this.HangHK=null;
+		this.KyHieuMB=null;
+		this.TenMayBay=null;
+		this.NgayBay=null;
+		this.GioBay=null;
+		this.DiemDi=null;
+		this.DiemDen=null;
+		this.SanBayDi=null;
+		this.SanBayDen=null;
+		this.LoaiGhe=null;
+		this.SoGhe=null;
+		this.Gia=0;
+		this.QuyDinh=null;
 	}
  
-	 public ChuyenBayDTO(String ma_cb,String ma_tuyenbay,Date ngaygio, String thoigianbay, int soghehang1, int soghehang2,String ma_mb) {
-		 this.ma_cb = ma_cb; 
-		 this.ma_tuyenbay = ma_tuyenbay;
-		 this.ngaygio = ngaygio;
-		 this.thoigianbay = thoigianbay;
-		 this.soghehang1 = soghehang1;
-		 this.soghehang2 = soghehang2;
-		 this.ma_mb = ma_mb;
+	 public ChuyenBayDTO(String MaChuyenbay, String HangHK, String KyHieuMB, String TenMayBay, Date NgayBay, Time GioBay, String DiemDi, String DiemDen, String SanBayDi, String SanBayDen, String LoaiGhe, String SoGhe, int Gia, String QuyDinh) {
+		 this.MaChuyenbay=MaChuyenbay;
+		 this.HangHK=HangHK;
+		 this.KyHieuMB=KyHieuMB;
+		 this.TenMayBay=TenMayBay;
+		 this.NgayBay=NgayBay;
+		 this.GioBay=GioBay;
+		 this.DiemDi=DiemDi;
+		 this.DiemDen=DiemDen;
+		 this.SanBayDi=SanBayDi;
+		 this.SanBayDen=SanBayDen;
+		 this.LoaiGhe=LoaiGhe;
+		 this.SoGhe=SoGhe;
+		 this.Gia=Gia;
+		 this.QuyDinh=QuyDinh;
 	}
 
-	public String getMa_cb() {
-		return ma_cb;
+	public String getMaChuyenbay() {
+		return MaChuyenbay;
 	}
 
-	public void setMa_cb(String ma_cb) {
-		this.ma_cb = ma_cb;
+	public void setMaChuyenbay(String maChuyenbay) {
+		MaChuyenbay = maChuyenbay;
 	}
 
-	public String getMa_tuyenbay() {
-		return ma_tuyenbay;
+	public String getHangHK() {
+		return HangHK;
 	}
 
-	public void setMa_tuyenbay(String ma_tuyenbay) {
-		this.ma_tuyenbay = ma_tuyenbay;
+	public void setHangHK(String hangHK) {
+		HangHK = hangHK;
 	}
 
-	public Date getNgaygio() {
-		return ngaygio;
+	public String getKyHieuMB() {
+		return KyHieuMB;
 	}
 
-	public void setNgaygio(Date ngaygio) {
-		this.ngaygio = ngaygio;
+	public void setKyHieuMB(String kyHieuMB) {
+		KyHieuMB = kyHieuMB;
 	}
 
-	public String getThoigianbay() {
-		return thoigianbay;
+	public String getTenMayBay() {
+		return TenMayBay;
 	}
 
-	public void setThoigianbay(String thoigianbay) {
-		this.thoigianbay = thoigianbay;
+	public void setTenMayBay(String tenMayBay) {
+		TenMayBay = tenMayBay;
 	}
 
-	public int getSoghehang1() {
-		return soghehang1;
+	public Date getNgayBay() {
+		return NgayBay;
 	}
 
-	public void setSoghehang1(int soghehang1) {
-		this.soghehang1 = soghehang1;
+	public void setNgayBay(Date ngayBay) {
+		NgayBay = ngayBay;
 	}
 
-	public int getSoghehang2() {
-		return soghehang2;
+	public Time getGioBay() {
+		return GioBay;
 	}
 
-	public void setSoghehang2(int soghehang2) {
-		this.soghehang2 = soghehang2;
+	public void setGioBay(Time gioBay) {
+		GioBay = gioBay;
 	}
 
-	public String getMa_mb() {
-		return ma_mb;
+	public String getDiemDi() {
+		return DiemDi;
 	}
 
-	public void setMa_mb(String ma_mb) {
-		this.ma_mb = ma_mb;
+	public void setDiemDi(String diemDi) {
+		DiemDi = diemDi;
+	}
+
+	public String getDiemDen() {
+		return DiemDen;
+	}
+
+	public void setDiemDen(String diemDen) {
+		DiemDen = diemDen;
+	}
+
+	public String getSanBayDi() {
+		return SanBayDi;
+	}
+
+	public void setSanBayDi(String sanBayDi) {
+		SanBayDi = sanBayDi;
+	}
+
+	public String getSanBayDen() {
+		return SanBayDen;
+	}
+
+	public void setSanBayDen(String sanBayDen) {
+		SanBayDen = sanBayDen;
+	}
+
+	public String getLoaiGhe() {
+		return LoaiGhe;
+	}
+
+	public void setLoaiGhe(String loaiGhe) {
+		LoaiGhe = loaiGhe;
+	}
+
+	public String getSoGhe() {
+		return SoGhe;
+	}
+
+	public void setSoGhe(String soGhe) {
+		SoGhe = soGhe;
+	}
+
+	public int getGia() {
+		return Gia;
+	}
+
+	public void setGia(int gia) {
+		Gia = gia;
+	}
+
+	public String getQuyDinh() {
+		return QuyDinh;
+	}
+
+	public void setQuyDinh(String quyDinh) {
+		QuyDinh = quyDinh;
 	}
 }

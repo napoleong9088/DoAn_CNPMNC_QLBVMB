@@ -1,28 +1,38 @@
 package DTO;
 
+import java.sql.Date;
+import java.sql.Time;
+
+
 public class VeChuyenBayDTO {
 	 private String ma_ve_cb ;
-	 private String ma_hd;
+	 private String so_ghe;
 	 private String ma_cb;
-	 private String ma_dongia;
-	 private String ma_hv;
+	 private String ma_kh;
+	 private Time thoi_gian_bay;
+	 private Date ngay_bay;
+	 private int gia;
 	 private String tinhtrangve;
 	 
 	 public VeChuyenBayDTO () {
 		 this.ma_ve_cb = null;
-		 this.ma_hd = null;
+		 this.so_ghe = null;
 		 this.ma_cb = null;
-		 this.ma_dongia = null; 
-		 this.ma_hv = null;
+		 this.ma_kh = null; 
+		 this.thoi_gian_bay = null;
+		 this.ngay_bay = null;
+		 this.gia = 0;
 		 this.tinhtrangve = null;
 	 }
 	 
-	 public VeChuyenBayDTO(String ma_ve_cb, String  ma_hd, String  ma_cb, String  ma_dongia, String  ma_hv, String tinhtrangve) {
+	 public VeChuyenBayDTO(String ma_ve_cb, String  so_ghe, String  ma_cb, String  ma_kh, Time thoi_gian_bay, Date ngay_bay, int gia, String tinhtrangve) {
 		 this.ma_ve_cb = ma_ve_cb;
-		 this.ma_hd = ma_hd;
+		 this.so_ghe = so_ghe;
 		 this.ma_cb = ma_cb;
-		 this.ma_dongia = ma_dongia; 
-		 this.ma_hv = ma_hv;
+		 this.ma_kh = ma_kh; 
+		 this.thoi_gian_bay = thoi_gian_bay;
+		 this.ngay_bay = ngay_bay;
+		 this.gia = 0;
 		 this.tinhtrangve = tinhtrangve;
 	 }
 
@@ -34,12 +44,12 @@ public class VeChuyenBayDTO {
 		this.ma_ve_cb = ma_ve_cb;
 	}
 
-	public String getMa_hd() {
-		return ma_hd;
+	public String getSo_ghe() {
+		return so_ghe;
 	}
 
-	public void setMa_hd(String ma_hd) {
-		this.ma_hd = ma_hd;
+	public void setSo_ghe(String so_ghe) {
+		this.so_ghe = so_ghe;
 	}
 
 	public String getMa_cb() {
@@ -50,20 +60,36 @@ public class VeChuyenBayDTO {
 		this.ma_cb = ma_cb;
 	}
 
-	public String getMa_dongia() {
-		return ma_dongia;
+	public String getMa_kh() {
+		return ma_kh;
 	}
 
-	public void setMa_dongia(String ma_dongia) {
-		this.ma_dongia = ma_dongia;
+	public void setMa_kh(String ma_kh) {
+		this.ma_kh = ma_kh;
 	}
 
-	public String getMa_hv() {
-		return ma_hv;
+	public Time getThoi_gian_bay() {
+		return thoi_gian_bay;
 	}
 
-	public void setMa_hv(String ma_hv) {
-		this.ma_hv = ma_hv;
+	public void setThoi_gian_bay(Time thoi_gian_bay) {
+		this.thoi_gian_bay = thoi_gian_bay;
+	}
+
+	public Date getNgay_bay() {
+		return ngay_bay;
+	}
+
+	public void setNgay_bay(Date ngay_bay) {
+		this.ngay_bay = ngay_bay;
+	}
+
+	public int getGia() {
+		return gia;
+	}
+
+	public void setGia(int gia) {
+		this.gia = gia;
 	}
 
 	public String getTinhtrangve() {
