@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import DAL.ChuyenBayDAL;
 import DTO.ChuyenBayDTO;
-import DTO.TuyenBayDTO;
 
 public class ChuyenBayBLL {
 	ChuyenBayDAL ChuyenBayDAL = new ChuyenBayDAL();
@@ -32,7 +31,7 @@ public class ChuyenBayBLL {
 	 return result;
 	 }
 	 
-	 public ArrayList<ChuyenBayDTO> getChuyenBayBydiem(TuyenBayDTO TuyenBayDTO) throws ClassNotFoundException{
+	 /*public ArrayList<ChuyenBayDTO> getChuyenBayBydiem(TuyenBayDTO TuyenBayDTO) throws ClassNotFoundException{
 		 return ChuyenBayDAL.getChuyenBayBydiem(TuyenBayDTO);
-	 }
+	 }*/
 }

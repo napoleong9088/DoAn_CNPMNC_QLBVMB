@@ -8,7 +8,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import DTO.ChuyenBayDTO;
-import DTO.TuyenBayDTO;
 import UTILS.ConnectionUtil;
 
 public class ChuyenBayDAL {
@@ -21,7 +20,7 @@ public class ChuyenBayDAL {
 	
 	private Statement st;
 
-	public ArrayList<ChuyenBayDTO> getAllChuyenBay() throws ClassNotFoundException {
+	/*public ArrayList<ChuyenBayDTO> getAllChuyenBay() throws ClassNotFoundException {
 			
 		ArrayList<ChuyenBayDTO> result = new ArrayList<ChuyenBayDTO>();
 		String sqlSelectAll = "select * from chuyen_bay";
@@ -229,5 +228,5 @@ public class ChuyenBayDAL {
 				  }
 			}
 			return result;
-		}
+		}*/
 }

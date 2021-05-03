@@ -8,9 +8,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import BLL.KhachHangBLL;
-import BLL.UserBLL;
 import DTO.KhachHangDTO;
-import DTO.UserDTO;
 import UTILS.ConnectionUtil;
 
 import javax.swing.JLabel;
@@ -74,7 +72,7 @@ public class Member extends JFrame {
 		lblNewLabel.setBounds(45, 20, 133, 40);
 		contentPane.add(lblNewLabel);
 		
-		JLabel lblNewLabel_1 = new JLabel("Đăng Nhập");
+		JLabel lblNewLabel_1 = new JLabel("Ä�Äƒng Nháº­p");
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		lblNewLabel_1.setForeground(new Color(0, 139, 139));
 		lblNewLabel_1.setBackground(new Color(0, 139, 139));
@@ -86,7 +84,7 @@ public class Member extends JFrame {
 		contentPane.add(textField);
 		textField.setColumns(10);
 		
-		JButton btnNewButton = new JButton("Đăng Nhập\n");
+		JButton btnNewButton = new JButton("Ä�Äƒng Nháº­p\n");
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		btnNewButton.setForeground(new Color(0, 0, 0));
 		btnNewButton.setBackground(new Color(218, 165, 32));
@@ -97,8 +95,8 @@ public class Member extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				try
 				{
-					UserBLL userBLL = new UserBLL();
-					UserDTO userDTO = new UserDTO();
+					/*UserBLL userBLL = new UserBLL();
+					UserDTO userDTO = new UserDTO();*/
 
 				conUtil = new ConnectionUtil();
 				con = conUtil.getConnection();
@@ -111,7 +109,7 @@ public class Member extends JFrame {
 				run = rs.next();
 					if(run)
 					{
-						JOptionPane.showMessageDialog(null,"Đăng Nhập thành công","Pesan",JOptionPane.INFORMATION_MESSAGE);
+						JOptionPane.showMessageDialog(null,"Ä�Äƒng Nháº­p thÃ nh cÃ´ng","Pesan",JOptionPane.INFORMATION_MESSAGE);
 						userDTO.setUsername(textField.getText());
 						userBLL.getUserByid(userDTO);
 						if (userDTO.getRole()==1) {
@@ -146,7 +144,7 @@ public class Member extends JFrame {
 					}
 					else
 					{
-						JOptionPane.showMessageDialog(null,"Đăng Nhập không thành công ","Pesan",JOptionPane.ERROR_MESSAGE);
+						JOptionPane.showMessageDialog(null,"Ä�Äƒng Nháº­p khÃ´ng thÃ nh cÃ´ng ","Pesan",JOptionPane.ERROR_MESSAGE);
 						textField.setText(" ");
 						passwordField.setText("");
 						textField.requestFocus();

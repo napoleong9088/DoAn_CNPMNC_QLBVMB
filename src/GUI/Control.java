@@ -14,26 +14,15 @@ import javax.swing.JScrollPane;
 import org.w3c.dom.Text;
 
 import BLL.ChuyenBayBLL;
-import BLL.DonGiaBLL;
-import BLL.HangVeBLL;
+
 import BLL.HoaDonBLL;
 import BLL.KhachHangBLL;
-import BLL.MayBayBLL;
 import BLL.NhanVienBLL;
-import BLL.PhieuDatChoBLL;
-import BLL.SanBayBLL;
-import BLL.TuyenBayBLL;
 import BLL.VeChuyenBayBLL;
 import DTO.ChuyenBayDTO;
-import DTO.DonGiaDTO;
-import DTO.HangVeDTO;
 import DTO.HoaDonDTO;
 import DTO.KhachHangDTO;
-import DTO.MayBayDTO;
 import DTO.NhanVienDTO;
-import DTO.PhieuDatChoDTO;
-import DTO.SanBayDTO;
-import DTO.TuyenBayDTO;
 import DTO.VeChuyenBayDTO;
 
 import javax.swing.ImageIcon;
@@ -180,22 +169,22 @@ public class Control extends JFrame {
 		txttinhtrangve.setColumns(10);
 		txttinhtrangve.setBounds(513, 57, 96, 19);
 		
-		JLabel lbltinhtrangve = new JLabel("Tình trạng vé");
+		JLabel lbltinhtrangve = new JLabel("TÃ¬nh tráº¡ng vÃ©");
 		lbltinhtrangve.setBounds(435, 61, 76, 13);
 		
-		JLabel lblmahdcb = new JLabel("Mã hóa đơn");
+		JLabel lblmahdcb = new JLabel("MÃ£ hÃ³a Ä‘Æ¡n");
 		lblmahdcb.setBounds(435, 9, 68, 13);
 		
-		JLabel lblmavecb = new JLabel("Mã vé chuyến bay");
+		JLabel lblmavecb = new JLabel("MÃ£ vÃ© chuyáº¿n bay");
 		lblmavecb.setBounds(10, 8, 102, 13);
 		
-		JLabel lblmahvcb = new JLabel("Mã hạng vé");
+		JLabel lblmahvcb = new JLabel("MÃ£ háº¡ng vÃ©");
 		lblmahvcb.setBounds(10, 61, 68, 13);
 		
-		JLabel lblmacb = new JLabel("Mã chuyến bay");
+		JLabel lblmacb = new JLabel("MÃ£ chuyáº¿n bay");
 		lblmacb.setBounds(222, 9, 86, 13);
 		
-		JLabel lblmadongia = new JLabel("Mã đơn giá");
+		JLabel lblmadongia = new JLabel("MÃ£ Ä‘Æ¡n giÃ¡");
 		lblmadongia.setBounds(222, 61, 68, 13);
 		
 		panelvcb.setLayout(null);
@@ -222,7 +211,7 @@ public class Control extends JFrame {
 				 vcb.setMa_ve_cb(txtmavecb.getText());
 				 VeChuyenBayBLL vcbbll = new VeChuyenBayBLL();
 				 int choice = JOptionPane.showConfirmDialog(null,
-				 "Bạn có chắc chắn xóa dữ liệu!", "Xác nhận",
+				 "Báº¡n cÃ³ cháº¯c cháº¯n xÃ³a dá»¯ liá»‡u!", "XÃ¡c nháº­n",
 				 JOptionPane.YES_NO_OPTION);
 				 if (choice == JOptionPane.YES_OPTION) {
 				 try {
@@ -255,7 +244,7 @@ public class Control extends JFrame {
 				try {
 					int result = vcbbll.updateVeChuyenBay(vcb);
 					if(result !=0) {
-						JOptionPane.showConfirmDialog(null,"cập nhật thành công!","thông báo",JOptionPane.INFORMATION_MESSAGE);
+						JOptionPane.showConfirmDialog(null,"cáº­p nháº­t thÃ nh cÃ´ng!","thÃ´ng bÃ¡o",JOptionPane.INFORMATION_MESSAGE);
 					}
 					loadAllVeChuyenBay();
 				} catch (Exception ex) {
@@ -271,7 +260,7 @@ public class Control extends JFrame {
 		tblvechuyenbay.setBorder(UIManager.getBorder("Table.scrollPaneBorder"));
 		tblvechuyenbay.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		tblvechuyenbay.addMouseListener(new MouseAdapter() {
-			 // Lấy thông tin dòng dữ liệu được chọn hiển thị lên component
+			 // Láº¥y thÃ´ng tin dÃ²ng dá»¯ liá»‡u Ä‘Æ°á»£c chá»�n hiá»ƒn thá»‹ lÃªn component
 			 public void mouseClicked(MouseEvent arg0) {
 			 int row = tblvechuyenbay.getSelectedRow();
 			 if (row != -1) {
@@ -285,7 +274,7 @@ public class Control extends JFrame {
 			 }
 			 });
 		
-		JButton btnVechuyenbay = new JButton("Vé chuyến bay");
+		JButton btnVechuyenbay = new JButton("VÃ© chuyáº¿n bay");
 		btnVechuyenbay.setFont(new Font("SansSerif", Font.BOLD, 14));
 		btnVechuyenbay.setBackground(Color.white);
 		btnVechuyenbay.setForeground(new Color(86, 172, 191));
@@ -324,7 +313,7 @@ public class Control extends JFrame {
 		txtusd.setColumns(10);
 		txtusd.setBounds(436, 5, 96, 19);
 		
-		JLabel lbldongiaid = new JLabel("Mã đơn giá");
+		JLabel lbldongiaid = new JLabel("MÃ£ Ä‘Æ¡n giÃ¡");
 		lbldongiaid.setBounds(10, 9, 68, 13);
 		
 		JLabel lblvnd = new JLabel("VND");
@@ -357,7 +346,7 @@ public class Control extends JFrame {
 				try {
 					int result = dgbll.insertDonGia(dg);
 					if(result !=0) {
-						JOptionPane.showConfirmDialog(null,"thêm thành công!","thông báo",JOptionPane.INFORMATION_MESSAGE);
+						JOptionPane.showConfirmDialog(null,"thÃªm thÃ nh cÃ´ng!","thÃ´ng bÃ¡o",JOptionPane.INFORMATION_MESSAGE);
 					}
 					loadAllDonGia();
 				} catch (Exception ex) {
@@ -377,7 +366,7 @@ public class Control extends JFrame {
 				 dg.setVND(Integer.parseInt(txtvnd.getText()));
 				 DonGiaBLL dgbll = new DonGiaBLL();
 				 int choice = JOptionPane.showConfirmDialog(null,
-				 "Bạn có chắc chắn xóa dữ liệu!", "Xác nhận",
+				 "Báº¡n cÃ³ cháº¯c cháº¯n xÃ³a dá»¯ liá»‡u!", "XÃ¡c nháº­n",
 				 JOptionPane.YES_NO_OPTION);
 				 if (choice == JOptionPane.YES_OPTION) {
 				 try {
@@ -407,7 +396,7 @@ public class Control extends JFrame {
 				try {
 					int result = dgbll.updateDonGia(dg);
 					if(result !=0) {
-						JOptionPane.showConfirmDialog(null,"cập nhật thành công!","thông báo",JOptionPane.INFORMATION_MESSAGE);
+						JOptionPane.showConfirmDialog(null,"cáº­p nháº­t thÃ nh cÃ´ng!","thÃ´ng bÃ¡o",JOptionPane.INFORMATION_MESSAGE);
 					}
 					loadAllDonGia();
 				} catch (Exception ex) {
@@ -423,7 +412,7 @@ public class Control extends JFrame {
 		tbldongia.setBorder(UIManager.getBorder("Table.scrollPaneBorder"));
 		tbldongia.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		tbldongia.addMouseListener(new MouseAdapter() {
-			 // Lấy thông tin dòng dữ liệu được chọn hiển thị lên component
+			 // Láº¥y thÃ´ng tin dÃ²ng dá»¯ liá»‡u Ä‘Æ°á»£c chá»�n hiá»ƒn thá»‹ lÃªn component
 			 public void mouseClicked(MouseEvent arg0) {
 			 int row = tbldongia.getSelectedRow();
 			 if (row != -1) {
@@ -434,7 +423,7 @@ public class Control extends JFrame {
 			 }
 			 }
 			 });
-		JButton btnDongia = new JButton("Đơn giá");
+		JButton btnDongia = new JButton("Ä�Æ¡n giÃ¡");
 		btnDongia.setFont(new Font("SansSerif", Font.BOLD, 14));
 		btnDongia.setBackground(Color.white);
 		btnDongia.setForeground(new Color(86, 172, 191));
@@ -472,10 +461,10 @@ public class Control extends JFrame {
 		txttenhangve.setColumns(10);
 		txttenhangve.setBounds(267, 5, 96, 19);
 		
-		 JLabel lblmahv = new JLabel("Mã hạng vé");
+		 JLabel lblmahv = new JLabel("MÃ£ háº¡ng vÃ©");
 		 lblmahv.setBounds(10, 8, 69, 13);
 		 
-		 JLabel lbltenhv = new JLabel("Tên hạng vé");
+		 JLabel lbltenhv = new JLabel("TÃªn háº¡ng vÃ©");
 		 lbltenhv.setBounds(185, 8, 76, 13);
 		panelhv.setLayout(null);
 		 
@@ -497,7 +486,7 @@ public class Control extends JFrame {
 			try {
 				int result = hvbll.insertHangVe(hv);
 				if(result !=0) {
-					JOptionPane.showConfirmDialog(null,"thêm thành công!","thông báo",JOptionPane.INFORMATION_MESSAGE);
+					JOptionPane.showConfirmDialog(null,"thÃªm thÃ nh cÃ´ng!","thÃ´ng bÃ¡o",JOptionPane.INFORMATION_MESSAGE);
 				}
 				loadAllHangVe();
 			} catch (Exception ex) {
@@ -519,7 +508,7 @@ public class Control extends JFrame {
 			try {
 				int result = hvbll.updateHangVe(hv);
 				if(result !=0) {
-					JOptionPane.showConfirmDialog(null,"cập nhật thành công!","thông báo",JOptionPane.INFORMATION_MESSAGE);
+					JOptionPane.showConfirmDialog(null,"cáº­p nháº­t thÃ nh cÃ´ng!","thÃ´ng bÃ¡o",JOptionPane.INFORMATION_MESSAGE);
 				}
 				loadAllHangVe();
 			} catch (Exception ex) {
@@ -536,7 +525,7 @@ public class Control extends JFrame {
 			 hv.setMa_hv(txtmahangve.getText());
 			 HangVeBLL hvbll = new HangVeBLL();
 			 int choice = JOptionPane.showConfirmDialog(null,
-			 "Bạn có chắc chắn xóa dữ liệu!", "Xác nhận",
+			 "Báº¡n cÃ³ cháº¯c cháº¯n xÃ³a dá»¯ liá»‡u!", "XÃ¡c nháº­n",
 			 JOptionPane.YES_NO_OPTION);
 			 if (choice == JOptionPane.YES_OPTION) {
 			 try {
@@ -560,7 +549,7 @@ public class Control extends JFrame {
 		tblhangve.setBorder(UIManager.getBorder("Table.scrollPaneBorder"));
 		tblhangve.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		tblhangve.addMouseListener(new MouseAdapter() {
-		 // Lấy thông tin dòng dữ liệu được chọn hiển thị lên component
+		 // Láº¥y thÃ´ng tin dÃ²ng dá»¯ liá»‡u Ä‘Æ°á»£c chá»�n hiá»ƒn thá»‹ lÃªn component
 		 public void mouseClicked(MouseEvent arg0) {
 		 int row = tblhangve.getSelectedRow();
 		 if (row != -1) {
@@ -569,7 +558,7 @@ public class Control extends JFrame {
 		 }
 		 }
 		 });
-		JButton btnHangve = new JButton("Hạng vé");
+		JButton btnHangve = new JButton("Háº¡ng vÃ©");
 		btnHangve.setForeground(new Color(255, 255, 255));
 		btnHangve.setFont(new Font("SansSerif", Font.BOLD, 14));
 		btnHangve.setBackground(new Color(86, 172, 191));
@@ -621,19 +610,19 @@ public class Control extends JFrame {
 		txtkhachhangID.setBounds(496, 4, 96, 19);
 		txtkhachhangID.setColumns(10);
 		
-		 JLabel lblmahd = new JLabel("Mã hóa đơn");
+		 JLabel lblmahd = new JLabel("MÃ£ hÃ³a Ä‘Æ¡n");
 		 lblmahd.setBounds(10, 8, 76, 13);
 		 
-		 JLabel lblthanhtien = new JLabel("Thành tiền");
+		 JLabel lblthanhtien = new JLabel("ThÃ nh tiá»�n");
 		 lblthanhtien.setBounds(10, 61, 76, 13);
 		 
-		 JLabel lblmanvhd = new JLabel("Mã nhân viên");
+		 JLabel lblmanvhd = new JLabel("MÃ£ nhÃ¢n viÃªn");
 		 lblmanvhd.setBounds(202, 8, 76, 13);
 		 
-		 JLabel lblkhachhangidhd = new JLabel("Mã khách hàng");
+		 JLabel lblkhachhangidhd = new JLabel("MÃ£ khÃ¡ch hÃ ng");
 		 lblkhachhangidhd.setBounds(404, 8, 96, 13);
 		 
-		 JLabel lblngaylap = new JLabel("Ngày lập");
+		 JLabel lblngaylap = new JLabel("NgÃ y láº­p");
 		 lblngaylap.setBounds(216, 61, 55, 13);
 		panelhd.setLayout(null);
 		panelhd.add(txtmahoadon);
@@ -664,7 +653,7 @@ public class Control extends JFrame {
 			try {
 				int result = hdbll.updateHoaDon(hd);
 				if(result !=0) {
-					JOptionPane.showConfirmDialog(null,"cập nhật thành công!","thông báo",JOptionPane.INFORMATION_MESSAGE);
+					JOptionPane.showConfirmDialog(null,"cáº­p nháº­t thÃ nh cÃ´ng!","thÃ´ng bÃ¡o",JOptionPane.INFORMATION_MESSAGE);
 				}
 				loadAllHoaDon();
 			} catch (Exception ex) {
@@ -681,7 +670,7 @@ public class Control extends JFrame {
 				hd.setMa_hd(txtmahoadon.getText());
 				HoaDonBLL hdbll = new HoaDonBLL();
 			 int choice = JOptionPane.showConfirmDialog(null,
-			 "Bạn có chắc chắn xóa dữ liệu!", "Xác nhận",
+			 "Báº¡n cÃ³ cháº¯c cháº¯n xÃ³a dá»¯ liá»‡u!", "XÃ¡c nháº­n",
 			 JOptionPane.YES_NO_OPTION);
 			 if (choice == JOptionPane.YES_OPTION) {
 			 try {
@@ -704,7 +693,7 @@ public class Control extends JFrame {
 		 tblHoadon.setBorder(UIManager.getBorder("Table.scrollPaneBorder"));
 		 tblHoadon.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		 tblHoadon.addMouseListener(new MouseAdapter() {
-			 // Lấy thông tin dòng dữ liệu được chọn hiển thị lên component
+			 // Láº¥y thÃ´ng tin dÃ²ng dá»¯ liá»‡u Ä‘Æ°á»£c chá»�n hiá»ƒn thá»‹ lÃªn component
 			 public void mouseClicked(MouseEvent arg0) {
 			 int row = tblHoadon.getSelectedRow();
 			 if (row != -1) {
@@ -717,7 +706,7 @@ public class Control extends JFrame {
 			 }
 			 });
 		 
-		JButton btnHoadon = new JButton("Hóa đơn");
+		JButton btnHoadon = new JButton("HÃ³a Ä‘Æ¡n");
 		btnHoadon.setForeground(new Color(255, 255, 255));
 		btnHoadon.setFont(new Font("SansSerif", Font.BOLD, 14));
 		btnHoadon.setBackground(new Color(86, 172, 191));
@@ -778,14 +767,14 @@ public class Control extends JFrame {
 		txtxacdinh.setBounds(455, 56, 96, 20);
 		txtxacdinh.setColumns(10);
 		 
-		 JLabel lblmakh = new JLabel("Mã khách hàng");
+		 JLabel lblmakh = new JLabel("MÃ£ khÃ¡ch hÃ ng");
 		 lblmakh.setBounds(349, 8, 135, 13);
 		 //lblmakh.setVisible(false);
 		
 		 JLabel lblxacdinh = new JLabel("CMND/PASSPORT");
 		 lblxacdinh.setBounds(349, 60, 105, 13);
 		 
-			JLabel lbltenkh = new JLabel("Họ tên");
+			JLabel lbltenkh = new JLabel("Há»� tÃªn");
 			lbltenkh.setBounds(9, 8, 49, 13);
 			//lbltenkh.setVisible(false);
 			
@@ -795,12 +784,12 @@ public class Control extends JFrame {
 			//lblemailkh.setVisible(false);
 			
 			
-			JLabel lbldiachikh = new JLabel("Địa chỉ");
+			JLabel lbldiachikh = new JLabel("Ä�á»‹a chá»‰");
 			lbldiachikh.setBounds(9, 60, 50, 13);
 			//lbldiachikh.setVisible(false);
 		
 			
-			JLabel lblsdtkh = new JLabel("SĐT");
+			JLabel lblsdtkh = new JLabel("SÄ�T");
 			lblsdtkh.setBounds(185, 8, 49, 13);
 			panelkh.setLayout(null);
 			
@@ -837,7 +826,7 @@ public class Control extends JFrame {
 				try {
 					int result = khbll.insertKhachHang(kh);
 					if(result !=0) {
-						JOptionPane.showConfirmDialog(null,"thêm thành công!","thông báo",JOptionPane.INFORMATION_MESSAGE);
+						JOptionPane.showConfirmDialog(null,"thÃªm thÃ nh cÃ´ng!","thÃ´ng bÃ¡o",JOptionPane.INFORMATION_MESSAGE);
 					}
 					loadAllKhachHang();
 				} catch (Exception ex) {
@@ -862,7 +851,7 @@ public class Control extends JFrame {
 				try {
 					int result = khbll.updateKhachHang(kh);
 					if(result !=0) {
-						JOptionPane.showConfirmDialog(null,"cập nhật thành công!","thông báo",JOptionPane.INFORMATION_MESSAGE);
+						JOptionPane.showConfirmDialog(null,"cáº­p nháº­t thÃ nh cÃ´ng!","thÃ´ng bÃ¡o",JOptionPane.INFORMATION_MESSAGE);
 					}
 					loadAllKhachHang();
 				} catch (Exception ex) {
@@ -879,7 +868,7 @@ public class Control extends JFrame {
 					kh.setMa_kh(txtkhachhangId.getText());
 					KhachHangBLL khbll = new KhachHangBLL();
 				 int choice = JOptionPane.showConfirmDialog(null,
-				 "Bạn có chắc chắn xóa dữ liệu!", "Xác nhận",
+				 "Báº¡n cÃ³ cháº¯c cháº¯n xÃ³a dá»¯ liá»‡u!", "XÃ¡c nháº­n",
 				 JOptionPane.YES_NO_OPTION);
 				 if (choice == JOptionPane.YES_OPTION) {
 				 try {
@@ -903,7 +892,7 @@ public class Control extends JFrame {
 		tblKhachhang.setBorder(UIManager.getBorder("Table.scrollPaneBorder"));
 		tblKhachhang.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		tblKhachhang.addMouseListener(new MouseAdapter() {
-		 // Lấy thông tin dòng dữ liệu được chọn hiển thị lên component
+		 // Láº¥y thÃ´ng tin dÃ²ng dá»¯ liá»‡u Ä‘Æ°á»£c chá»�n hiá»ƒn thá»‹ lÃªn component
 		 public void mouseClicked(MouseEvent arg0) {
 		 int row = tblKhachhang.getSelectedRow();
 		 if (row != -1) {
@@ -916,7 +905,7 @@ public class Control extends JFrame {
 		 }
 		 }
 		 });
-		JButton btnKhachhang = new JButton("Khách hàng");
+		JButton btnKhachhang = new JButton("KhÃ¡ch hÃ ng");
 		btnKhachhang.setForeground(new Color(255, 255, 255));
 		btnKhachhang.setFont(new Font("SansSerif", Font.BOLD, 14));
 		btnKhachhang.setBackground(new Color(86, 172, 191));
@@ -954,10 +943,10 @@ public class Control extends JFrame {
 		txtmaybayname.setColumns(10);
 		txtmaybayname.setBounds(267, 5, 96, 19);
 		
-		JLabel lblmamb = new JLabel("Mã máy bay");
+		JLabel lblmamb = new JLabel("MÃ£ mÃ¡y bay");
 		lblmamb.setBounds(10, 8, 69, 13);
 		
-		JLabel lbltenmb = new JLabel("Tên máy bay");
+		JLabel lbltenmb = new JLabel("TÃªn mÃ¡y bay");
 		 lbltenmb.setBounds(185, 8, 76, 13);
 		
 		
@@ -980,7 +969,7 @@ public class Control extends JFrame {
 			try {
 				int result = mbbll.insertMayBay(mb);
 				if(result !=0) {
-					JOptionPane.showConfirmDialog(null,"thêm thành công!","thông báo",JOptionPane.INFORMATION_MESSAGE);
+					JOptionPane.showConfirmDialog(null,"thÃªm thÃ nh cÃ´ng!","thÃ´ng bÃ¡o",JOptionPane.INFORMATION_MESSAGE);
 				}
 				loadAllMayBay();
 			} catch (Exception ex) {
@@ -1001,7 +990,7 @@ public class Control extends JFrame {
 			try {
 				int result = mbbll.updateMayBay(mb);
 				if(result !=0) {
-					JOptionPane.showConfirmDialog(null,"cập nhật thành công!","thông báo",JOptionPane.INFORMATION_MESSAGE);
+					JOptionPane.showConfirmDialog(null,"cáº­p nháº­t thÃ nh cÃ´ng!","thÃ´ng bÃ¡o",JOptionPane.INFORMATION_MESSAGE);
 				}
 				loadAllMayBay();
 			} catch (Exception ex) {
@@ -1018,7 +1007,7 @@ public class Control extends JFrame {
 			 mb.setMa_mb(txtmaybayID.getText());
 			 MayBayBLL mbbll = new MayBayBLL();
 			 int choice = JOptionPane.showConfirmDialog(null,
-			 "Bạn có chắc chắn xóa dữ liệu!", "Xác nhận",
+			 "Báº¡n cÃ³ cháº¯c cháº¯n xÃ³a dá»¯ liá»‡u!", "XÃ¡c nháº­n",
 			 JOptionPane.YES_NO_OPTION);
 			 if (choice == JOptionPane.YES_OPTION) {
 			 try {
@@ -1042,7 +1031,7 @@ public class Control extends JFrame {
 		tblmaybay.setBorder(UIManager.getBorder("Table.scrollPaneBorder"));
 		tblmaybay.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		tblmaybay.addMouseListener(new MouseAdapter() {
-		 // Lấy thông tin dòng dữ liệu được chọn hiển thị lên component
+		 // Láº¥y thÃ´ng tin dÃ²ng dá»¯ liá»‡u Ä‘Æ°á»£c chá»�n hiá»ƒn thá»‹ lÃªn component
 		 public void mouseClicked(MouseEvent arg0) {
 		 int row = tblmaybay.getSelectedRow();
 		 if (row != -1) {
@@ -1053,7 +1042,7 @@ public class Control extends JFrame {
 		 }
 		 }
 		 });
-		JButton btnMaybay = new JButton("Máy bay");
+		JButton btnMaybay = new JButton("MÃ¡y bay");
 		btnMaybay.setFont(new Font("SansSerif", Font.BOLD, 14));
 		btnMaybay.setBackground(new Color(220, 242, 238));
 		btnMaybay.setForeground(new Color(95,  154,  156));
@@ -1100,19 +1089,19 @@ public class Control extends JFrame {
 		txtnhanvienId.setBounds(455, 5, 96, 19);
 		txtnhanvienId.setColumns(10);
 	//jlabel		
-		JLabel lblmanv = new JLabel("Mã nhân viên");
+		JLabel lblmanv = new JLabel("MÃ£ nhÃ¢n viÃªn");
 		lblmanv.setBounds(349, 8, 135, 13);
 		
-		JLabel lbltennv = new JLabel("Họ tên");
+		JLabel lbltennv = new JLabel("Há»� tÃªn");
 		lbltennv.setBounds(10, 8, 49, 13);
 		
 		JLabel lblemailnv = new JLabel("Email");
 		lblemailnv.setBounds(185, 60, 49, 13);
 		
-		JLabel lbldiachinv = new JLabel("Địa chỉ");
+		JLabel lbldiachinv = new JLabel("Ä�á»‹a chá»‰");
 		lbldiachinv.setBounds(9, 60, 50, 13);
 		
-		JLabel lblsdtnv = new JLabel("SĐT");
+		JLabel lblsdtnv = new JLabel("SÄ�T");
 		lblsdtnv.setBounds(185, 8, 49, 13);
 		panel1.setLayout(null);
 		
@@ -1146,7 +1135,7 @@ public class Control extends JFrame {
 			try {
 				int result = nvbll.insertNhanVien(nv);
 				if(result !=0) {
-					JOptionPane.showConfirmDialog(null,"thêm thành công!","thông báo",JOptionPane.INFORMATION_MESSAGE);
+					JOptionPane.showConfirmDialog(null,"thÃªm thÃ nh cÃ´ng!","thÃ´ng bÃ¡o",JOptionPane.INFORMATION_MESSAGE);
 				}
 				loadAllNhanVien();
 			} catch (Exception ex) {
@@ -1170,7 +1159,7 @@ public class Control extends JFrame {
 			try {
 				int result = nvbll.updateNhanVien(nv);
 				if(result !=0) {
-					JOptionPane.showConfirmDialog(null,"cập nhật thành công!","thông báo",JOptionPane.INFORMATION_MESSAGE);
+					JOptionPane.showConfirmDialog(null,"cáº­p nháº­t thÃ nh cÃ´ng!","thÃ´ng bÃ¡o",JOptionPane.INFORMATION_MESSAGE);
 				}
 				loadAllNhanVien();
 			} catch (Exception ex) {
@@ -1187,7 +1176,7 @@ public class Control extends JFrame {
 			 nv.setMa_nv(txtnhanvienID.getText());
 			 NhanVienBLL nvbll = new NhanVienBLL();
 			 int choice = JOptionPane.showConfirmDialog(null,
-			 "Bạn có chắc chắn xóa dữ liệu!", "Xác nhận",
+			 "Báº¡n cÃ³ cháº¯c cháº¯n xÃ³a dá»¯ liá»‡u!", "XÃ¡c nháº­n",
 			 JOptionPane.YES_NO_OPTION);
 			 if (choice == JOptionPane.YES_OPTION) {
 			 try {
@@ -1210,7 +1199,7 @@ public class Control extends JFrame {
 		 tblnhanvien.setBorder(UIManager.getBorder("Table.scrollPaneBorder"));
 		 tblnhanvien.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		 tblnhanvien.addMouseListener(new MouseAdapter() {
-		 // Lấy thông tin dòng dữ liệu được chọn hiển thị lên component
+		 // Láº¥y thÃ´ng tin dÃ²ng dá»¯ liá»‡u Ä‘Æ°á»£c chá»�n hiá»ƒn thá»‹ lÃªn component
 		 public void mouseClicked(MouseEvent arg0) {
 		 int row = tblnhanvien.getSelectedRow();
 		 if (row != -1) {
@@ -1222,7 +1211,7 @@ public class Control extends JFrame {
 		 }
 		 }
 		 });
-		JButton btnNhanvien = new JButton("Nhân viên");
+		JButton btnNhanvien = new JButton("NhÃ¢n viÃªn");
 		btnNhanvien.setFont(new Font("SansSerif", Font.BOLD, 14));
 		btnNhanvien.setBackground(new Color(220, 242, 238));
 		btnNhanvien.setForeground(new Color(95,  154,  156));
@@ -1264,16 +1253,16 @@ public class Control extends JFrame {
 		txtsoghe.setBounds(66, 56, 96, 19);
 		txtsoghe.setColumns(10);
 	
-		JLabel lblphieuid = new JLabel("Mã phiếu");
+		JLabel lblphieuid = new JLabel("MÃ£ phiáº¿u");
 		lblphieuid.setBounds(9, 8, 61, 13);
 		
-		JLabel lblmavecbdc = new JLabel("Mã vé chuyến bay");
+		JLabel lblmavecbdc = new JLabel("MÃ£ vÃ© chuyáº¿n bay");
 		lblmavecbdc.setBounds(185, 8, 102, 13);
 		
-		JLabel lblngaydat = new JLabel("Ngày đặt");
+		JLabel lblngaydat = new JLabel("NgÃ y Ä‘áº·t");
 		lblngaydat.setBounds(409, 8, 61, 13);
 		
-		JLabel lblsoghe = new JLabel("Số ghế");
+		JLabel lblsoghe = new JLabel("Sá»‘ gháº¿");
 		lblsoghe.setBounds(9, 60, 50, 13);
 		panelpdc.setLayout(null);
 		
@@ -1305,7 +1294,7 @@ public class Control extends JFrame {
 			try {
 				int result = pdcbll.updatePhieuDatCho (pdc);
 				if(result !=0) {
-					JOptionPane.showConfirmDialog(null,"cập nhật thành công!","thông báo",JOptionPane.INFORMATION_MESSAGE);
+					JOptionPane.showConfirmDialog(null,"cáº­p nháº­t thÃ nh cÃ´ng!","thÃ´ng bÃ¡o",JOptionPane.INFORMATION_MESSAGE);
 				}
 				loadAllPhieuDatCho();
 			} catch (Exception ex) {
@@ -1322,7 +1311,7 @@ public class Control extends JFrame {
 			 pdc.setMa_phieu(txtphieuId.getText());
 			 PhieuDatChoBLL pdcbll = new PhieuDatChoBLL();
 			 int choice = JOptionPane.showConfirmDialog(null,
-			 "Bạn có chắc chắn xóa dữ liệu!", "Xác nhận",
+			 "Báº¡n cÃ³ cháº¯c cháº¯n xÃ³a dá»¯ liá»‡u!", "XÃ¡c nháº­n",
 			 JOptionPane.YES_NO_OPTION);
 			 if (choice == JOptionPane.YES_OPTION) {
 			 try {
@@ -1343,7 +1332,7 @@ public class Control extends JFrame {
 		tblphieudatcho.setBorder(UIManager.getBorder("Table.scrollPaneBorder"));
 		tblphieudatcho.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		tblphieudatcho.addMouseListener(new MouseAdapter() {
-		 // Lấy thông tin dòng dữ liệu được chọn hiển thị lên component
+		 // Láº¥y thÃ´ng tin dÃ²ng dá»¯ liá»‡u Ä‘Æ°á»£c chá»�n hiá»ƒn thá»‹ lÃªn component
 		 public void mouseClicked(MouseEvent arg0) {
 		 int row = tblphieudatcho.getSelectedRow();
 		 if (row != -1) {
@@ -1356,7 +1345,7 @@ public class Control extends JFrame {
 		 }
 		 });
 		
-		JButton btnPhieudatcho = new JButton("Phiếu đặt chỗ");
+		JButton btnPhieudatcho = new JButton("Phiáº¿u Ä‘áº·t chá»—");
 		btnPhieudatcho.setFont(new Font("SansSerif", Font.BOLD, 14));
 		btnPhieudatcho.setBackground(new Color(220, 242, 238));
 		btnPhieudatcho.setForeground(new Color(95,  154,  156));
@@ -1393,11 +1382,11 @@ public class Control extends JFrame {
 		txtsanbayname.setBounds(277, 5, 96, 19);
 		txtsanbayname.setColumns(10);
 		
-		JLabel lblmasb = new JLabel("Mã sân bay");
+		JLabel lblmasb = new JLabel("MÃ£ sÃ¢n bay");
 		lblmasb.setBounds(10, 9, 81, 13);
 		
 		
-		JLabel lbltensb = new JLabel("Tên sân bay");
+		JLabel lbltensb = new JLabel("TÃªn sÃ¢n bay");
 		lbltensb.setBounds(197, 9, 81, 13);
 		panelsb.setLayout(null);
 		
@@ -1421,7 +1410,7 @@ public class Control extends JFrame {
 			try {
 				int result = sbbll.insertSanBay(sb);
 				if(result !=0) {
-					JOptionPane.showConfirmDialog(null,"thêm thành công!","thông báo",JOptionPane.INFORMATION_MESSAGE);
+					JOptionPane.showConfirmDialog(null,"thÃªm thÃ nh cÃ´ng!","thÃ´ng bÃ¡o",JOptionPane.INFORMATION_MESSAGE);
 				}
 				loadAllSanBay();
 			} catch (Exception ex) {
@@ -1443,7 +1432,7 @@ public class Control extends JFrame {
 			try {
 				int result = sbbll.updateSanBay (sb);
 				if(result !=0) {
-					JOptionPane.showConfirmDialog(null,"cập nhật thành công!","thông báo",JOptionPane.INFORMATION_MESSAGE);
+					JOptionPane.showConfirmDialog(null,"cáº­p nháº­t thÃ nh cÃ´ng!","thÃ´ng bÃ¡o",JOptionPane.INFORMATION_MESSAGE);
 				}
 				loadAllSanBay();
 			} catch (Exception ex) {
@@ -1460,7 +1449,7 @@ public class Control extends JFrame {
 			 sb.setMa_sb(txtsanbayId.getText());
 			 SanBayBLL sbbll = new SanBayBLL();
 			 int choice = JOptionPane.showConfirmDialog(null,
-			 "Bạn có chắc chắn xóa dữ liệu!", "Xác nhận",
+			 "Báº¡n cÃ³ cháº¯c cháº¯n xÃ³a dá»¯ liá»‡u!", "XÃ¡c nháº­n",
 			 JOptionPane.YES_NO_OPTION);
 			 if (choice == JOptionPane.YES_OPTION) {
 			 try {
@@ -1484,7 +1473,7 @@ public class Control extends JFrame {
 		tblsanbay.setBorder(UIManager.getBorder("Table.scrollPaneBorder"));
 		tblsanbay.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		tblsanbay.addMouseListener(new MouseAdapter() {
-		 // Lấy thông tin dòng dữ liệu được chọn hiển thị lên component
+		 // Láº¥y thÃ´ng tin dÃ²ng dá»¯ liá»‡u Ä‘Æ°á»£c chá»�n hiá»ƒn thá»‹ lÃªn component
 		 public void mouseClicked(MouseEvent arg0) {
 		 int row = tblsanbay.getSelectedRow();
 		 if (row != -1) {
@@ -1494,7 +1483,7 @@ public class Control extends JFrame {
 		 }
 		 }
 		 });
-		JButton btnSanbay = new JButton("Sân bay");
+		JButton btnSanbay = new JButton("SÃ¢n bay");
 		btnSanbay.setFont(new Font("SansSerif", Font.BOLD, 14));
 		btnSanbay.setBackground(new Color(220, 242, 238));
 		btnSanbay.setForeground(new Color(95,  154,  156));
@@ -1557,32 +1546,32 @@ public class Control extends JFrame {
 		txtngaygio.setBounds(492, 4, 96, 20);
 		txtngaygio.setColumns(10);
 		 
-		 JLabel lblchuyenbayid = new JLabel("Mã chuyến bay");
+		 JLabel lblchuyenbayid = new JLabel("MÃ£ chuyáº¿n bay");
 		 lblchuyenbayid.setBounds(9, 8, 95, 13);
 		 //lblmakh.setVisible(false);
 		
-		 JLabel lblmatuyenbay = new JLabel("Mã tuyến bay");
+		 JLabel lblmatuyenbay = new JLabel("MÃ£ tuyáº¿n bay");
 		 lblmatuyenbay.setBounds(213, 8, 95, 13);
 		 
-			JLabel lblmabayid = new JLabel("Mã máy bay");
+			JLabel lblmabayid = new JLabel("MÃ£ mÃ¡y bay");
 			lblmabayid.setBounds(423, 8, 70, 13);
 			//lbltenkh.setVisible(false);
 			
 			
-			JLabel lblgheh1 = new JLabel("Số ghế hạng 1");
+			JLabel lblgheh1 = new JLabel("Sá»‘ gháº¿ háº¡ng 1");
 			lblgheh1.setBounds(9, 60, 95, 13);
 			//lblemailkh.setVisible(false);
 			
 			
-			JLabel lblgheh2 = new JLabel("Số ghế hạng 2");
+			JLabel lblgheh2 = new JLabel("Sá»‘ gháº¿ háº¡ng 2");
 			lblgheh2.setBounds(213, 60, 84, 13);
 			//lbldiachikh.setVisible(false);
 		
 			
-			JLabel lblngaygio = new JLabel("Ngày giờ");
+			JLabel lblngaygio = new JLabel("NgÃ y giá»�");
 			lblngaygio.setBounds(423, 60, 70, 13);
 			
-			JLabel lblthoigian = new JLabel("Thời gian bay");
+			JLabel lblthoigian = new JLabel("Thá»�i gian bay");
 			lblthoigian.setBounds(9, 115, 95, 13);
 			panelcb.setLayout(null);
 			panelcb.add(lblngaygio);
@@ -1619,7 +1608,7 @@ public class Control extends JFrame {
 				try {
 					int result = sbbll.updateChuyenBay (cb);
 					if(result !=0) {
-						JOptionPane.showConfirmDialog(null,"cập nhật thành công!","thông báo",JOptionPane.INFORMATION_MESSAGE);
+						JOptionPane.showConfirmDialog(null,"cáº­p nháº­t thÃ nh cÃ´ng!","thÃ´ng bÃ¡o",JOptionPane.INFORMATION_MESSAGE);
 					}
 					loadAllChuyenBay();
 				} catch (Exception ex) {
@@ -1636,7 +1625,7 @@ public class Control extends JFrame {
 				 cb.setMa_cb(txtchuyenbayid.getText());
 				 ChuyenBayBLL cbbll = new ChuyenBayBLL();
 				 int choice = JOptionPane.showConfirmDialog(null,
-				 "Bạn có chắc chắn xóa dữ liệu!", "Xác nhận",
+				 "Báº¡n cÃ³ cháº¯c cháº¯n xÃ³a dá»¯ liá»‡u!", "XÃ¡c nháº­n",
 				 JOptionPane.YES_NO_OPTION);
 				 if (choice == JOptionPane.YES_OPTION) {
 				 try {
@@ -1659,7 +1648,7 @@ public class Control extends JFrame {
 		tblchuyenbay.setBorder(UIManager.getBorder("Table.scrollPaneBorder"));
 		tblchuyenbay.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		tblchuyenbay.addMouseListener(new MouseAdapter() {
-			 // Lấy thông tin dòng dữ liệu được chọn hiển thị lên component
+			 // Láº¥y thÃ´ng tin dÃ²ng dá»¯ liá»‡u Ä‘Æ°á»£c chá»�n hiá»ƒn thá»‹ lÃªn component
 			 public void mouseClicked(MouseEvent arg0) {
 			 int row = tblchuyenbay.getSelectedRow();
 			 if (row != -1) {
@@ -1673,7 +1662,7 @@ public class Control extends JFrame {
 			 }
 			 }
 			 });
-		JButton btnChuyenbay = new JButton("Chuyến bay");
+		JButton btnChuyenbay = new JButton("Chuyáº¿n bay");
 		btnChuyenbay.setFont(new Font("SansSerif", Font.BOLD, 14));
 		btnChuyenbay.setBackground(Color.white);
 		btnChuyenbay.setForeground(new Color(86, 172, 191));
@@ -1714,14 +1703,14 @@ public class Control extends JFrame {
 		txtsanbayden.setBounds(462, 5, 96, 19);
 		txtsanbayden.setColumns(10);
 		
-		JLabel lblmatb = new JLabel("Mã tuyến bay");
+		JLabel lblmatb = new JLabel("MÃ£ tuyáº¿n bay");
 		lblmatb.setBounds(10, 9, 81, 13);
 		
-		JLabel lblsanbaydi = new JLabel("Sân bay đi");
+		JLabel lblsanbaydi = new JLabel("SÃ¢n bay Ä‘i");
 		lblsanbaydi.setBounds(211, 9, 60, 13);
 		
 		
-		JLabel lblsanbayden = new JLabel("Sân bay đến");
+		JLabel lblsanbayden = new JLabel("SÃ¢n bay Ä‘áº¿n");
 		lblsanbayden.setBounds(390, 9, 74, 13);
 		paneltb.setLayout(null);
 		
@@ -1749,7 +1738,7 @@ public class Control extends JFrame {
 			try {
 				int result = tbbll.insertTuyenBay(tb);
 				if(result !=0) {
-					JOptionPane.showConfirmDialog(null,"thêm thành công!","thông báo",JOptionPane.INFORMATION_MESSAGE);
+					JOptionPane.showConfirmDialog(null,"thÃªm thÃ nh cÃ´ng!","thÃ´ng bÃ¡o",JOptionPane.INFORMATION_MESSAGE);
 				}
 				loadAllTuyenBay();
 			} catch (Exception ex) {
@@ -1772,7 +1761,7 @@ public class Control extends JFrame {
 			try {
 				int result = tbbll.updateTuyenBay (tb);
 				if(result !=0) {
-					JOptionPane.showConfirmDialog(null,"cập nhật thành công!","thông báo",JOptionPane.INFORMATION_MESSAGE);
+					JOptionPane.showConfirmDialog(null,"cáº­p nháº­t thÃ nh cÃ´ng!","thÃ´ng bÃ¡o",JOptionPane.INFORMATION_MESSAGE);
 				}
 				loadAllTuyenBay();
 			} catch (Exception ex) {
@@ -1789,7 +1778,7 @@ public class Control extends JFrame {
 			 tb.setMa_tuyenbay(txtmatb.getText());
 			 TuyenBayBLL tbbll = new TuyenBayBLL();
 			 int choice = JOptionPane.showConfirmDialog(null,
-			 "Bạn có chắc chắn xóa dữ liệu!", "Xác nhận",
+			 "Báº¡n cÃ³ cháº¯c cháº¯n xÃ³a dá»¯ liá»‡u!", "XÃ¡c nháº­n",
 			 JOptionPane.YES_NO_OPTION);
 			 if (choice == JOptionPane.YES_OPTION) {
 			 try {
@@ -1813,7 +1802,7 @@ public class Control extends JFrame {
 		tbltuyenbay.setBorder(UIManager.getBorder("Table.scrollPaneBorder"));
 		tbltuyenbay.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		tbltuyenbay.addMouseListener(new MouseAdapter() {
-			 // Lấy thông tin dòng dữ liệu được chọn hiển thị lên component
+			 // Láº¥y thÃ´ng tin dÃ²ng dá»¯ liá»‡u Ä‘Æ°á»£c chá»�n hiá»ƒn thá»‹ lÃªn component
 			 public void mouseClicked(MouseEvent arg0) {
 			 int row = tbltuyenbay.getSelectedRow();
 			 if (row != -1) {
@@ -1824,7 +1813,7 @@ public class Control extends JFrame {
 			 }
 			 }
 			 });
-		JButton btnTuyenbay = new JButton("Tuyến bay");
+		JButton btnTuyenbay = new JButton("Tuyáº¿n bay");
 		btnTuyenbay.setFont(new Font("SansSerif", Font.BOLD, 14));
 		btnTuyenbay.setBackground(Color.white);
 		btnTuyenbay.setForeground(new Color(86, 172, 191));
@@ -1847,7 +1836,7 @@ public class Control extends JFrame {
 		btnTuyenbay.setBounds(10, 351, 128, 23);
 		contentPane.add(btnTuyenbay);
 		
-		JLabel lblNewLabel = new JLabel("Thông tin chi tiết");
+		JLabel lblNewLabel = new JLabel("ThÃ´ng tin chi tiáº¿t");
 		lblNewLabel.setForeground(new Color(0, 0, 0));
 		lblNewLabel.setFont(new Font("SansSerif", Font.BOLD, 20));
 		lblNewLabel.setBounds(603, 11, 181, 48);
@@ -1867,7 +1856,7 @@ public class Control extends JFrame {
 		
 		
 		
-		JLabel lblNewLabel_2 = new JLabel("Thông tin chi tiết");
+		JLabel lblNewLabel_2 = new JLabel("ThÃ´ng tin chi tiáº¿t");
 		lblNewLabel_2.setForeground(new Color(255, 0, 0));
 		lblNewLabel_2.setFont(new Font("Calibri", Font.BOLD, 14));
 		lblNewLabel_2.setBounds(177, 236, 128, 22);
@@ -1912,15 +1901,15 @@ public class Control extends JFrame {
 	 * @throws ClassNotFoundException 
 	  */
 	 public void loadAllNhanVien() throws ClassNotFoundException {
-		 //tạo control DefaultTableModel để hiển thị danh sách NhanVien
-	 String[] header = { "Mã nhân viên", "Tên nhân viên", "Email", "SDT", "Địa chỉ" };
+		 //táº¡o control DefaultTableModel Ä‘á»ƒ hiá»ƒn thá»‹ danh sÃ¡ch NhanVien
+	 String[] header = { "MÃ£ nhÃ¢n viÃªn", "TÃªn nhÃ¢n viÃªn", "Email", "SDT", "Ä�á»‹a chá»‰" };
 	 DefaultTableModel dtm = new DefaultTableModel(header, 0);
-	 //lấy danh sách NhanVienDTO (gọi hàm getAllNhanVien() trong NhanVienBLL)
+	 //láº¥y danh sÃ¡ch NhanVienDTO (gá»�i hÃ m getAllNhanVien() trong NhanVienBLL)
 	 ArrayList<NhanVienDTO> arr = new ArrayList<NhanVienDTO>();
 	 NhanVienBLL NhanVienBLL = new NhanVienBLL();
 	 arr = NhanVienBLL.getAllNhanVien();
 	 
-	 //Duyệt mảng NhanVienDTO vừa lấy được: arr
+	 //Duyá»‡t máº£ng NhanVienDTO vá»«a láº¥y Ä‘Æ°á»£c: arr
 	 NhanVienDTO NhanVienDTO = new NhanVienDTO();
 	 for (int i = 0; i < arr.size(); i++) {
 		 NhanVienDTO = arr.get(i);
@@ -1930,7 +1919,7 @@ public class Control extends JFrame {
 		 String email = NhanVienDTO.getEmail();
 		 String sdt = NhanVienDTO.getSDT();
 		 String dia_chi = NhanVienDTO.getDiaChi();
-		 //tạo row để add vào control DefaultTableModel
+		 //táº¡o row Ä‘á»ƒ add vÃ o control DefaultTableModel
 		 Object[] row = { ma_nv, ten_nv, email, sdt, dia_chi };
 		 dtm.addRow(row);
 	 }
@@ -1941,15 +1930,15 @@ public class Control extends JFrame {
 	 * @throws ClassNotFoundException 
 	  */
 	 public void loadAllKhachHang() throws ClassNotFoundException {
-		 //tạo control DefaultTableModel để hiển thị danh sách KhachHang
-	 String[] header = { "Mã khách hàng", "Tên khách hàng","CMND/PP", "Email", "SDT", "Địa chỉ" };
+		 //táº¡o control DefaultTableModel Ä‘á»ƒ hiá»ƒn thá»‹ danh sÃ¡ch KhachHang
+	 String[] header = { "MÃ£ khÃ¡ch hÃ ng", "TÃªn khÃ¡ch hÃ ng","CMND/PP", "Email", "SDT", "Ä�á»‹a chá»‰" };
 	 DefaultTableModel dtm = new DefaultTableModel(header, 0);
-	 //lấy danh sách KhachHangDTO (gọi hàm getAllKhachHang() trong KhachHangBLL)
+	 //láº¥y danh sÃ¡ch KhachHangDTO (gá»�i hÃ m getAllKhachHang() trong KhachHangBLL)
 	 ArrayList<KhachHangDTO> arr = new ArrayList<KhachHangDTO>();
 	 KhachHangBLL KhachHangBLL = new KhachHangBLL();
 	 arr = KhachHangBLL.getAllKhachHang();
 	 
-	 //Duyệt mảng KhachHangDTO vừa lấy được: arr
+	 //Duyá»‡t máº£ng KhachHangDTO vá»«a láº¥y Ä‘Æ°á»£c: arr
 	 KhachHangDTO KhachHangDTO = new KhachHangDTO();
 	 for (int i = 0; i < arr.size(); i++) {
 		 KhachHangDTO = arr.get(i);
@@ -1960,7 +1949,7 @@ public class Control extends JFrame {
 		 String email = KhachHangDTO.getEmail();
 		 String sdt = KhachHangDTO.getSDT();
 		 String dia_chi = KhachHangDTO.getDiaChi();
-		 //tạo row để add vào control DefaultTableModel
+		 //táº¡o row Ä‘á»ƒ add vÃ o control DefaultTableModel
 		 Object[] row = { ma_kh, ten_kh, cmnd, email, sdt, dia_chi };
 		 dtm.addRow(row);
 	 }
@@ -1971,15 +1960,15 @@ public class Control extends JFrame {
 	 * @throws ClassNotFoundException 
 	  */
 	 public void loadAllChuyenBay() throws ClassNotFoundException {
-		 //tạo control DefaultTableModel để hiển thị danh sách ChuyenBay
-	 String[] header = { "Mã chuyến bay", "Mã tuyến bay", "Ngày giờ", "Thời gian bay", "Số ghế hạng 1", "Số ghế hạng 2", "Mã máy bay" };
+		 //táº¡o control DefaultTableModel Ä‘á»ƒ hiá»ƒn thá»‹ danh sÃ¡ch ChuyenBay
+	 String[] header = { "MÃ£ chuyáº¿n bay", "MÃ£ tuyáº¿n bay", "NgÃ y giá»�", "Thá»�i gian bay", "Sá»‘ gháº¿ háº¡ng 1", "Sá»‘ gháº¿ háº¡ng 2", "MÃ£ mÃ¡y bay" };
 	 DefaultTableModel dtm = new DefaultTableModel(header, 0);
-	 //lấy danh sách ChuyenBayDTO (gọi hàm getAllChuyenBay() trong ChuyenBayBLL)
+	 //láº¥y danh sÃ¡ch ChuyenBayDTO (gá»�i hÃ m getAllChuyenBay() trong ChuyenBayBLL)
 	 ArrayList<ChuyenBayDTO> arr = new ArrayList<ChuyenBayDTO>();
 	 ChuyenBayBLL ChuyenBayBLL = new ChuyenBayBLL();
 	 arr = ChuyenBayBLL.getAllChuyenBay();
 	 
-	 //Duyệt mảng ChuyenBayDTO vừa lấy được: arr
+	 //Duyá»‡t máº£ng ChuyenBayDTO vá»«a láº¥y Ä‘Æ°á»£c: arr
 	 ChuyenBayDTO ChuyenBayDTO = new ChuyenBayDTO();
 	 for (int i = 0; i < arr.size(); i++) {
 		 ChuyenBayDTO = arr.get(i);
@@ -1991,7 +1980,7 @@ public class Control extends JFrame {
 		 int soghehang1 = ChuyenBayDTO.getSoghehang1();
 		 int soghehang2 = ChuyenBayDTO.getSoghehang2();
 		 String ma_mb = ChuyenBayDTO.getMa_mb();
-		 //tạo row để add vào control DefaultTableModel
+		 //táº¡o row Ä‘á»ƒ add vÃ o control DefaultTableModel
 		 Object[] row = { ma_cb, ma_tuyenbay, ngaygio, thoigianbay, soghehang1, soghehang2, ma_mb };
 		 dtm.addRow(row);
 	 }
@@ -2002,15 +1991,15 @@ public class Control extends JFrame {
 	 * @throws ClassNotFoundException 
 	  */
 	 public void loadAllDonGia() throws ClassNotFoundException {
-		 //tạo control DefaultTableModel để hiển thị danh sách DonGia
-	 String[] header = { "Mã đơn giá", "VND", "USD" };
+		 //táº¡o control DefaultTableModel Ä‘á»ƒ hiá»ƒn thá»‹ danh sÃ¡ch DonGia
+	 String[] header = { "MÃ£ Ä‘Æ¡n giÃ¡", "VND", "USD" };
 	 DefaultTableModel dtm = new DefaultTableModel(header, 0);
-	 //lấy danh sách DonGiaDTO (gọi hàm getAllDonGia() trong DonGiaBLL)
+	 //láº¥y danh sÃ¡ch DonGiaDTO (gá»�i hÃ m getAllDonGia() trong DonGiaBLL)
 	 ArrayList<DonGiaDTO> arr = new ArrayList<DonGiaDTO>();
 	 DonGiaBLL DonGiaBLL = new DonGiaBLL();
 	 arr = DonGiaBLL.getAllDonGia();
 	 
-	 //Duyệt mảng DonGiaDTO vừa lấy được: arr
+	 //Duyá»‡t máº£ng DonGiaDTO vá»«a láº¥y Ä‘Æ°á»£c: arr
 	 DonGiaDTO DonGiaDTO = new DonGiaDTO();
 	 for (int i = 0; i < arr.size(); i++) {
 		 DonGiaDTO = arr.get(i);
@@ -2018,7 +2007,7 @@ public class Control extends JFrame {
 		 String ma_dongia = DonGiaDTO.getMa_dongia();
 		 int VND = DonGiaDTO.getVND();
 		 int USD = DonGiaDTO.getUSD();
-		 //tạo row để add vào control DefaultTableModel
+		 //táº¡o row Ä‘á»ƒ add vÃ o control DefaultTableModel
 		 Object[] row = { ma_dongia, VND, USD };
 		 dtm.addRow(row);
 	 }
@@ -2029,22 +2018,22 @@ public class Control extends JFrame {
 	 * @throws ClassNotFoundException 
 	  */
 	 public void loadAllHangVe() throws ClassNotFoundException {
-		 //tạo control DefaultTableModel để hiển thị danh sách HangVe
-	 String[] header = { "Mã hạng vé", "Tên hạng vé" };
+		 //táº¡o control DefaultTableModel Ä‘á»ƒ hiá»ƒn thá»‹ danh sÃ¡ch HangVe
+	 String[] header = { "MÃ£ háº¡ng vÃ©", "TÃªn háº¡ng vÃ©" };
 	 DefaultTableModel dtm = new DefaultTableModel(header, 0);
-	 //lấy danh sách HangVeDTO (gọi hàm getAllHangVe() trong HangVeBLL)
+	 //láº¥y danh sÃ¡ch HangVeDTO (gá»�i hÃ m getAllHangVe() trong HangVeBLL)
 	 ArrayList<HangVeDTO> arr = new ArrayList<HangVeDTO>();
 	 HangVeBLL HangVeBLL = new HangVeBLL();
 	 arr = HangVeBLL.getAllHangVe();
 	 
-	 //Duyệt mảng HangVeDTO vừa lấy được: arr
+	 //Duyá»‡t máº£ng HangVeDTO vá»«a láº¥y Ä‘Æ°á»£c: arr
 	 HangVeDTO HangVeDTO = new HangVeDTO();
 	 for (int i = 0; i < arr.size(); i++) {
 		 HangVeDTO = arr.get(i);
 		 
 		 String ma_hv = HangVeDTO.getMa_hv();
 		 String ten_hv = HangVeDTO.getTen_hv();
-		 //tạo row để add vào control DefaultTableModel
+		 //táº¡o row Ä‘á»ƒ add vÃ o control DefaultTableModel
 		 Object[] row = { ma_hv, ten_hv };
 		 dtm.addRow(row);
 	 }
@@ -2056,15 +2045,15 @@ public class Control extends JFrame {
 	 * @throws ClassNotFoundException 
 	  */
 	 public void loadAllHoaDon() throws ClassNotFoundException {
-		 //tạo control DefaultTableModel để hiển thị danh sách HoaDon
-	 String[] header = { "Mã hóa đơn","Thành tiền", "Ngày lập","Mã khách hàng","Mã nhân viên"};
+		 //táº¡o control DefaultTableModel Ä‘á»ƒ hiá»ƒn thá»‹ danh sÃ¡ch HoaDon
+	 String[] header = { "MÃ£ hÃ³a Ä‘Æ¡n","ThÃ nh tiá»�n", "NgÃ y láº­p","MÃ£ khÃ¡ch hÃ ng","MÃ£ nhÃ¢n viÃªn"};
 	 DefaultTableModel dtm = new DefaultTableModel(header, 0);
-	 //lấy danh sách HoaDonDTO (gọi hàm getAllHoaDon() trong HoaDonBLL)
+	 //láº¥y danh sÃ¡ch HoaDonDTO (gá»�i hÃ m getAllHoaDon() trong HoaDonBLL)
 	 ArrayList<HoaDonDTO> arr = new ArrayList<HoaDonDTO>();
 	 HoaDonBLL HoaDonBLL = new HoaDonBLL();
 	 arr = HoaDonBLL.getAllHoaDon();
 	 
-	 //Duyệt mảng HoaDonDTO vừa lấy được: arr
+	 //Duyá»‡t máº£ng HoaDonDTO vá»«a láº¥y Ä‘Æ°á»£c: arr
 	 HoaDonDTO HoaDonDTO = new HoaDonDTO();
 	 for (int i = 0; i < arr.size(); i++) {
 		 HoaDonDTO = arr.get(i);
@@ -2075,7 +2064,7 @@ public class Control extends JFrame {
 		 String ma_kh = HoaDonDTO.getMa_kh();
 		 String ma_nv = HoaDonDTO.getMa_nv();
 		 
-		 //tạo row để add vào control DefaultTableModel
+		 //táº¡o row Ä‘á»ƒ add vÃ o control DefaultTableModel
 		 Object[] row = { ma_hd, thanh_tien, ngay_lap, ma_kh, ma_nv };
 		 dtm.addRow(row);
 	 }
@@ -2087,15 +2076,15 @@ public class Control extends JFrame {
 	 * @throws ClassNotFoundException 
 	  */
 	 public void loadAllPhieuDatCho() throws ClassNotFoundException {
-		 //tạo control DefaultTableModel để hiển thị danh sách PhieuDatCho
-	 String[] header = {"Mã phiếu","Mã vé chuyến bay","Ngày đặt","Số Ghế"};
+		 //táº¡o control DefaultTableModel Ä‘á»ƒ hiá»ƒn thá»‹ danh sÃ¡ch PhieuDatCho
+	 String[] header = {"MÃ£ phiáº¿u","MÃ£ vÃ© chuyáº¿n bay","NgÃ y Ä‘áº·t","Sá»‘ Gháº¿"};
 	 DefaultTableModel dtm = new DefaultTableModel(header, 0);
-	 //lấy danh sách PhieuDatChoDTO (gọi hàm getAllPhieuDatCho() trong PhieuDatChoBLL)
+	 //láº¥y danh sÃ¡ch PhieuDatChoDTO (gá»�i hÃ m getAllPhieuDatCho() trong PhieuDatChoBLL)
 	 ArrayList<PhieuDatChoDTO> arr = new ArrayList<PhieuDatChoDTO>();
 	 PhieuDatChoBLL PhieuDatChoBLL = new PhieuDatChoBLL();
 	 arr = PhieuDatChoBLL.getAllPhieuDatCho();
 	 
-	 //Duyệt mảng PhieuDatChoDTO vừa lấy được: arr
+	 //Duyá»‡t máº£ng PhieuDatChoDTO vá»«a láº¥y Ä‘Æ°á»£c: arr
 	 PhieuDatChoDTO PhieuDatChoDTO = new PhieuDatChoDTO();
 	 for (int i = 0; i < arr.size(); i++) {
 		 PhieuDatChoDTO = arr.get(i);
@@ -2104,7 +2093,7 @@ public class Control extends JFrame {
 		 String ma_ve_cb = PhieuDatChoDTO.getMa_ve_cb();
 		 Date ngay_dat = (Date) PhieuDatChoDTO.getNgaydat();
 		 int so_ghe = (int) PhieuDatChoDTO.getSoghe();
-		 //tạo row để add vào control DefaultTableModel
+		 //táº¡o row Ä‘á»ƒ add vÃ o control DefaultTableModel
 		 Object[] row = { ma_phieu, ma_ve_cb, ngay_dat, so_ghe };
 		 dtm.addRow(row);
 	 }
@@ -2116,22 +2105,22 @@ public class Control extends JFrame {
 	 * @throws ClassNotFoundException 
 	  */
 	 public void loadAllSanBay() throws ClassNotFoundException {
-		 //tạo control DefaultTableModel để hiển thị danh sách SanBay
-	 String[] header = { "Mã sân bay", "Tên sân bay" };
+		 //táº¡o control DefaultTableModel Ä‘á»ƒ hiá»ƒn thá»‹ danh sÃ¡ch SanBay
+	 String[] header = { "MÃ£ sÃ¢n bay", "TÃªn sÃ¢n bay" };
 	 DefaultTableModel dtm = new DefaultTableModel(header, 0);
-	 //lấy danh sách SanBayDTO (gọi hàm getAllSanBay() trong SanBayBLL)
+	 //láº¥y danh sÃ¡ch SanBayDTO (gá»�i hÃ m getAllSanBay() trong SanBayBLL)
 	 ArrayList<SanBayDTO> arr = new ArrayList<SanBayDTO>();
 	 SanBayBLL SanBayBLL = new SanBayBLL();
 	 arr = SanBayBLL.getAllSanBay();
 	 
-	 //Duyệt mảng SanBayDTO vừa lấy được: arr
+	 //Duyá»‡t máº£ng SanBayDTO vá»«a láº¥y Ä‘Æ°á»£c: arr
 	 SanBayDTO SanBayDTO = new SanBayDTO();
 	 for (int i = 0; i < arr.size(); i++) {
 		 SanBayDTO = arr.get(i);
 		 
 		 String ma_sb = SanBayDTO.getMa_sb();
 		 String ten_sb = SanBayDTO.getTen_sb();
-		 //tạo row để add vào control DefaultTableModel
+		 //táº¡o row Ä‘á»ƒ add vÃ o control DefaultTableModel
 		 Object[] row = { ma_sb, ten_sb };
 		 dtm.addRow(row);
 	 }
@@ -2143,22 +2132,22 @@ public class Control extends JFrame {
 	 * @throws ClassNotFoundException 
 	  */
 	 public void loadAllMayBay() throws ClassNotFoundException {
-		 //tạo control DefaultTableModel để hiển thị danh sách MayBay
-	 String[] header = { "Mã máy bay", "Tên máy bay" };
+		 //táº¡o control DefaultTableModel Ä‘á»ƒ hiá»ƒn thá»‹ danh sÃ¡ch MayBay
+	 String[] header = { "MÃ£ mÃ¡y bay", "TÃªn mÃ¡y bay" };
 	 DefaultTableModel dtm = new DefaultTableModel(header, 0);
-	 //lấy danh sách MayBayDTO (gọi hàm getAllMayBay() trong MayBayBLL)
+	 //láº¥y danh sÃ¡ch MayBayDTO (gá»�i hÃ m getAllMayBay() trong MayBayBLL)
 	 ArrayList<MayBayDTO> arr = new ArrayList<MayBayDTO>();
 	 MayBayBLL MayBayBLL = new MayBayBLL();
 	 arr = MayBayBLL.getAllMayBay();
 	 
-	 //Duyệt mảng MayBayDTO vừa lấy được: arr
+	 //Duyá»‡t máº£ng MayBayDTO vá»«a láº¥y Ä‘Æ°á»£c: arr
 	 MayBayDTO MayBayDTO = new MayBayDTO();
 	 for (int i = 0; i < arr.size(); i++) {
 		 MayBayDTO = arr.get(i);
 		 
 		 String ma_mb = MayBayDTO.getMa_mb();
 		 String ten_mb = MayBayDTO.getTen_mb();
-		 //tạo row để add vào control DefaultTableModel
+		 //táº¡o row Ä‘á»ƒ add vÃ o control DefaultTableModel
 		 Object[] row = { ma_mb, ten_mb };
 		 dtm.addRow(row);
 	 }
@@ -2170,15 +2159,15 @@ public class Control extends JFrame {
 	 * @throws ClassNotFoundException 
 	  */
 	 public void loadAllVeChuyenBay() throws ClassNotFoundException {
-		 //tạo control DefaultTableModel để hiển thị danh sách VeChuyenBay
-	 String[] header = { "Mã vé","Mã hóa đơn","Mã chuyến bay","Mã đơn giá","Mã hạng vé","Tình Trạng" };
+		 //táº¡o control DefaultTableModel Ä‘á»ƒ hiá»ƒn thá»‹ danh sÃ¡ch VeChuyenBay
+	 String[] header = { "MÃ£ vÃ©","MÃ£ hÃ³a Ä‘Æ¡n","MÃ£ chuyáº¿n bay","MÃ£ Ä‘Æ¡n giÃ¡","MÃ£ háº¡ng vÃ©","TÃ¬nh Tráº¡ng" };
 	 DefaultTableModel dtm = new DefaultTableModel(header, 0);
-	 //lấy danh sách VeChuyenBayDTO (gọi hàm getAllVeChuyenBay() trong HVeChuyenBayBLL)
+	 //láº¥y danh sÃ¡ch VeChuyenBayDTO (gá»�i hÃ m getAllVeChuyenBay() trong HVeChuyenBayBLL)
 	 ArrayList<VeChuyenBayDTO> arr = new ArrayList<VeChuyenBayDTO>();
 	 VeChuyenBayBLL VeChuyenBayBLL = new VeChuyenBayBLL();
 	 arr = VeChuyenBayBLL.getAllVeChuyenBay();
 	 
-	 //Duyệt mảng HoaDonDTO vừa lấy được: arr
+	 //Duyá»‡t máº£ng HoaDonDTO vá»«a láº¥y Ä‘Æ°á»£c: arr
 	 VeChuyenBayDTO VeChuyenBayDTO = new VeChuyenBayDTO();
 	 for (int i = 0; i < arr.size(); i++) {
 		 VeChuyenBayDTO = arr.get(i);
@@ -2189,7 +2178,7 @@ public class Control extends JFrame {
 		 String ma_dongia = VeChuyenBayDTO.getMa_dongia();
 		 String ma_hv = VeChuyenBayDTO.getMa_hv();
 		 String tinh_trang = VeChuyenBayDTO.getTinhtrangve();
-		 //tạo row để add vào control DefaultTableModel
+		 //táº¡o row Ä‘á»ƒ add vÃ o control DefaultTableModel
 		 Object[] row = { ma_ve_cb, ma_hd, ma_cb, ma_dongia, ma_hv, tinh_trang};
 		 dtm.addRow(row);
 	 }
@@ -2201,15 +2190,15 @@ public class Control extends JFrame {
 	 * @throws ClassNotFoundException 
 	  */
 	 public void loadAllTuyenBay() throws ClassNotFoundException {
-		 //tạo control DefaultTableModel để hiển thị danh sách tuyenBay
-	 String[] header = { "Mã tuyến bay","Sân bay đi", "Sân bay đến" };
+		 //táº¡o control DefaultTableModel Ä‘á»ƒ hiá»ƒn thá»‹ danh sÃ¡ch tuyenBay
+	 String[] header = { "MÃ£ tuyáº¿n bay","SÃ¢n bay Ä‘i", "SÃ¢n bay Ä‘áº¿n" };
 	 DefaultTableModel dtm = new DefaultTableModel(header, 0);
-	 //lấy danh sách TuyenBayDTO (gọi hàm getAllTuyenBay() trong TuyenBayBLL)
+	 //láº¥y danh sÃ¡ch TuyenBayDTO (gá»�i hÃ m getAllTuyenBay() trong TuyenBayBLL)
 	 ArrayList<TuyenBayDTO> arr = new ArrayList<TuyenBayDTO>();
 	 TuyenBayBLL tuyenBayBLL = new TuyenBayBLL();
 	 arr = tuyenBayBLL.getAllTuyenBay();
 	 
-	 //Duyệt mảng TuyenbayDTO vừa lấy được: arr
+	 //Duyá»‡t máº£ng TuyenbayDTO vá»«a láº¥y Ä‘Æ°á»£c: arr
 	 TuyenBayDTO TuyenBayDTO = new TuyenBayDTO();
 	 for (int i = 0; i < arr.size(); i++) {
 		 TuyenBayDTO = arr.get(i);
@@ -2218,7 +2207,7 @@ public class Control extends JFrame {
 		 String sb_di = TuyenBayDTO.getSanbaydi();
 		 String sb_den = TuyenBayDTO.getSanbayden();
 
-		 //tạo row để add vào control DefaultTableModel
+		 //táº¡o row Ä‘á»ƒ add vÃ o control DefaultTableModel
 		 Object[] row = { ma_tb, sb_di,sb_den };
 		 dtm.addRow(row);
 	 }
