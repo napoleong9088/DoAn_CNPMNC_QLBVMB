@@ -42,6 +42,7 @@ public class NhanVienDAL {
 					NhanVienDTO.setEmail(resultSet.getString("email"));
 					NhanVienDTO.setSDT(resultSet.getString("sdt"));
 					NhanVienDTO.setDiaChi(resultSet.getString("diachi"));
+                                        NhanVienDTO.setChucVu(resultSet.getString("chucvu"));
 					result.add(NhanVienDTO);
 				}
 			} catch (SQLException e) {
@@ -81,6 +82,7 @@ public class NhanVienDAL {
 					NhanVien.setEmail(resultSet.getString("email"));
 					NhanVien.setSDT(resultSet.getString("sdt"));
 					NhanVien.setDiaChi(resultSet.getString("diachi"));
+                                        NhanVienDTO.setChucVu(resultSet.getString("chucvu"));
 					result.add(NhanVien);
 				}
 			} catch (SQLException e) {
@@ -135,7 +137,7 @@ public class NhanVienDAL {
 			public int updateNhanVien(NhanVienDTO NhanVienDTO) throws ClassNotFoundException {
 				// Khởi tạo mảng đối tượng NhanVienDTO để chứa kết quả truy vấn	
 				int result = 0;
-				String sqlUpdate = "update nhanvien set ten_nv=? ,sdt=?,diachi=?, chucvu=? where ma_nv=?";
+				String sqlUpdate = "update nhanvien set ten_nv=? ,sdt=?,diachi=? where ma_nv=?";
 				
 				try {
 					//mở kết nối tới CSDL	
@@ -146,8 +148,7 @@ public class NhanVienDAL {
 					preparedStatement.setString(1, NhanVienDTO.getTen_nv());
 					preparedStatement.setString(2, NhanVienDTO.getSDT());
 					preparedStatement.setString(3, NhanVienDTO.getDiaChi());
-					preparedStatement.setString(4, NhanVienDTO.getChucVu());
-                                        preparedStatement.setString(5, NhanVienDTO.getMa_nv());
+                                        preparedStatement.setString(4, NhanVienDTO.getMa_nv());
 					result = preparedStatement.executeUpdate();
 				} catch (SQLException e) {
 					e.printStackTrace();
@@ -209,6 +210,7 @@ public class NhanVienDAL {
                                 NhanVienDTO.setEmail(resultSet.getString("email"));
 				NhanVienDTO.setPassword(resultSet.getString("password"));
 				NhanVienDTO.setChucVu(resultSet.getString("chucvu"));
+                                NhanVienDTO.setTen_nv(resultSet.getString("ten_nv"));
 				
 				result.add(User);
 			}

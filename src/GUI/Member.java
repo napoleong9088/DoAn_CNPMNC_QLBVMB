@@ -114,10 +114,10 @@ public class Member extends JFrame {
 						JOptionPane.showMessageDialog(null,"LOGIN SUCCESS","",JOptionPane.INFORMATION_MESSAGE);
 						NVDTO.setEmail(textField.getText());
 						NVBLL.getNVByid(NVDTO);
-						if (NVDTO.getChucVu()=="Admin") {
+						if (NVDTO.getChucVu().equals("admin")) {
 							Control control = new Control();
 							control.setVisible(true);
-						} else if (NVDTO.getChucVu()=="Emp") {
+						} else if (NVDTO.getChucVu().equals("emp")) {
 							Option option = new Option();
 							option.setVisible(true);
 						}
