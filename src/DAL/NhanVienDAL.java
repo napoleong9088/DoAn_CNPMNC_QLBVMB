@@ -187,4 +187,42 @@ public class NhanVienDAL {
 				}
 				return result;
 			}
+                        
+                        public ArrayList<NhanVienDTO> getNVByid(NhanVienDTO NhanVienDTO) throws ClassNotFoundException {
+		
+		ArrayList<NhanVienDTO> result = new ArrayList<NhanVienDTO>();
+		String sqlSelectByid = "select * from nhanvien where email = ?";
+			
+		try {
+				
+			conUtil = new ConnectionUtil();
+			con = conUtil.getConnection();
+			
+			preparedStatement = con.prepareStatement(sqlSelectByid);
+			preparedStatement.setString(1, NhanVienDTO.getEmail());
+			resultSet  = preparedStatement.executeQuery();			
+			
+			while(resultSet.next()) {
+				NhanVienDTO User = new NhanVienDTO();
+                                NhanVienDTO.setEmail(resultSet.getString("email"));
+				NhanVienDTO.setPassword(resultSet.getString("password"));
+				NhanVienDTO.setChucVu(resultSet.getString("chucvu"));
+				
+				result.add(User);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		finally {
+			try {
+				
+				con.close();
+				preparedStatement.close();
+				resultSet.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			  }
+		}
+		return result;
+	}
 }

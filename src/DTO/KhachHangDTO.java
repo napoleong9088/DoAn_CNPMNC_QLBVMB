@@ -4,7 +4,7 @@ public class KhachHangDTO {
 		private String Ma_kh;
 		private String Ten_kh;
 		private String Email;
-		private String Passworld;
+		private String Password;
 		private String Cmnd;
 		private String SDT;
 		private String DiaChi;
@@ -13,7 +13,7 @@ public class KhachHangDTO {
 			this.Ma_kh=null;
 			this.Ten_kh=null;
 			this.Email=null;
-			this.Passworld=null;
+			this.Password=null;
 			this.Cmnd=null;
 			this.SDT=null;
 			this.DiaChi=null;
@@ -22,7 +22,7 @@ public class KhachHangDTO {
 			this.Ma_kh=Ma_kh;
 			this.Ten_kh=Ten_kh;
 			this.Email=Email;
-			this.Passworld=Passworld;
+			this.Password=Password;
 			this.Cmnd=Cmnd;
 			this.SDT=SDT;
 			this.DiaChi=DiaChi;
@@ -45,11 +45,11 @@ public class KhachHangDTO {
 		public void setEmail(String email) {
 			Email = email;
 		}
-		public String getPassworld() {
-			return Passworld;
+		public String getPassword() {
+			return Password;
 		}
-		public void setPassworld(String passworld) {
-			Passworld = passworld;
+		public void setPassword(String password) {
+			Password = password;
 		}
 		public String getSDT() {
 			return SDT;

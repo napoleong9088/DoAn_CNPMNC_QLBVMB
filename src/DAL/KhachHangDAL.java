@@ -8,6 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import DTO.KhachHangDTO;
+import DTO.NhanVienDTO;
 import UTILS.ConnectionUtil;
 
 public class KhachHangDAL {
@@ -25,7 +26,7 @@ public class KhachHangDAL {
 			public ArrayList<KhachHangDTO> getAllKhachhang() throws ClassNotFoundException {
 				// Khởi tạo mảng đối tượng KhachHangDTO để chứa kết quả truy vấn	
 				ArrayList<KhachHangDTO> result = new ArrayList<KhachHangDTO>();
-				String sqlSelectAll = "select * from khach_hang";
+				String sqlSelectAll = "select * from khachhang";
 					
 				try {
 					//mở kết nối tới CSDL
@@ -64,7 +65,7 @@ public class KhachHangDAL {
 			public ArrayList<KhachHangDTO> getKhachHangByMa_kh(KhachHangDTO KhachHangDTO) throws ClassNotFoundException {
 				// Khởi tạo mảng đối tượng KhachHangDTO để chứa kết quả truy vấn	
 				ArrayList<KhachHangDTO> result = new ArrayList<KhachHangDTO>();
-				String sqlSelectByMa_kh = "select * from khach_hang where ma_kh = ?";
+				String sqlSelectByMa_kh = "select * from khachhang where ma_kh = ?";
 					
 				try {
 					//mở kết nối tới CSDL		
@@ -104,7 +105,7 @@ public class KhachHangDAL {
 			public int insertKhachHang(KhachHangDTO KhachHangDTO) throws ClassNotFoundException {
 				// Khởi tạo mảng đối tượng KhachHangDTO để chứa kết quả truy vấn	
 				int result = 0;
-				String sqlInsert = "insert into khach_hang(ma_kh,ten_kh,email,password,cmnd_pp,sdt,dia_chi) values(?,?,?,?,?,?,?)";
+				String sqlInsert = "insert into khachhang(ma_kh,ten_kh,email,password,cmnd_pp,sdt,dia_chi) values(?,?,?,?,?,?,?)";
 				
 				try {
 					//mở kết nối tới CSDL	
@@ -115,7 +116,7 @@ public class KhachHangDAL {
 					preparedStatement.setString(1, KhachHangDTO.getMa_kh());
 					preparedStatement.setString(2, KhachHangDTO.getTen_kh());
 					preparedStatement.setString(3, KhachHangDTO.getEmail());
-					preparedStatement.setString(4, KhachHangDTO.getPassworld());
+					preparedStatement.setString(4, KhachHangDTO.getPassword());
 					preparedStatement.setString(5, KhachHangDTO.getCmnd());
 					preparedStatement.setString(6, KhachHangDTO.getSDT());
 					preparedStatement.setString(7, KhachHangDTO.getDiaChi());
@@ -137,7 +138,7 @@ public class KhachHangDAL {
 				public int updateKhachHang(KhachHangDTO KhachHangDTO) throws ClassNotFoundException {
 					// Khởi tạo mảng đối tượng KhachHangDTO để chứa kết quả truy vấn	
 					int result = 0;
-					String sqlUpdate = "update khach_hang set ten_kh=? ,sdt=?,cmnd_pp=?,dia_chi=? where ma_kh=?";
+					String sqlUpdate = "update khachhang set ten_kh=? ,sdt=?,cmnd_pp=?,dia_chi=? where ma_kh=?";
 					
 					try {
 						//mở kết nối tới CSDL	
@@ -168,7 +169,7 @@ public class KhachHangDAL {
 				public int deleteKhachHang(KhachHangDTO KhachHangDTO) throws ClassNotFoundException {
 					// Khởi tạo mảng đối tượng KhachHangDTO để chứa kết quả truy vấn	
 					int result = 0;
-					String sqlDelete = "delete from khach_hang where ma_kh = ?";
+					String sqlDelete = "delete from khachhang where ma_kh = ?";
 					
 					try {
 						//mở kết nối tới CSDL	
@@ -194,7 +195,7 @@ public class KhachHangDAL {
 				public ArrayList<KhachHangDTO> getKhachHangByCMND_PP(KhachHangDTO KhachHangDTO) throws ClassNotFoundException {
 					// Khởi tạo mảng đối tượng KhachHangDTO để chứa kết quả truy vấn	
 					ArrayList<KhachHangDTO> result = new ArrayList<KhachHangDTO>();
-					String sql = "select * from khach_hang where CMND_PP = ?";
+					String sql = "select * from khachhang where CMND_PP = ?";
 						
 					try {
 						//mở kết nối tới CSDL		
@@ -234,7 +235,7 @@ public class KhachHangDAL {
 				public ArrayList<KhachHangDTO> getKhachHangBySDT(KhachHangDTO KhachHangDTO) throws ClassNotFoundException {
 					// Khởi tạo mảng đối tượng KhachHangDTO để chứa kết quả truy vấn	
 					ArrayList<KhachHangDTO> result = new ArrayList<KhachHangDTO>();
-					String sql = "select * from khach_hang where SDT = ?";
+					String sql = "select * from khachhang where SDT = ?";
 						
 					try {
 						//mở kết nối tới CSDL		
@@ -273,7 +274,7 @@ public class KhachHangDAL {
 				public ArrayList<KhachHangDTO> getKhachHangEmail(KhachHangDTO KhachHangDTO) throws ClassNotFoundException {
 					// Khởi tạo mảng đối tượng KhachHangDTO để chứa kết quả truy vấn	
 					ArrayList<KhachHangDTO> result = new ArrayList<KhachHangDTO>();
-					String sqlSelectByMa_kh = "select * from khach_hang where email = ?";
+					String sqlSelectByMa_kh = "select * from khachhang where email = ?";
 						
 					try {
 						//mở kết nối tới CSDL		
@@ -289,9 +290,9 @@ public class KhachHangDAL {
 							KhachHang.setMa_kh(resultSet.getString("ma_kh"));
 							KhachHang.setTen_kh(resultSet.getString("ten_kh"));
 							KhachHang.setEmail(resultSet.getString("email"));
-							KhachHang.setCmnd(resultSet.getString("CMND_PP"));
+							KhachHang.setCmnd(resultSet.getString("CMND"));
 							KhachHang.setSDT(resultSet.getString("sdt"));
-							KhachHang.setDiaChi(resultSet.getString("dia_chi"));
+							KhachHang.setDiaChi(resultSet.getString("diachi"));
 							result.add(KhachHang);
 						}
 					} catch (SQLException e) {
@@ -309,4 +310,41 @@ public class KhachHangDAL {
 					}
 					return result;
 				}
+                                
+                                public ArrayList<KhachHangDTO> getKHByid(KhachHangDTO khachHangDTO) throws ClassNotFoundException {
+		
+		ArrayList<KhachHangDTO> result = new ArrayList<KhachHangDTO>();
+		String sqlSelectByid = "select * from khachhang where email = ?";
+			
+		try {
+				
+			conUtil = new ConnectionUtil();
+			con = conUtil.getConnection();
+			
+			preparedStatement = con.prepareStatement(sqlSelectByid);
+			preparedStatement.setString(1, khachHangDTO.getEmail());
+			resultSet  = preparedStatement.executeQuery();			
+			
+			while(resultSet.next()) {
+				KhachHangDTO User = new KhachHangDTO();
+                                khachHangDTO.setEmail(resultSet.getString("email"));
+				khachHangDTO.setPassword(resultSet.getString("password"));
+                                
+				result.add(User);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		finally {
+			try {
+				
+				con.close();
+				preparedStatement.close();
+				resultSet.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			  }
+		}
+		return result;
+	}
 }

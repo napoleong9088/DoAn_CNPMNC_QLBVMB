@@ -26,4 +26,7 @@ NhanVienDAL NhanVienDAL =new NhanVienDAL();
 		int result = NhanVienDAL.deleteNhanVien(NhanVienDTO);
 		return result;
 	}
+        public ArrayList<NhanVienDTO> getNVByid(NhanVienDTO nhanVienDto) throws ClassNotFoundException{
+		 return NhanVienDAL.getNVByid(nhanVienDto);
+	}
 }
