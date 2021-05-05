@@ -128,60 +128,63 @@ public class Control extends JFrame {
 
 		panelvcb.setBackground(new Color(0,0,0,0));
 		
-		JTextField txtmavecb = new JTextField();
-		txtmavecb.setColumns(10);
-		txtmavecb.setBounds(116, 5, 96, 19);
+		JTextField txtsoghe = new JTextField();
+		txtsoghe.setColumns(10);
+		txtsoghe.setBounds(116, 5, 96, 19);
 		
 		JTextField txtmacb = new JTextField();
 		txtmacb.setBounds(318, 5, 96, 19);
 		txtmacb.setColumns(10);
 		
-		JTextField txtmahdcb = new JTextField();
-		txtmahdcb.setBounds(513, 5, 96, 19);
-		txtmahdcb.setColumns(10);
+		JTextField txtkh = new JTextField();
+		txtkh.setBounds(513, 5, 96, 19);
+		txtkh.setColumns(10);
 		
-		JTextField txtmahvcb = new JTextField();
-		txtmahvcb.setBounds(116, 57, 96, 19);
+		JTextField txtngay = new JTextField();
+		txtngay.setBounds(116, 57, 96, 19);
 		
-		JTextField txtmadongia = new JTextField();
-		txtmadongia.setColumns(10);
-		txtmadongia.setBounds(318, 57, 96, 19);
+		JTextField txtgio = new JTextField();
+		txtgio.setColumns(10);
+		txtgio.setBounds(318, 57, 96, 19);
 		
-		JTextField txttinhtrangve = new JTextField();
-		txttinhtrangve.setColumns(10);
-		txttinhtrangve.setBounds(513, 57, 96, 19);
+		JTextField txtgia = new JTextField();
+		txtgia.setColumns(10);
+		txtgia.setBounds(513, 57, 96, 19);
                 
-                JTextField txttinhtrangve1 = new JTextField();
-		txttinhtrangve1.setColumns(10);
-		txttinhtrangve1.setBounds(513, 113, 96, 19);
+                JTextField txttinhtrangve = new JTextField();
+		txttinhtrangve.setColumns(10);
+		txttinhtrangve.setBounds(513, 113, 96, 19);
+                
+                JTextField txtmavecb = new JTextField();
+                
+                JLabel lblsoghe = new JLabel("SO GHE");
+		lblsoghe.setBounds(10, 8, 102, 13);
+                
+                JLabel lblmacb = new JLabel("MA CB");
+		lblmacb.setBounds(222, 9, 86, 13);
+                
+                JLabel lblkh = new JLabel("KH");
+		lblkh.setBounds(435, 9, 68, 13);
+                
+                JLabel lblngay = new JLabel("NGAY");
+		lblngay.setBounds(10, 61, 68, 13);
 		
 		JLabel lblgio = new JLabel("GIO");
 		lblgio.setBounds(222, 61, 68, 13);
                 
+                JLabel lblgia = new JLabel("GIA");
+		lblgia.setBounds(435, 61, 76, 13);
+                
                 JLabel lbltinhtrangve = new JLabel("TINH TRANG VE");
 		lbltinhtrangve.setBounds(400, 113, 150, 13);
 		
-		JLabel lblsoghe = new JLabel("SO GHE");
-		lblsoghe.setBounds(10, 8, 102, 13);
-		
-		JLabel lblngay = new JLabel("NGAY");
-		lblngay.setBounds(10, 61, 68, 13);
-		
-		JLabel lblkh = new JLabel("KH");
-		lblkh.setBounds(435, 9, 68, 13);
-		
-		JLabel lblmacb = new JLabel("MA CB");
-		lblmacb.setBounds(222, 9, 86, 13);
-		
-		JLabel lblgia = new JLabel("GIA");
-		lblgia.setBounds(435, 61, 76, 13);
-		
 		panelvcb.setLayout(null);
-		panelvcb.add(txtmavecb);
+		panelvcb.add(txtsoghe);
 		panelvcb.add(txtmacb);
-		panelvcb.add(txtmahdcb);
-		panelvcb.add(txtmahvcb);
-		panelvcb.add(txtmadongia);
+		panelvcb.add(txtkh);
+		panelvcb.add(txtngay);
+		panelvcb.add(txtgio);
+                panelvcb.add(txtgia);
 		panelvcb.add(txttinhtrangve);
 		panelvcb.add(lbltinhtrangve);
 		panelvcb.add(lblkh);
@@ -190,7 +193,6 @@ public class Control extends JFrame {
 		panelvcb.add(lblmacb);
 		panelvcb.add(lblgia);
                 panelvcb.add(lblgio);
-                panelvcb.add(txttinhtrangve1);
 		panelvcb.setVisible(false);
 		
 		JButton btnDvcb = new JButton("Delete");
@@ -255,12 +257,14 @@ public class Control extends JFrame {
 			 public void mouseClicked(MouseEvent arg0) {
 			 int row = tblvechuyenbay.getSelectedRow();
 			 if (row != -1) {
-			 txtmavecb.setText(tblvechuyenbay.getValueAt(row, 0).toString());
-			 txtmahdcb.setText(tblvechuyenbay.getValueAt(row, 1).toString());
+                         txtmavecb.setText(tblvechuyenbay.getValueAt(row, 0).toString());
+			 txtsoghe.setText(tblvechuyenbay.getValueAt(row, 1).toString());
 			 txtmacb.setText(tblvechuyenbay.getValueAt(row, 2).toString());				
-			 txtmahvcb.setText(tblvechuyenbay.getValueAt(row, 3).toString());
-			 txtmadongia.setText(tblvechuyenbay.getValueAt(row, 4).toString());
-			 txttinhtrangve.setText(tblvechuyenbay.getValueAt(row, 5).toString());
+			 txtkh.setText(tblvechuyenbay.getValueAt(row, 3).toString());
+			 txtngay.setText(tblvechuyenbay.getValueAt(row, 4).toString());
+                         txtgio.setText(tblvechuyenbay.getValueAt(row, 5).toString());
+                         txtgia.setText(tblvechuyenbay.getValueAt(row, 6).toString());
+			 txttinhtrangve.setText(tblvechuyenbay.getValueAt(row, 7).toString());
 			 }
 			 }
 			 });
@@ -287,62 +291,81 @@ public class Control extends JFrame {
 		panelhd.setBounds(167, 269, 619, 245);
 		panelhd.setBackground(new Color(0,0,0,0));
 		
-		JTextField txtmahoadon = new JTextField();
-		txtmahoadon.setBounds(81, 4, 96, 19);
-		txtmahoadon.setColumns(10);
+		JTextField txttenhd = new JTextField();
+		txttenhd.setColumns(10);
+		txttenhd.setBounds(116, 5, 96, 19);
 		
-		JTextField txtthanhtien = new JTextField();
-		txtthanhtien.setBounds(81, 57, 96, 19);
-		txtthanhtien.setColumns(10);
+		JTextField txtnvhd = new JTextField();
+		txtnvhd.setBounds(318, 5, 96, 19);
+		txtnvhd.setColumns(10);
+		
+		JTextField txtkhhd = new JTextField();
+		txtkhhd.setBounds(513, 5, 96, 19);
+		txtkhhd.setColumns(10);
 		
 		JTextField txtngaylap = new JTextField();
-		txtngaylap.setBounds(281, 57, 96, 19);
-		txtngaylap.setColumns(10);
+		txtngaylap.setBounds(116, 57, 96, 19);
 		
-		JTextField txtnhanvienID = new JTextField();
-		txtnhanvienID.setBounds(281, 4, 96, 19);
-		txtnhanvienID.setColumns(10);
+		JTextField txtmave = new JTextField();
+		txtmave.setColumns(10);
+		txtmave.setBounds(318, 57, 96, 19);
 		
+		JTextField txtthanhtien = new JTextField();
+		txtthanhtien.setColumns(10);
+		txtthanhtien.setBounds(513, 57, 96, 19);
+                
+                JTextField txttinhtranghd = new JTextField();
+		txttinhtranghd.setColumns(10);
+		txttinhtranghd.setBounds(513, 113, 96, 19);
+                
+                JTextField txtmahd = new JTextField();
+                
+                JLabel lbltenhd = new JLabel("GOI TT");
+		lbltenhd.setBounds(10, 8, 102, 13);
+                
+                JLabel lblnvhd = new JLabel("NV");
+		lblnvhd.setBounds(222, 9, 86, 13);
+                
+                JLabel lblkhhd = new JLabel("KH");
+		lblkhhd.setBounds(435, 9, 68, 13);
+                
+                JLabel lblngaylap = new JLabel("NGAY LAP");
+		lblngaylap.setBounds(10, 61, 68, 13);
 		
-		JTextField txtkhachhangID = new JTextField();
-		txtkhachhangID.setBounds(496, 4, 96, 19);
-		txtkhachhangID.setColumns(10);
-		
-		 JLabel lblmahd = new JLabel("MÃ£ hÃ³a Ä‘Æ¡n");
-		 lblmahd.setBounds(10, 8, 76, 13);
-		 
-		 JLabel lblthanhtien = new JLabel("ThÃ nh tiá»�n");
-		 lblthanhtien.setBounds(10, 61, 76, 13);
-		 
-		 JLabel lblmanvhd = new JLabel("MÃ£ nhÃ¢n viÃªn");
-		 lblmanvhd.setBounds(202, 8, 76, 13);
-		 
-		 JLabel lblkhachhangidhd = new JLabel("MÃ£ khÃ¡ch hÃ ng");
-		 lblkhachhangidhd.setBounds(404, 8, 96, 13);
-		 
-		 JLabel lblngaylap = new JLabel("NgÃ y láº­p");
-		 lblngaylap.setBounds(216, 61, 55, 13);
+		JLabel lblmave = new JLabel("MA VE");
+		lblmave.setBounds(222, 61, 68, 13);
+                
+                JLabel lblthanhtien = new JLabel("THANH TIEN");
+		lblthanhtien.setBounds(435, 61, 76, 13);
+                
+                JLabel lbltinhtranghd = new JLabel("TRANG THAI");
+		lbltinhtranghd.setBounds(400, 113, 150, 13);
+                
 		panelhd.setLayout(null);
-		panelhd.add(txtmahoadon);
-		panelhd.add(txtkhachhangID);
-		panelhd.add(txtnhanvienID);
-		panelhd.add(txtngaylap);
+		panelhd.add(txttenhd);
 		panelhd.add(txtthanhtien);
-		panelhd.add(lblmahd);
-		panelhd.add(lblmanvhd);
-		panelhd.add(lblkhachhangidhd);
+		panelhd.add(txtngaylap);
+		panelhd.add(txtkhhd);
+		panelhd.add(txtnvhd);
+                panelhd.add(txtmave);
+                panelhd.add(txttinhtranghd);
+		panelhd.add(lbltenhd);
 		panelhd.add(lblthanhtien);
 		panelhd.add(lblngaylap);
+		panelhd.add(lblkhhd);
+		panelhd.add(lblnvhd);
+                panelhd.add(lbltinhtranghd);
+                panelhd.add(lblngaylap);
 		panelhd.setVisible(false);
 		
-		JButton btnEhd = new JButton("Edit");
+		/*JButton btnEhd = new JButton("Edit");
 		btnEhd.setBounds(482, 163, 111, 57);
 		btnEhd.setFont(new Font("SansSerif", Font.BOLD, 12));
 		btnEhd.addActionListener(new ActionListener() {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			HoaDonDTO hd = new HoaDonDTO();
-			hd.setMa_hd(txtmahoadon.getText());
+			hd.setMa_hd(txtmahd.getText());
 			hd.setThanh_tien(Integer.parseInt(txtthanhtien.getText()));
 			hd.setNgay_Lap(java.sql.Date.valueOf(txtngaylap.getText()));
 			hd.setMa_kh(txtkhachhangID.getText());
@@ -358,17 +381,17 @@ public class Control extends JFrame {
 				ex.printStackTrace();
 			  }
 		}
-		});
+		});*/
 		JButton btnDhd = new JButton("Delete");
 		btnDhd.setBounds(345, 163, 111, 57);
 		btnDhd.setFont(new Font("SansSerif", Font.BOLD, 12));
 		btnDhd.addActionListener(new ActionListener() {
 		 public void actionPerformed(ActionEvent arg0) {
 			 HoaDonDTO hd = new HoaDonDTO();
-				hd.setMa_hd(txtmahoadon.getText());
+				hd.setMa_hd(txtmahd.getText());
 				HoaDonBLL hdbll = new HoaDonBLL();
 			 int choice = JOptionPane.showConfirmDialog(null,
-			 "Báº¡n cÃ³ cháº¯c cháº¯n xÃ³a dá»¯ liá»‡u!", "XÃ¡c nháº­n",
+			 "BAN CHAC CHAN MUON XOA!", "XAC NHAN",
 			 JOptionPane.YES_NO_OPTION);
 			 if (choice == JOptionPane.YES_OPTION) {
 			 try {
@@ -381,7 +404,7 @@ public class Control extends JFrame {
 			 }
 		}
 		});
-		panelhd.add(btnEhd);
+		/*panelhd.add(btnEhd);*/
 		panelhd.add(btnDhd);
 		
 		contentPane.add(panelhd);
@@ -395,16 +418,18 @@ public class Control extends JFrame {
 			 public void mouseClicked(MouseEvent arg0) {
 			 int row = tblHoadon.getSelectedRow();
 			 if (row != -1) {
-			 txtmahoadon.setText(tblHoadon.getValueAt(row, 0).toString());
-			 txtthanhtien.setText(tblHoadon.getValueAt(row, 1).toString());
-			 txtngaylap.setText(tblHoadon.getValueAt(row, 2).toString());				
-			 txtnhanvienID.setText(tblHoadon.getValueAt(row, 3).toString());
-			 txtkhachhangID.setText(tblHoadon.getValueAt(row, 4).toString());
+			 txttenhd.setText(tblHoadon.getValueAt(row, 0).toString());
+			 txtnvhd.setText(tblHoadon.getValueAt(row, 1).toString());
+			 txtkhhd.setText(tblHoadon.getValueAt(row, 2).toString());				
+			 txtngaylap.setText(tblHoadon.getValueAt(row, 3).toString());
+			 txtmave.setText(tblHoadon.getValueAt(row, 4).toString());
+                         txtthanhtien.setText(tblHoadon.getValueAt(row, 5).toString());
+                         txttinhtrangve.setText(tblHoadon.getValueAt(row, 6).toString());
 			 }
 			 }
 			 });
 		 
-		JButton btnHoadon = new JButton("HÃ³a Ä‘Æ¡n");
+		JButton btnHoadon = new JButton("HOA DON");
 		btnHoadon.setForeground(new Color(255, 255, 255));
 		btnHoadon.setFont(new Font("SansSerif", Font.BOLD, 14));
 		btnHoadon.setBackground(new Color(86, 172, 191));
@@ -413,14 +438,8 @@ public class Control extends JFrame {
 				scrollPane.setViewportView(tblHoadon);
 				panel1.setVisible(false);
 				panelkh.setVisible(false);
-				panelhv.setVisible(false);
-				panelsb.setVisible(false);
-				panelmb.setVisible(false);
-				paneltb.setVisible(false);
 				panelhd.setVisible(true);
 				panelvcb.setVisible(false);
-				panelpdc.setVisible(false);
-				paneldg.setVisible(false);
 				panelcb.setVisible(false);
 			}
 		});
@@ -611,15 +630,9 @@ public class Control extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				scrollPane.setViewportView(tblKhachhang);
 				panel1.setVisible(false);
-				panelhv.setVisible(false);
 				panelhd.setVisible(false);
-				panelsb.setVisible(false);
-				panelmb.setVisible(false);
-				paneltb.setVisible(false);
 				panelkh.setVisible(true);
 				panelvcb.setVisible(false);
-				panelpdc.setVisible(false);
-				paneldg.setVisible(false);
 				panelcb.setVisible(false);
 				
 			}
@@ -783,14 +796,10 @@ public class Control extends JFrame {
 				scrollPane.setViewportView(tblnhanvien);
 				panelhd.setVisible(false);
 				panelkh.setVisible(false);
-				panelhv.setVisible(false);
-				panelsb.setVisible(false);
-				panelmb.setVisible(false);
-				paneltb.setVisible(false);
+
 				panelvcb.setVisible(false);
 				panel1.setVisible(true);
-				panelpdc.setVisible(false);
-				paneldg.setVisible(false);
+
 				panelcb.setVisible(false);
 			}
 		});
@@ -1129,7 +1138,7 @@ public class Control extends JFrame {
 	 }
 	 public void loadAllHoaDon() throws ClassNotFoundException {
 		 //táº¡o control DefaultTableModel Ä‘á»ƒ hiá»ƒn thá»‹ danh sÃ¡ch HoaDon
-	 String[] header = { "MA HD, TEN, NV, KH, VE CB, THANH TIEN, TRANG THAI, NGAY"};
+	 String[] header = { "MA HD", "TEN", "NV", "KH", "VE CB", "THANH TIEN", "TRANG THAI", "NGAY"};
 	 DefaultTableModel dtm = new DefaultTableModel(header, 0);
 	 //láº¥y danh sÃ¡ch HoaDonDTO (gá»�i hÃ m getAllHoaDon() trong HoaDonBLL)
 	 ArrayList<HoaDonDTO> arr = new ArrayList<HoaDonDTO>();
@@ -1186,7 +1195,7 @@ public class Control extends JFrame {
 	  */
 	 public void loadAllVeChuyenBay() throws ClassNotFoundException {
 		 //táº¡o control DefaultTableModel Ä‘á»ƒ hiá»ƒn thá»‹ danh sÃ¡ch VeChuyenBay
-	 String[] header = { "MA VE, SO GHE, MA CB, KH, NGAY, GIO, GIA, TINH TRANG VE" };
+	 String[] header = { "MA VE", "SO GHE", "MA CB", "KH", "NGAY", "GIO", "GIA", "TINH TRANG VE" };
 	 DefaultTableModel dtm = new DefaultTableModel(header, 0);
 	 //láº¥y danh sÃ¡ch VeChuyenBayDTO (gá»�i hÃ m getAllVeChuyenBay() trong HVeChuyenBayBLL)
 	 ArrayList<VeChuyenBayDTO> arr = new ArrayList<VeChuyenBayDTO>();
@@ -1216,9 +1225,10 @@ public class Control extends JFrame {
                  for (int l = 0; l < khs.size(); l++) {
                     KHDTO = khs.get(l);
                     kh = KHDTO.getTen_kh();
+                    
                  }
 		 //táº¡o row Ä‘á»ƒ add vÃ o control DefaultTableModel
-		 Object[] row = { ma_ve_cb, soghe, ma_cb , kh, ngay, gio, gia, tinh_trang};
+		 Object[] row = { ma_ve_cb, soghe, ma_cb, kh, ngay, gio, gia, tinh_trang };
 		 dtm.addRow(row);
 	 }
 	 tblvechuyenbay.setModel(dtm);
