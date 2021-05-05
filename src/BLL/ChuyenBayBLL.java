@@ -12,14 +12,14 @@ public class ChuyenBayBLL {
 	 return ChuyenBayDAL.getAllChuyenBay();
 	 }
 
-	 public ArrayList<ChuyenBayDTO> getChuyenBayByma_cb(ChuyenBayDTO ChuyenBayDTO) throws ClassNotFoundException{
+	 public ChuyenBayDTO getChuyenBayByma_cb(ChuyenBayDTO ChuyenBayDTO) throws ClassNotFoundException{
 	 return ChuyenBayDAL.getChuyenBayByma_cb(ChuyenBayDTO);
 	 }
 
-	 public int updateChuyenBay(ChuyenBayDTO ChuyenBayDTO) throws ClassNotFoundException {
+	 /*public int updateChuyenBay(ChuyenBayDTO ChuyenBayDTO) throws ClassNotFoundException {
 	 int result = ChuyenBayDAL.updateChuyenBay(ChuyenBayDTO);
 	 return result;
-	 }
+	 }*/
 
 	 public int deleteChuyenBay(ChuyenBayDTO ChuyenBayDTO) throws ClassNotFoundException {
 	 int result = ChuyenBayDAL.deleteChuyenBay(ChuyenBayDTO);
@@ -31,7 +31,7 @@ public class ChuyenBayBLL {
 	 return result;
 	 }
 	 
-	 /*public ArrayList<ChuyenBayDTO> getChuyenBayBydiem(TuyenBayDTO TuyenBayDTO) throws ClassNotFoundException{
-		 return ChuyenBayDAL.getChuyenBayBydiem(TuyenBayDTO);
-	 }*/
+	 public ArrayList<ChuyenBayDTO> getChuyenBayBydiem(ChuyenBayDTO chuyenBayDTO) throws ClassNotFoundException{
+		 return ChuyenBayDAL.getChuyenBayBydiem(chuyenBayDTO);
+	 }
 }

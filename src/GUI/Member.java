@@ -183,7 +183,6 @@ public class Member extends JFrame {
 						khDto.setSDT(khDto.getSDT());
 						khDto.setDiaChi(khDto.getDiaChi());
 						action.getkh(khDto);
-						action.getlscb(khDto);
 						} catch (Exception e1) {
 							// TODO: handle exception
 						}

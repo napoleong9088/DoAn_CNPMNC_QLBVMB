@@ -25,7 +25,7 @@ public class NhanVienDAL {
 		public ArrayList<NhanVienDTO> getAllNhanVien() throws ClassNotFoundException {
 			// Khởi tạo mảng đối tượng NhanVienDTO để chứa kết quả truy vấn	
 			ArrayList<NhanVienDTO> result = new ArrayList<NhanVienDTO>();
-			String sqlSelectAll = "select * from nhan_vien";
+			String sqlSelectAll = "select * from nhanvien";
 				
 			try {
 				//mở kết nối tới CSDL
@@ -37,11 +37,11 @@ public class NhanVienDAL {
 				
 				while(resultSet.next()) {
 					NhanVienDTO NhanVienDTO = new NhanVienDTO();
-					NhanVienDTO.setMa_nv(resultSet.getString("Ma_NV"));
-					NhanVienDTO.setTen_nv(resultSet.getString("Ten_NV"));
-					NhanVienDTO.setEmail(resultSet.getString("Email"));
-					NhanVienDTO.setSDT(resultSet.getString("SDT"));
-					NhanVienDTO.setDiaChi(resultSet.getString("Dia_chi"));
+					NhanVienDTO.setMa_nv(resultSet.getString("ma_nv"));
+					NhanVienDTO.setTen_nv(resultSet.getString("ten_nv"));
+					NhanVienDTO.setEmail(resultSet.getString("email"));
+					NhanVienDTO.setSDT(resultSet.getString("sdt"));
+					NhanVienDTO.setDiaChi(resultSet.getString("diachi"));
 					result.add(NhanVienDTO);
 				}
 			} catch (SQLException e) {
@@ -63,7 +63,7 @@ public class NhanVienDAL {
 		public ArrayList<NhanVienDTO> getNhanVienByMANV(NhanVienDTO NhanVienDTO) throws ClassNotFoundException {
 			// Khởi tạo mảng đối tượng NhanVienDTO để chứa kết quả truy vấn	
 			ArrayList<NhanVienDTO> result = new ArrayList<NhanVienDTO>();
-			String sqlSelectByMANV = "select * from nhan_vien where ma_nv = ?";
+			String sqlSelectByMANV = "select * from nhanvien where ma_nv = ?";
 				
 			try {
 				//mở kết nối tới CSDL		
@@ -76,11 +76,11 @@ public class NhanVienDAL {
 				
 				while(resultSet.next()) {
 					NhanVienDTO NhanVien = new NhanVienDTO();
-					NhanVien.setMa_nv(resultSet.getString("Ma_NV"));
-					NhanVien.setTen_nv(resultSet.getString("Ten_NV"));
-					NhanVien.setEmail(resultSet.getString("Email"));
-					NhanVien.setSDT(resultSet.getString("SDT"));
-					NhanVien.setDiaChi(resultSet.getString("Dia_chi"));
+					NhanVien.setMa_nv(resultSet.getString("ma_nv"));
+					NhanVien.setTen_nv(resultSet.getString("ten_nv"));
+					NhanVien.setEmail(resultSet.getString("email"));
+					NhanVien.setSDT(resultSet.getString("sdt"));
+					NhanVien.setDiaChi(resultSet.getString("diachi"));
 					result.add(NhanVien);
 				}
 			} catch (SQLException e) {
@@ -102,7 +102,7 @@ public class NhanVienDAL {
 		public int insertNhanVien(NhanVienDTO NhanVienDTO) throws ClassNotFoundException {
 			// Khởi tạo mảng đối tượng NhanVienDTO để chứa kết quả truy vấn	
 			int result = 0;
-			String sqlInsert = "insert into nhan_vien(ma_nv,ten_nv,email,password,sdt,dia_chi) values(?,?,?,?,?,?)";
+			String sqlInsert = "insert into nhanvien(ma_nv,ten_nv,email,password,sdt,diachi,chucvu) values(?,?,?,?,?,?,?)";
 			
 			try {
 				//mở kết nối tới CSDL	
@@ -113,9 +113,10 @@ public class NhanVienDAL {
 				preparedStatement.setString(1, NhanVienDTO.getMa_nv());
 				preparedStatement.setString(2, NhanVienDTO.getTen_nv());
 				preparedStatement.setString(3, NhanVienDTO.getEmail());
-				preparedStatement.setString(4, NhanVienDTO.getPassworld());
+				preparedStatement.setString(4, NhanVienDTO.getPassword());
 				preparedStatement.setString(5, NhanVienDTO.getSDT());
 				preparedStatement.setString(6, NhanVienDTO.getDiaChi());
+                                preparedStatement.setString(7, NhanVienDTO.getChucVu());
 				result = preparedStatement.executeUpdate();
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -134,7 +135,7 @@ public class NhanVienDAL {
 			public int updateNhanVien(NhanVienDTO NhanVienDTO) throws ClassNotFoundException {
 				// Khởi tạo mảng đối tượng NhanVienDTO để chứa kết quả truy vấn	
 				int result = 0;
-				String sqlUpdate = "update nhan_vien set ten_nv=? ,sdt=?,dia_chi=? where ma_nv=?";
+				String sqlUpdate = "update nhanvien set ten_nv=? ,sdt=?,diachi=?, chucvu=? where ma_nv=?";
 				
 				try {
 					//mở kết nối tới CSDL	
@@ -145,7 +146,8 @@ public class NhanVienDAL {
 					preparedStatement.setString(1, NhanVienDTO.getTen_nv());
 					preparedStatement.setString(2, NhanVienDTO.getSDT());
 					preparedStatement.setString(3, NhanVienDTO.getDiaChi());
-					preparedStatement.setString(4, NhanVienDTO.getMa_nv());
+					preparedStatement.setString(4, NhanVienDTO.getChucVu());
+                                        preparedStatement.setString(5, NhanVienDTO.getMa_nv());
 					result = preparedStatement.executeUpdate();
 				} catch (SQLException e) {
 					e.printStackTrace();
@@ -164,7 +166,7 @@ public class NhanVienDAL {
 			public int deleteNhanVien(NhanVienDTO NhanVienDTO) throws ClassNotFoundException {
 				// Khởi tạo mảng đối tượng NhanVienDTO để chứa kết quả truy vấn	
 				int result = 0;
-				String sqlDelete = "delete from nhan_vien where ma_nv = ?";
+				String sqlDelete = "delete from nhanvien where ma_nv = ?";
 				
 				try {
 					//mở kết nối tới CSDL	

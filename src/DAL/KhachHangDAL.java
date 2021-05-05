@@ -41,9 +41,10 @@ public class KhachHangDAL {
 						KhachHangDTO.setMa_kh(resultSet.getString("ma_kh"));
 						KhachHangDTO.setTen_kh(resultSet.getString("ten_kh"));
 						KhachHangDTO.setEmail(resultSet.getString("email"));
-						KhachHangDTO.setCmnd(resultSet.getString("CMND_PP"));
+						KhachHangDTO.setCmnd(resultSet.getString("cmnd"));
 						KhachHangDTO.setSDT(resultSet.getString("sdt"));
-						KhachHangDTO.setDiaChi(resultSet.getString("dia_chi"));
+						KhachHangDTO.setDiaChi(resultSet.getString("diachi"));
+                                                KhachHangDTO.setPassword(resultSet.getString("password"));
 						result.add(KhachHangDTO);
 					}
 				} catch (SQLException e) {
@@ -81,9 +82,9 @@ public class KhachHangDAL {
 						KhachHang.setMa_kh(resultSet.getString("ma_kh"));
 						KhachHang.setTen_kh(resultSet.getString("ten_kh"));
 						KhachHang.setEmail(resultSet.getString("email"));
-						KhachHang.setCmnd(resultSet.getString("CMND_PP"));
+						KhachHang.setCmnd(resultSet.getString("cmnd"));
 						KhachHang.setSDT(resultSet.getString("sdt"));
-						KhachHang.setDiaChi(resultSet.getString("dia_chi"));
+						KhachHang.setDiaChi(resultSet.getString("diachi"));
 						result.add(KhachHang);
 					}
 				} catch (SQLException e) {
@@ -105,7 +106,7 @@ public class KhachHangDAL {
 			public int insertKhachHang(KhachHangDTO KhachHangDTO) throws ClassNotFoundException {
 				// Khởi tạo mảng đối tượng KhachHangDTO để chứa kết quả truy vấn	
 				int result = 0;
-				String sqlInsert = "insert into khachhang(ma_kh,ten_kh,email,password,cmnd_pp,sdt,dia_chi) values(?,?,?,?,?,?,?)";
+				String sqlInsert = "insert into khachhang(ma_kh,ten_kh,email,password,cmnd,sdt,diachi) values(?,?,?,?,?,?,?)";
 				
 				try {
 					//mở kết nối tới CSDL	
@@ -138,7 +139,7 @@ public class KhachHangDAL {
 				public int updateKhachHang(KhachHangDTO KhachHangDTO) throws ClassNotFoundException {
 					// Khởi tạo mảng đối tượng KhachHangDTO để chứa kết quả truy vấn	
 					int result = 0;
-					String sqlUpdate = "update khachhang set ten_kh=? ,sdt=?,cmnd_pp=?,dia_chi=? where ma_kh=?";
+					String sqlUpdate = "update khachhang set ten_kh=? ,sdt=?,cmnd=?,diachi=? where ma_kh=?";
 					
 					try {
 						//mở kết nối tới CSDL	
@@ -195,7 +196,7 @@ public class KhachHangDAL {
 				public ArrayList<KhachHangDTO> getKhachHangByCMND_PP(KhachHangDTO KhachHangDTO) throws ClassNotFoundException {
 					// Khởi tạo mảng đối tượng KhachHangDTO để chứa kết quả truy vấn	
 					ArrayList<KhachHangDTO> result = new ArrayList<KhachHangDTO>();
-					String sql = "select * from khachhang where CMND_PP = ?";
+					String sql = "select * from khachhang where cmnd = ?";
 						
 					try {
 						//mở kết nối tới CSDL		
@@ -211,9 +212,9 @@ public class KhachHangDAL {
 							KhachHang.setMa_kh(resultSet.getString("ma_kh"));
 							KhachHang.setTen_kh(resultSet.getString("ten_kh"));
 							KhachHang.setEmail(resultSet.getString("email"));
-							KhachHang.setCmnd(resultSet.getString("CMND_PP"));
+							KhachHang.setCmnd(resultSet.getString("cmnd"));
 							KhachHang.setSDT(resultSet.getString("sdt"));
-							KhachHang.setDiaChi(resultSet.getString("dia_chi"));
+							KhachHang.setDiaChi(resultSet.getString("diachi"));
 							result.add(KhachHang);
 						}
 					} catch (SQLException e) {
@@ -235,7 +236,7 @@ public class KhachHangDAL {
 				public ArrayList<KhachHangDTO> getKhachHangBySDT(KhachHangDTO KhachHangDTO) throws ClassNotFoundException {
 					// Khởi tạo mảng đối tượng KhachHangDTO để chứa kết quả truy vấn	
 					ArrayList<KhachHangDTO> result = new ArrayList<KhachHangDTO>();
-					String sql = "select * from khachhang where SDT = ?";
+					String sql = "select * from khachhang where sdt = ?";
 						
 					try {
 						//mở kết nối tới CSDL		
@@ -251,9 +252,9 @@ public class KhachHangDAL {
 							KhachHang.setMa_kh(resultSet.getString("ma_kh"));
 							KhachHang.setTen_kh(resultSet.getString("ten_kh"));
 							KhachHang.setEmail(resultSet.getString("email"));
-							KhachHang.setCmnd(resultSet.getString("CMND_PP"));
+							KhachHang.setCmnd(resultSet.getString("cmnd"));
 							KhachHang.setSDT(resultSet.getString("sdt"));
-							KhachHang.setDiaChi(resultSet.getString("dia_chi"));
+							KhachHang.setDiaChi(resultSet.getString("diachi"));
 							result.add(KhachHang);
 						}
 					} catch (SQLException e) {

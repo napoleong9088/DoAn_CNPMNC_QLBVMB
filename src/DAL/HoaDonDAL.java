@@ -26,7 +26,7 @@ public class HoaDonDAL {
 	public ArrayList<HoaDonDTO> getAllHoaDon() throws ClassNotFoundException {
 		// Khởi tạo mảng đối tượng HoaDonDTO để chứa kết quả truy vấn	
 		ArrayList<HoaDonDTO> result = new ArrayList<HoaDonDTO>();
-		String sqlSelectAll = "select * from hoa_don";
+		String sqlSelectAll = "select * from hoadon";
 			
 		try {
 			//mở kết nối tới CSDL
@@ -38,11 +38,14 @@ public class HoaDonDAL {
 			
 			while(resultSet.next()) {
 				HoaDonDTO HoaDonDTO = new HoaDonDTO();
-				HoaDonDTO.setMa_hd(resultSet.getString("Ma_hd"));
-				HoaDonDTO.setThanh_tien(resultSet.getInt("Thanh_tien"));
-				HoaDonDTO.setNgay_Lap(resultSet.getDate("Ngay_Lap"));
-				HoaDonDTO.setMa_nv(resultSet.getString("Ma_nv"));
-				HoaDonDTO.setMa_kh(resultSet.getString("Ma_kh"));
+				HoaDonDTO.setMa_hd(resultSet.getString("ma_hd"));
+                                HoaDonDTO.setTen_hd(resultSet.getString("ten_hd"));
+				HoaDonDTO.setThanh_tien(resultSet.getInt("thanhtien"));
+				HoaDonDTO.setNgay_Lap(resultSet.getDate("ngaylap"));
+				HoaDonDTO.setMa_nv(resultSet.getString("ma_nv"));
+				HoaDonDTO.setMa_kh(resultSet.getString("ma_kh"));
+                                HoaDonDTO.setTrangThai(resultSet.getString("TrangThai"));
+                                HoaDonDTO.setMa_ve_cb(resultSet.getString("ma_ve_cb"));
 				result.add(HoaDonDTO);
 			}
 		} catch (SQLException e) {
@@ -64,7 +67,7 @@ public class HoaDonDAL {
 	public ArrayList<HoaDonDTO> getHoaDonByMa_hd(HoaDonDTO HoaDonDTO) throws ClassNotFoundException {
 		// Khởi tạo mảng đối tượng HoaDonDTO để chứa kết quả truy vấn	
 		ArrayList<HoaDonDTO> result = new ArrayList<HoaDonDTO>();
-		String sqlSelectByMa_hd = "select * from hoa_don where ma_hd = ?";
+		String sqlSelectByMa_hd = "select * from hoadon where ma_hd = ?";
 			
 		try {
 			//mở kết nối tới CSDL		
@@ -77,11 +80,14 @@ public class HoaDonDAL {
 			
 			while(resultSet.next()) {
 				HoaDonDTO HoaDon = new HoaDonDTO();
-				HoaDon.setMa_hd(resultSet.getString("Ma_hd"));
-				HoaDon.setThanh_tien(resultSet.getInt("Thanh_tien"));
-				HoaDon.setNgay_Lap(resultSet.getDate("Ngay_Lap"));
-				HoaDon.setMa_nv(resultSet.getString("Ma_nv"));
-				HoaDon.setMa_kh(resultSet.getString("Ma_kh"));
+				HoaDon.setMa_hd(resultSet.getString("ma_hd"));
+                                HoaDon.setTen_hd(resultSet.getString("ten_hd"));
+				HoaDon.setThanh_tien(resultSet.getInt("thanhtien"));
+				HoaDon.setNgay_Lap(resultSet.getDate("ngaylap"));
+				HoaDon.setMa_nv(resultSet.getString("ma_nv"));
+				HoaDon.setMa_kh(resultSet.getString("ma_kh"));
+                                HoaDon.setTrangThai(resultSet.getString("TrangThai"));
+                                HoaDon.setMa_ve_cb(resultSet.getString("ma_ve_cb"));
 				result.add(HoaDon);
 			}
 		} catch (SQLException e) {
@@ -103,7 +109,7 @@ public class HoaDonDAL {
 	public int insertHoaDon(HoaDonDTO HoaDonDTO) throws ClassNotFoundException {
 		// Khởi tạo mảng đối tượng HoaDonDTO để chứa kết quả truy vấn	
 		int result = 0;
-		String sqlInsert = "insert into hoa_don(ma_hd,thanh_tien, ngay_lap, ma_nv, ma_kh) values(?,?,?,?,?,?)";
+		String sqlInsert = "insert into hoa_don(ma_hd,ten_hd,thanh_tien, ngay_lap, ma_nv, ma_kh,ma) values(?,?,?,?,?,?)";
 		
 		try {
 			//mở kết nối tới CSDL	
@@ -134,7 +140,7 @@ public class HoaDonDAL {
 		public int updateHoaDon(HoaDonDTO HoaDonDTO) throws ClassNotFoundException {
 			// Khởi tạo mảng đối tượng HoaDonDTO để chứa kết quả truy vấn	
 			int result = 0;
-			String sqlUpdate = "update hoa_don set thanh_tien=?, ngay_lap=?, ma_nv=?, ma_kh=? where ma_hd=?";
+			String sqlUpdate = "update hoa_don set ten_hd=?, thanh_tien=?, ngay_lap=?, ma_nv=?, ma_kh=?, ma_ve_cb=?, TrangThai=? where ma_hd=?";
 			
 			try {
 				//mở kết nối tới CSDL	
@@ -142,11 +148,14 @@ public class HoaDonDAL {
 				con = conUtil.getConnection();
 				//thực thi câu truy vấn
 				preparedStatement = con.prepareStatement(sqlUpdate);
-				preparedStatement.setInt(1, HoaDonDTO.getThanh_tien());
-				preparedStatement.setDate(2, (java.sql.Date) HoaDonDTO.getNgay_Lap());
-				preparedStatement.setString(3, HoaDonDTO.getMa_nv());
-				preparedStatement.setString(4, HoaDonDTO.getMa_kh());
-				preparedStatement.setString(5, HoaDonDTO.getMa_hd());
+                                preparedStatement.setString(1, HoaDonDTO.getTen_hd());
+				preparedStatement.setInt(2, HoaDonDTO.getThanh_tien());
+				preparedStatement.setDate(3, (java.sql.Date) HoaDonDTO.getNgay_Lap());
+				preparedStatement.setString(4, HoaDonDTO.getMa_nv());
+				preparedStatement.setString(5, HoaDonDTO.getMa_kh());
+                                preparedStatement.setString(6, HoaDonDTO.getMa_ve_cb());
+                                preparedStatement.setString(7, HoaDonDTO.getTrangThai());
+				preparedStatement.setString(8, HoaDonDTO.getMa_hd());
 				result = preparedStatement.executeUpdate();
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -165,7 +174,7 @@ public class HoaDonDAL {
 		public int deleteHoaDon(HoaDonDTO HoaDonDTO) throws ClassNotFoundException {
 			// Khởi tạo mảng đối tượng HoaDonDTO để chứa kết quả truy vấn	
 			int result = 0;
-			String sqlDelete = "delete from hoa_don where ma_hd = ?";
+			String sqlDelete = "delete from hoadon where ma_hd = ?";
 			
 			try {
 				//mở kết nối tới CSDL	
@@ -191,7 +200,7 @@ public class HoaDonDAL {
 		public ArrayList<HoaDonDTO> getHoaDonByMa_kh(HoaDonDTO HoaDonDTO) throws ClassNotFoundException {
 			// Khởi tạo mảng đối tượng HoaDonDTO để chứa kết quả truy vấn	
 			ArrayList<HoaDonDTO> result = new ArrayList<HoaDonDTO>();
-			String sqlSelectByMa_kh = "select * from hoa_don where ma_kh = ?";
+			String sqlSelectByMa_kh = "select * from hoadon where ma_kh = ?";
 				
 			try {
 				//mở kết nối tới CSDL		
@@ -204,11 +213,14 @@ public class HoaDonDAL {
 				
 				while(resultSet.next()) {
 					HoaDonDTO HoaDon = new HoaDonDTO();
-					HoaDon.setMa_hd(resultSet.getString("Ma_hd"));
-					HoaDon.setThanh_tien(resultSet.getInt("Thanh_tien"));
-					HoaDon.setNgay_Lap(resultSet.getDate("Ngay_Lap"));
-					HoaDon.setMa_nv(resultSet.getString("Ma_nv"));
-					HoaDon.setMa_kh(resultSet.getString("Ma_kh"));
+					HoaDon.setMa_hd(resultSet.getString("ma_hd"));
+                                        HoaDon.setTen_hd(resultSet.getString("ten_hd"));
+                                        HoaDon.setThanh_tien(resultSet.getInt("thanhtien"));
+                                        HoaDon.setNgay_Lap(resultSet.getDate("ngaylap"));
+                                        HoaDon.setMa_nv(resultSet.getString("ma_nv"));
+                                        HoaDon.setMa_kh(resultSet.getString("ma_kh"));
+                                        HoaDon.setTrangThai(resultSet.getString("TrangThai"));
+                                        HoaDon.setMa_ve_cb(resultSet.getString("ma_ve_cb"));
 					result.add(HoaDon);
 				}
 			} catch (SQLException e) {

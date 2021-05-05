@@ -63,25 +63,13 @@ public class Control extends JFrame {
 	private JPanel contentPane;
 	private JTable tblHoadon;
 	private JTable tblKhachhang;
-	private JTable tblhangve;
 	private JTable tblnhanvien;
-	private JTable tblphieudatcho;
-	private JTable tblmaybay;
-	private JTable tblsanbay;
 	private JTable tblchuyenbay;
-	private JTable tbltuyenbay;
 	private JTable tblvechuyenbay;
-	private JTable tbldongia;
 	private JPanel panelkh;
 	private JPanel panel1;
-	private JPanel panelhv;
 	private JPanel panelhd;
-	private JPanel panelsb;
-	private JPanel paneltb;
-	private JPanel panelmb;
 	private JPanel panelvcb;
-	private JPanel panelpdc;
-	private JPanel paneldg;
 	private JPanel panelcb;
 
 	/**
@@ -110,15 +98,9 @@ public class Control extends JFrame {
 		header();
 		loadAllNhanVien();
 		loadAllChuyenBay();
-		loadAllDonGia();
-		loadAllHangVe();
 		loadAllKhachHang();
-		loadAllMayBay();
 		loadAllHoaDon();
-		loadAllPhieuDatCho();
-		loadAllSanBay();
 		loadAllVeChuyenBay();
-		loadAllTuyenBay();
 	}
 	/**
 	 * Create the frame.
@@ -140,7 +122,7 @@ public class Control extends JFrame {
 		
 		contentPane.add(scrollPane);
 		
-//Chuyen bay {		
+// ve Chuyen bay {		
 		panelvcb = new JPanel();
 		panelvcb.setBounds(167, 269, 619, 245);
 
@@ -168,24 +150,31 @@ public class Control extends JFrame {
 		JTextField txttinhtrangve = new JTextField();
 		txttinhtrangve.setColumns(10);
 		txttinhtrangve.setBounds(513, 57, 96, 19);
+                
+                JTextField txttinhtrangve1 = new JTextField();
+		txttinhtrangve1.setColumns(10);
+		txttinhtrangve1.setBounds(513, 113, 96, 19);
 		
-		JLabel lbltinhtrangve = new JLabel("TÃ¬nh tráº¡ng vÃ©");
-		lbltinhtrangve.setBounds(435, 61, 76, 13);
+		JLabel lblgio = new JLabel("GIO");
+		lblgio.setBounds(222, 61, 68, 13);
+                
+                JLabel lbltinhtrangve = new JLabel("TINH TRANG VE");
+		lbltinhtrangve.setBounds(400, 113, 150, 13);
 		
-		JLabel lblmahdcb = new JLabel("MÃ£ hÃ³a Ä‘Æ¡n");
-		lblmahdcb.setBounds(435, 9, 68, 13);
+		JLabel lblsoghe = new JLabel("SO GHE");
+		lblsoghe.setBounds(10, 8, 102, 13);
 		
-		JLabel lblmavecb = new JLabel("MÃ£ vÃ© chuyáº¿n bay");
-		lblmavecb.setBounds(10, 8, 102, 13);
+		JLabel lblngay = new JLabel("NGAY");
+		lblngay.setBounds(10, 61, 68, 13);
 		
-		JLabel lblmahvcb = new JLabel("MÃ£ háº¡ng vÃ©");
-		lblmahvcb.setBounds(10, 61, 68, 13);
+		JLabel lblkh = new JLabel("KH");
+		lblkh.setBounds(435, 9, 68, 13);
 		
-		JLabel lblmacb = new JLabel("MÃ£ chuyáº¿n bay");
+		JLabel lblmacb = new JLabel("MA CB");
 		lblmacb.setBounds(222, 9, 86, 13);
 		
-		JLabel lblmadongia = new JLabel("MÃ£ Ä‘Æ¡n giÃ¡");
-		lblmadongia.setBounds(222, 61, 68, 13);
+		JLabel lblgia = new JLabel("GIA");
+		lblgia.setBounds(435, 61, 76, 13);
 		
 		panelvcb.setLayout(null);
 		panelvcb.add(txtmavecb);
@@ -195,11 +184,13 @@ public class Control extends JFrame {
 		panelvcb.add(txtmadongia);
 		panelvcb.add(txttinhtrangve);
 		panelvcb.add(lbltinhtrangve);
-		panelvcb.add(lblmahdcb);
-		panelvcb.add(lblmavecb);
-		panelvcb.add(lblmahvcb);
+		panelvcb.add(lblkh);
+		panelvcb.add(lblngay);
+		panelvcb.add(lblsoghe);
 		panelvcb.add(lblmacb);
-		panelvcb.add(lblmadongia);
+		panelvcb.add(lblgia);
+                panelvcb.add(lblgio);
+                panelvcb.add(txttinhtrangve1);
 		panelvcb.setVisible(false);
 		
 		JButton btnDvcb = new JButton("Delete");
@@ -211,7 +202,7 @@ public class Control extends JFrame {
 				 vcb.setMa_ve_cb(txtmavecb.getText());
 				 VeChuyenBayBLL vcbbll = new VeChuyenBayBLL();
 				 int choice = JOptionPane.showConfirmDialog(null,
-				 "Báº¡n cÃ³ cháº¯c cháº¯n xÃ³a dá»¯ liá»‡u!", "XÃ¡c nháº­n",
+				 "BAN CHAC CHAN MUON XOA!", "XAC NHAN",
 				 JOptionPane.YES_NO_OPTION);
 				 if (choice == JOptionPane.YES_OPTION) {
 				 try {
@@ -227,7 +218,7 @@ public class Control extends JFrame {
 		panelvcb.add(btnDvcb);
 		
 		
-		JButton btnEvcb = new JButton("Edit");
+		/*JButton btnEvcb = new JButton("Edit");
 		btnEvcb.setBounds(482, 163, 111, 57);
 		btnEvcb.setFont(new Font("SansSerif", Font.BOLD, 12));
 		btnEvcb.addActionListener(new ActionListener() {
@@ -252,7 +243,7 @@ public class Control extends JFrame {
 				}
 			}
 		});
-		panelvcb.add(btnEvcb);
+		panelvcb.add(btnEvcb);*/
 		
 		contentPane.add(panelvcb);
 		
@@ -274,7 +265,7 @@ public class Control extends JFrame {
 			 }
 			 });
 		
-		JButton btnVechuyenbay = new JButton("VÃ© chuyáº¿n bay");
+		JButton btnVechuyenbay = new JButton("VE CHUYEN BAY");
 		btnVechuyenbay.setFont(new Font("SansSerif", Font.BOLD, 14));
 		btnVechuyenbay.setBackground(Color.white);
 		btnVechuyenbay.setForeground(new Color(86, 172, 191));
@@ -284,306 +275,13 @@ public class Control extends JFrame {
 				panel1.setVisible(false);
 				panelhd.setVisible(false);
 				panelkh.setVisible(false);
-				panelsb.setVisible(false);
-				panelmb.setVisible(false);
-				paneltb.setVisible(false);
-				panelhv.setVisible(false);
 				panelvcb.setVisible(true);
-				paneldg.setVisible(false);
-				panelpdc.setVisible(false);
 				panelcb.setVisible(false);
 			}
 		});
 		btnVechuyenbay.setBounds(10, 385, 128, 23);
 		contentPane.add(btnVechuyenbay);
 //}
-//Don Gia {
-		paneldg = new JPanel();
-		paneldg.setBounds(167, 269, 619, 245);
-		paneldg.setBackground(new Color(0,0,0,0));
-		
-		JTextField txtdongiaid = new JTextField();
-		txtdongiaid.setBounds(88, 5, 96, 19);
-		
-		JTextField txtvnd = new JTextField();
-		txtvnd.setColumns(10);
-		txtvnd.setBounds(263, 5, 96, 19);
-		
-		JTextField txtusd = new JTextField();
-		txtusd.setColumns(10);
-		txtusd.setBounds(436, 5, 96, 19);
-		
-		JLabel lbldongiaid = new JLabel("MÃ£ Ä‘Æ¡n giÃ¡");
-		lbldongiaid.setBounds(10, 9, 68, 13);
-		
-		JLabel lblvnd = new JLabel("VND");
-		lblvnd.setBounds(222, 9, 44, 13);
-		
-		JLabel lblusd = new JLabel("USD");
-		lblusd.setBounds(394, 9, 44, 13);
-		
-		paneldg.setLayout(null);
-		
-		paneldg.add(txtdongiaid);
-		paneldg.add(txtvnd);
-		paneldg.add(txtusd);
-		paneldg.add(lbldongiaid);
-		paneldg.add(lblvnd);
-		paneldg.add(lblusd);
-		paneldg.setVisible(false);
-		
-		
-		JButton btnIdg = new JButton("Insert");
-		btnIdg.setBounds(212, 163, 100, 57);
-		btnIdg.setFont(new Font("SansSerif", Font.BOLD, 12));
-		btnIdg.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				DonGiaDTO dg = new DonGiaDTO();
-				dg.setUSD(Integer.parseInt(txtusd.getText()));
-				dg.setVND(Integer.parseInt(txtvnd.getText()));
-				DonGiaBLL dgbll = new DonGiaBLL();
-				try {
-					int result = dgbll.insertDonGia(dg);
-					if(result !=0) {
-						JOptionPane.showConfirmDialog(null,"thÃªm thÃ nh cÃ´ng!","thÃ´ng bÃ¡o",JOptionPane.INFORMATION_MESSAGE);
-					}
-					loadAllDonGia();
-				} catch (Exception ex) {
-					ex.printStackTrace();
-				}
-			}
-		});
-		paneldg.add(btnIdg);
-		
-		JButton btnDdg = new JButton("Delete");
-		btnDdg.setBounds(345, 163, 111, 57);
-		btnDdg.setFont(new Font("SansSerif", Font.BOLD, 12));
-		btnDdg.addActionListener(new ActionListener() {
-			 public void actionPerformed(ActionEvent arg0) {
-				 DonGiaDTO dg = new DonGiaDTO();
-				 dg.setUSD(Integer.parseInt(txtusd.getText()));
-				 dg.setVND(Integer.parseInt(txtvnd.getText()));
-				 DonGiaBLL dgbll = new DonGiaBLL();
-				 int choice = JOptionPane.showConfirmDialog(null,
-				 "Báº¡n cÃ³ cháº¯c cháº¯n xÃ³a dá»¯ liá»‡u!", "XÃ¡c nháº­n",
-				 JOptionPane.YES_NO_OPTION);
-				 if (choice == JOptionPane.YES_OPTION) {
-				 try {
-					 @SuppressWarnings("unused")
-					 int result = dgbll.deleteDonGia(dg);
-					 loadAllDonGia();
-				 } catch (Exception ex) {
-					 ex.printStackTrace();
-				 	}
-				 }
-			}
-		});
-		paneldg.add(btnDdg);
-		
-		
-		JButton btnEdg = new JButton("Edit");
-		btnEdg.setBounds(482, 163, 111, 57);
-		btnEdg.setFont(new Font("SansSerif", Font.BOLD, 12));
-		btnEdg.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				DonGiaDTO dg = new DonGiaDTO();
-				dg.setMa_dongia(txtdongiaid.getText());
-				dg.setUSD(Integer.parseInt(txtusd.getText()));
-				dg.setVND(Integer.parseInt(txtvnd.getText()));
-				DonGiaBLL dgbll = new DonGiaBLL();
-				try {
-					int result = dgbll.updateDonGia(dg);
-					if(result !=0) {
-						JOptionPane.showConfirmDialog(null,"cáº­p nháº­t thÃ nh cÃ´ng!","thÃ´ng bÃ¡o",JOptionPane.INFORMATION_MESSAGE);
-					}
-					loadAllDonGia();
-				} catch (Exception ex) {
-					ex.printStackTrace();
-				}
-			}
-		});
-		paneldg.add(btnEdg);
-		
-		contentPane.add(paneldg);
-		tbldongia = new JTable();
-		//
-		tbldongia.setBorder(UIManager.getBorder("Table.scrollPaneBorder"));
-		tbldongia.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		tbldongia.addMouseListener(new MouseAdapter() {
-			 // Láº¥y thÃ´ng tin dÃ²ng dá»¯ liá»‡u Ä‘Æ°á»£c chá»�n hiá»ƒn thá»‹ lÃªn component
-			 public void mouseClicked(MouseEvent arg0) {
-			 int row = tbldongia.getSelectedRow();
-			 if (row != -1) {
-			 txtdongiaid.setText(tbldongia.getValueAt(row, 0).toString());
-			 txtvnd.setText(tbldongia.getValueAt(row, 1).toString());
-			 txtusd.setText(tbldongia.getValueAt(row, 2).toString());				
-			
-			 }
-			 }
-			 });
-		JButton btnDongia = new JButton("Ä�Æ¡n giÃ¡");
-		btnDongia.setFont(new Font("SansSerif", Font.BOLD, 14));
-		btnDongia.setBackground(Color.white);
-		btnDongia.setForeground(new Color(86, 172, 191));
-		btnDongia.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				scrollPane.setViewportView(tbldongia);
-				panel1.setVisible(false);
-				panelhd.setVisible(false);
-				panelkh.setVisible(false);
-				panelsb.setVisible(false);
-				panelmb.setVisible(false);
-				paneltb.setVisible(false);
-				panelhv.setVisible(false);
-				panelvcb.setVisible(false);
-				panelpdc.setVisible(false);
-				paneldg.setVisible(true);
-				panelcb.setVisible(false);
-				
-			}
-		});
-		btnDongia.setBounds(10, 419, 128, 23);
-		contentPane.add(btnDongia);
-//}
-//Hang Ve {
-		
-		panelhv = new JPanel();
-		panelhv.setBounds(167, 269, 619, 245);
-		panelhv.setBackground(new Color(0,0,0,0));
-		
-		JTextField txtmahangve = new JTextField();
-		txtmahangve.setColumns(10);
-		txtmahangve.setBounds(79, 5, 96, 19);
-		
-		JTextField txttenhangve = new JTextField();
-		txttenhangve.setColumns(10);
-		txttenhangve.setBounds(267, 5, 96, 19);
-		
-		 JLabel lblmahv = new JLabel("MÃ£ háº¡ng vÃ©");
-		 lblmahv.setBounds(10, 8, 69, 13);
-		 
-		 JLabel lbltenhv = new JLabel("TÃªn háº¡ng vÃ©");
-		 lbltenhv.setBounds(185, 8, 76, 13);
-		panelhv.setLayout(null);
-		 
-		panelhv.add(txtmahangve);
-		panelhv.add(txttenhangve);
-		panelhv.add(lblmahv);
-		panelhv.add(lbltenhv);
-		panelhv.setVisible(false);
-		
-		JButton btnIhv = new JButton("Insert");
-		btnIhv.setBounds(212, 163, 100, 57);
-		btnIhv.setFont(new Font("SansSerif", Font.BOLD, 12));
-		btnIhv.addActionListener(new ActionListener() {
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			HangVeDTO hv = new HangVeDTO();
-			hv.setTen_hv(txttenhangve.getText());
-			HangVeBLL hvbll = new HangVeBLL();
-			try {
-				int result = hvbll.insertHangVe(hv);
-				if(result !=0) {
-					JOptionPane.showConfirmDialog(null,"thÃªm thÃ nh cÃ´ng!","thÃ´ng bÃ¡o",JOptionPane.INFORMATION_MESSAGE);
-				}
-				loadAllHangVe();
-			} catch (Exception ex) {
-				ex.printStackTrace();
-			  }
-		}
-		});
-		JButton btnEhv = new JButton("Edit");
-		btnEhv.setBounds(482, 163, 111, 57);
-		btnEhv.setFont(new Font("SansSerif", Font.BOLD, 12));
-		btnEhv.addActionListener(new ActionListener() {
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			HangVeDTO hv = new HangVeDTO();
-			hv.setMa_hv(txtmahangve.getText());
-			hv.setTen_hv(txttenhangve.getText());
-			System.out.println(txttenhangve.getText());
-			HangVeBLL hvbll = new HangVeBLL();
-			try {
-				int result = hvbll.updateHangVe(hv);
-				if(result !=0) {
-					JOptionPane.showConfirmDialog(null,"cáº­p nháº­t thÃ nh cÃ´ng!","thÃ´ng bÃ¡o",JOptionPane.INFORMATION_MESSAGE);
-				}
-				loadAllHangVe();
-			} catch (Exception ex) {
-				ex.printStackTrace();
-			  }
-		}
-		});
-		JButton btnDhv = new JButton("Delete");
-		btnDhv.setBounds(345, 163, 111, 57);
-		btnDhv.setFont(new Font("SansSerif", Font.BOLD, 12));
-		btnDhv.addActionListener(new ActionListener() {
-		 public void actionPerformed(ActionEvent arg0) {
-			 HangVeDTO hv = new HangVeDTO();
-			 hv.setMa_hv(txtmahangve.getText());
-			 HangVeBLL hvbll = new HangVeBLL();
-			 int choice = JOptionPane.showConfirmDialog(null,
-			 "Báº¡n cÃ³ cháº¯c cháº¯n xÃ³a dá»¯ liá»‡u!", "XÃ¡c nháº­n",
-			 JOptionPane.YES_NO_OPTION);
-			 if (choice == JOptionPane.YES_OPTION) {
-			 try {
-				 @SuppressWarnings("unused")
-				 int result = hvbll.deleteHangVe(hv);
-				 loadAllHangVe();
-			 } catch (Exception ex) {
-				 ex.printStackTrace();
-			 	}
-			 }
-		}
-		});
-		panelhv.add(btnIhv);
-		panelhv.add(btnEhv);
-		panelhv.add(btnDhv);
-		
-		contentPane.add(panelhv);
-		
-		tblhangve = new JTable();
-		//
-		tblhangve.setBorder(UIManager.getBorder("Table.scrollPaneBorder"));
-		tblhangve.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		tblhangve.addMouseListener(new MouseAdapter() {
-		 // Láº¥y thÃ´ng tin dÃ²ng dá»¯ liá»‡u Ä‘Æ°á»£c chá»�n hiá»ƒn thá»‹ lÃªn component
-		 public void mouseClicked(MouseEvent arg0) {
-		 int row = tblhangve.getSelectedRow();
-		 if (row != -1) {
-		 txtmahangve.setText(tblhangve.getValueAt(row, 0).toString());
-		 txttenhangve.setText(tblhangve.getValueAt(row, 1).toString());	
-		 }
-		 }
-		 });
-		JButton btnHangve = new JButton("Háº¡ng vÃ©");
-		btnHangve.setForeground(new Color(255, 255, 255));
-		btnHangve.setFont(new Font("SansSerif", Font.BOLD, 14));
-		btnHangve.setBackground(new Color(86, 172, 191));
-		
-		
-		
-		btnHangve.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				scrollPane.setViewportView(tblhangve);
-				panel1.setVisible(false);
-				panelhd.setVisible(false);
-				panelkh.setVisible(false);
-				panelsb.setVisible(false);
-				panelmb.setVisible(false);
-				paneltb.setVisible(false);
-				panelhv.setVisible(true);
-				panelvcb.setVisible(false);
-				panelpdc.setVisible(false);
-				paneldg.setVisible(false);
-				panelcb.setVisible(false);
-			}
-		});
-		btnHangve.setBounds(10, 79, 128, 23);
-		contentPane.add(btnHangve);
-//}		
 //HoaDon {	
 		panelhd = new JPanel();
 		panelhd.setBounds(167, 269, 619, 245);
@@ -930,141 +628,6 @@ public class Control extends JFrame {
 		
 		contentPane.add(btnKhachhang);
 //}
-// May Bay {
-		panelmb = new JPanel();
-		panelmb.setBounds(167, 269, 619, 245);
-		panelmb.setBackground(new Color(0,0,0,0));
-		
-		JTextField txtmaybayID = new JTextField();
-		txtmaybayID.setColumns(10);
-		txtmaybayID.setBounds(79, 5, 96, 19);
-		
-		JTextField txtmaybayname = new JTextField();
-		txtmaybayname.setColumns(10);
-		txtmaybayname.setBounds(267, 5, 96, 19);
-		
-		JLabel lblmamb = new JLabel("MÃ£ mÃ¡y bay");
-		lblmamb.setBounds(10, 8, 69, 13);
-		
-		JLabel lbltenmb = new JLabel("TÃªn mÃ¡y bay");
-		 lbltenmb.setBounds(185, 8, 76, 13);
-		
-		
-		panelmb.setLayout(null);
-		panelmb.add(txtmaybayID);
-		panelmb.add(txtmaybayname);
-		panelmb.add(lblmamb);
-		panelmb.add(lbltenmb);
-		panelmb.setVisible(false);
-		
-		JButton btnImb = new JButton("Insert");
-		btnImb.setBounds(212, 163, 100, 57);
-		btnImb.setFont(new Font("SansSerif", Font.BOLD, 12));
-		btnImb.addActionListener(new ActionListener() {
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			MayBayDTO mb = new MayBayDTO();
-			mb.setTen_mb(txtmaybayname.getText());
-			MayBayBLL mbbll = new MayBayBLL();
-			try {
-				int result = mbbll.insertMayBay(mb);
-				if(result !=0) {
-					JOptionPane.showConfirmDialog(null,"thÃªm thÃ nh cÃ´ng!","thÃ´ng bÃ¡o",JOptionPane.INFORMATION_MESSAGE);
-				}
-				loadAllMayBay();
-			} catch (Exception ex) {
-				ex.printStackTrace();
-			  }
-		}
-		});
-		JButton btnEmb = new JButton("Edit");
-		btnEmb.setBounds(482, 163, 111, 57);
-		btnEmb.setFont(new Font("SansSerif", Font.BOLD, 12));
-		btnEmb.addActionListener(new ActionListener() {
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			MayBayDTO mb = new MayBayDTO();
-			mb.setMa_mb(txtmaybayID.getText());
-			mb.setTen_mb(txtmaybayname.getText());
-			MayBayBLL mbbll = new MayBayBLL();
-			try {
-				int result = mbbll.updateMayBay(mb);
-				if(result !=0) {
-					JOptionPane.showConfirmDialog(null,"cáº­p nháº­t thÃ nh cÃ´ng!","thÃ´ng bÃ¡o",JOptionPane.INFORMATION_MESSAGE);
-				}
-				loadAllMayBay();
-			} catch (Exception ex) {
-				ex.printStackTrace();
-			  }
-		}
-		});
-		JButton btnDmb = new JButton("Delete");
-		btnDmb.setBounds(345, 163, 111, 57);
-		btnDmb.setFont(new Font("SansSerif", Font.BOLD, 12));
-		btnDmb.addActionListener(new ActionListener() {
-		 public void actionPerformed(ActionEvent arg0) {
-			 MayBayDTO mb = new MayBayDTO();
-			 mb.setMa_mb(txtmaybayID.getText());
-			 MayBayBLL mbbll = new MayBayBLL();
-			 int choice = JOptionPane.showConfirmDialog(null,
-			 "Báº¡n cÃ³ cháº¯c cháº¯n xÃ³a dá»¯ liá»‡u!", "XÃ¡c nháº­n",
-			 JOptionPane.YES_NO_OPTION);
-			 if (choice == JOptionPane.YES_OPTION) {
-			 try {
-				 @SuppressWarnings("unused")
-				 int result = mbbll.deleteMayBay(mb);
-				 loadAllMayBay();
-			 } catch (Exception ex) {
-				 ex.printStackTrace();
-			 	}
-			 }
-		}
-		});
-		panelmb.add(btnImb);
-		panelmb.add(btnEmb);
-		panelmb.add(btnDmb);
-		
-		contentPane.add(panelmb);
-		
-		tblmaybay = new JTable();
-		//
-		tblmaybay.setBorder(UIManager.getBorder("Table.scrollPaneBorder"));
-		tblmaybay.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		tblmaybay.addMouseListener(new MouseAdapter() {
-		 // Láº¥y thÃ´ng tin dÃ²ng dá»¯ liá»‡u Ä‘Æ°á»£c chá»�n hiá»ƒn thá»‹ lÃªn component
-		 public void mouseClicked(MouseEvent arg0) {
-		 int row = tblmaybay.getSelectedRow();
-		 if (row != -1) {
-		 txtmaybayID.setText(tblmaybay.getValueAt(row, 0).toString());
-		 txtmaybayname.setText(tblmaybay.getValueAt(row, 1).toString());
-		
-			
-		 }
-		 }
-		 });
-		JButton btnMaybay = new JButton("MÃ¡y bay");
-		btnMaybay.setFont(new Font("SansSerif", Font.BOLD, 14));
-		btnMaybay.setBackground(new Color(220, 242, 238));
-		btnMaybay.setForeground(new Color(95,  154,  156));
-		btnMaybay.addActionListener(new ActionListener(){
-			public void actionPerformed(ActionEvent arg0) {
-				scrollPane.setViewportView(tblmaybay);
-				panelhd.setVisible(false);
-				panelkh.setVisible(false);
-				panelhv.setVisible(false);
-				panelsb.setVisible(false);
-				panelmb.setVisible(true);
-				paneltb.setVisible(false);
-				panelvcb.setVisible(false);
-				panel1.setVisible(false);
-				panelpdc.setVisible(false);
-				paneldg.setVisible(false);
-				panelcb.setVisible(false);
-			}
-		});
-		btnMaybay.setBounds(10, 181, 128, 23);
-		contentPane.add(btnMaybay);
-// }
 // NhanVien {
 	//jtextfield
 		panel1 = new JPanel();
@@ -1234,278 +797,6 @@ public class Control extends JFrame {
 		btnNhanvien.setBounds(10, 215, 128, 23);
 		contentPane.add(btnNhanvien);
 //}
-//Phieu dat cho {
-		panelpdc = new JPanel();
-		panelpdc.setBounds(167, 269, 619, 245);
-		panelpdc.setBackground(new Color(0, 0,0,0));
-		JTextField txtphieuId = new JTextField();
-		txtphieuId.setBounds(66, 4, 96, 19);
-		txtphieuId.setColumns(10);
-		
-		JTextField txtmavecbdc = new JTextField();
-		txtmavecbdc.setBounds(288, 4, 96, 19);
-		
-		JTextField txtngaydat = new JTextField();
-		txtngaydat.setColumns(10);
-		txtngaydat.setBounds(480, 4, 96, 19);
-		
-		JTextField txtsoghe = new JTextField();
-		txtsoghe.setBounds(66, 56, 96, 19);
-		txtsoghe.setColumns(10);
-	
-		JLabel lblphieuid = new JLabel("MÃ£ phiáº¿u");
-		lblphieuid.setBounds(9, 8, 61, 13);
-		
-		JLabel lblmavecbdc = new JLabel("MÃ£ vÃ© chuyáº¿n bay");
-		lblmavecbdc.setBounds(185, 8, 102, 13);
-		
-		JLabel lblngaydat = new JLabel("NgÃ y Ä‘áº·t");
-		lblngaydat.setBounds(409, 8, 61, 13);
-		
-		JLabel lblsoghe = new JLabel("Sá»‘ gháº¿");
-		lblsoghe.setBounds(9, 60, 50, 13);
-		panelpdc.setLayout(null);
-		
-		
-		panelpdc.add(txtsoghe);
-		panelpdc.add(txtngaydat);
-		panelpdc.add(txtphieuId);
-		panelpdc.add(txtmavecbdc);	
-		panelpdc.add(lblmavecbdc);
-		panelpdc.add(lblphieuid);
-		panelpdc.add(lblngaydat);
-		panelpdc.add(lblsoghe);
-		panelpdc.setVisible(false);
-		contentPane.add(panelpdc);
-		
-		JButton btnEpdc = new JButton("Edit");
-		btnEpdc.setBounds(482, 163, 111, 57);
-		btnEpdc.setFont(new Font("SansSerif", Font.BOLD, 12));
-		btnEpdc.addActionListener(new ActionListener() {
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			PhieuDatChoDTO pdc = new PhieuDatChoDTO();
-			pdc.setMa_phieu(txtphieuId.getText());
-			pdc.setMa_ve_cb(txtmavecbdc.getText());
-			pdc.setNgaydat(java.sql.Date.valueOf(txtngaydat.getText()));
-			pdc.setSoghe(Integer.parseInt(txtsoghe.getText()));
-			
-			PhieuDatChoBLL pdcbll = new PhieuDatChoBLL();
-			try {
-				int result = pdcbll.updatePhieuDatCho (pdc);
-				if(result !=0) {
-					JOptionPane.showConfirmDialog(null,"cáº­p nháº­t thÃ nh cÃ´ng!","thÃ´ng bÃ¡o",JOptionPane.INFORMATION_MESSAGE);
-				}
-				loadAllPhieuDatCho();
-			} catch (Exception ex) {
-				ex.printStackTrace();
-			  }
-		}
-		});
-		JButton btnDpdc = new JButton("Delete");
-		btnDpdc.setBounds(345, 163, 111, 57);
-		btnDpdc.setFont(new Font("SansSerif", Font.BOLD, 12));
-		btnDpdc.addActionListener(new ActionListener() {
-		 public void actionPerformed(ActionEvent arg0) {
-			 PhieuDatChoDTO pdc = new PhieuDatChoDTO();
-			 pdc.setMa_phieu(txtphieuId.getText());
-			 PhieuDatChoBLL pdcbll = new PhieuDatChoBLL();
-			 int choice = JOptionPane.showConfirmDialog(null,
-			 "Báº¡n cÃ³ cháº¯c cháº¯n xÃ³a dá»¯ liá»‡u!", "XÃ¡c nháº­n",
-			 JOptionPane.YES_NO_OPTION);
-			 if (choice == JOptionPane.YES_OPTION) {
-			 try {
-				 @SuppressWarnings("unused")
-				 int result = pdcbll.deletePhieuDatCho(pdc);
-				 loadAllPhieuDatCho();
-			 } catch (Exception ex) {
-				 ex.printStackTrace();
-			 	}
-			 }
-		}
-		});
-		panelpdc.add(btnEpdc);
-		panelpdc.add(btnDpdc);
-		
-		tblphieudatcho = new JTable();
-		//
-		tblphieudatcho.setBorder(UIManager.getBorder("Table.scrollPaneBorder"));
-		tblphieudatcho.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		tblphieudatcho.addMouseListener(new MouseAdapter() {
-		 // Láº¥y thÃ´ng tin dÃ²ng dá»¯ liá»‡u Ä‘Æ°á»£c chá»�n hiá»ƒn thá»‹ lÃªn component
-		 public void mouseClicked(MouseEvent arg0) {
-		 int row = tblphieudatcho.getSelectedRow();
-		 if (row != -1) {
-		 txtphieuId.setText(tblphieudatcho.getValueAt(row, 0).toString());
-		 txtmavecbdc.setText(tblphieudatcho.getValueAt(row, 1).toString());
-		 txtngaydat.setText(tblphieudatcho.getValueAt(row, 2).toString());
-		 txtsoghe.setText(tblphieudatcho.getValueAt(row, 3).toString()); 
-	
-		 }
-		 }
-		 });
-		
-		JButton btnPhieudatcho = new JButton("Phiáº¿u Ä‘áº·t chá»—");
-		btnPhieudatcho.setFont(new Font("SansSerif", Font.BOLD, 14));
-		btnPhieudatcho.setBackground(new Color(220, 242, 238));
-		btnPhieudatcho.setForeground(new Color(95,  154,  156));
-		btnPhieudatcho.addActionListener(new ActionListener(){
-			public void actionPerformed(ActionEvent arg0) {
-				scrollPane.setViewportView(tblphieudatcho);
-				panelhd.setVisible(false);
-				panelkh.setVisible(false);
-				panelhv.setVisible(false);
-				panelsb.setVisible(false);
-				panelmb.setVisible(false);
-				paneltb.setVisible(false);
-				panelvcb.setVisible(false);
-				panel1.setVisible(false);
-				panelpdc.setVisible(true);
-				paneldg.setVisible(false);
-				panelcb.setVisible(false);
-				
-			}
-		});
-		btnPhieudatcho.setBounds(10, 249, 128, 23);
-		contentPane.add(btnPhieudatcho);
-//}
-//San bay {
-		panelsb = new JPanel();
-		panelsb.setBounds(167, 269, 619, 245);
-		panelsb.setBackground(new Color(0, 0,0,0));
-		
-		JTextField txtsanbayId = new JTextField();
-		txtsanbayId.setBounds(76, 5, 96, 19);
-		txtsanbayId.setColumns(10);
-		
-		JTextField txtsanbayname = new JTextField();
-		txtsanbayname.setBounds(277, 5, 96, 19);
-		txtsanbayname.setColumns(10);
-		
-		JLabel lblmasb = new JLabel("MÃ£ sÃ¢n bay");
-		lblmasb.setBounds(10, 9, 81, 13);
-		
-		
-		JLabel lbltensb = new JLabel("TÃªn sÃ¢n bay");
-		lbltensb.setBounds(197, 9, 81, 13);
-		panelsb.setLayout(null);
-		
-		panelsb.add(txtsanbayId);
-		panelsb.add(txtsanbayname);
-		panelsb.add(lblmasb);
-		panelsb.add(lbltensb);
-		panelsb.setVisible(false);
-		
-		JButton btnIsb = new JButton("Insert");
-		btnIsb.setBounds(212, 163, 100, 57);
-		btnIsb.setFont(new Font("SansSerif", Font.BOLD, 12));
-		btnIsb.addActionListener(new ActionListener() {
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			SanBayDTO sb = new SanBayDTO();
-			
-			sb.setTen_sb(txtsanbayname.getText());
-			
-			SanBayBLL sbbll = new SanBayBLL();
-			try {
-				int result = sbbll.insertSanBay(sb);
-				if(result !=0) {
-					JOptionPane.showConfirmDialog(null,"thÃªm thÃ nh cÃ´ng!","thÃ´ng bÃ¡o",JOptionPane.INFORMATION_MESSAGE);
-				}
-				loadAllSanBay();
-			} catch (Exception ex) {
-				ex.printStackTrace();
-			  }
-		}
-		});
-		JButton btnEsb = new JButton("Edit");
-		btnEsb.setBounds(482, 163, 111, 57);
-		btnEsb.setFont(new Font("SansSerif", Font.BOLD, 12));
-		btnEsb.addActionListener(new ActionListener() {
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			SanBayDTO sb = new SanBayDTO();
-			sb.setMa_sb(txtsanbayId.getText());
-			sb.setTen_sb(txtsanbayname.getText());
-			
-			SanBayBLL sbbll = new SanBayBLL();
-			try {
-				int result = sbbll.updateSanBay (sb);
-				if(result !=0) {
-					JOptionPane.showConfirmDialog(null,"cáº­p nháº­t thÃ nh cÃ´ng!","thÃ´ng bÃ¡o",JOptionPane.INFORMATION_MESSAGE);
-				}
-				loadAllSanBay();
-			} catch (Exception ex) {
-				ex.printStackTrace();
-			  }
-		}
-		});
-		JButton btnDsb = new JButton("Delete");
-		btnDsb.setBounds(345, 163, 111, 57);
-		btnDsb.setFont(new Font("SansSerif", Font.BOLD, 12));
-		btnDsb.addActionListener(new ActionListener() {
-		 public void actionPerformed(ActionEvent arg0) {
-			 SanBayDTO sb = new SanBayDTO();
-			 sb.setMa_sb(txtsanbayId.getText());
-			 SanBayBLL sbbll = new SanBayBLL();
-			 int choice = JOptionPane.showConfirmDialog(null,
-			 "Báº¡n cÃ³ cháº¯c cháº¯n xÃ³a dá»¯ liá»‡u!", "XÃ¡c nháº­n",
-			 JOptionPane.YES_NO_OPTION);
-			 if (choice == JOptionPane.YES_OPTION) {
-			 try {
-				 @SuppressWarnings("unused")
-				 int result = sbbll.deleteSanBay(sb);
-				 loadAllSanBay();
-			 } catch (Exception ex) {
-				 ex.printStackTrace();
-			 	}
-			 }
-		}
-		});
-		panelsb.add(btnIsb);
-		panelsb.add(btnEsb);
-		panelsb.add(btnDsb);
-		
-		contentPane.add(panelsb);
-		
-		tblsanbay = new JTable();
-		//
-		tblsanbay.setBorder(UIManager.getBorder("Table.scrollPaneBorder"));
-		tblsanbay.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		tblsanbay.addMouseListener(new MouseAdapter() {
-		 // Láº¥y thÃ´ng tin dÃ²ng dá»¯ liá»‡u Ä‘Æ°á»£c chá»�n hiá»ƒn thá»‹ lÃªn component
-		 public void mouseClicked(MouseEvent arg0) {
-		 int row = tblsanbay.getSelectedRow();
-		 if (row != -1) {
-		 txtsanbayId.setText(tblsanbay.getValueAt(row, 0).toString());
-		 txtsanbayname.setText(tblsanbay.getValueAt(row, 1).toString());
-		 
-		 }
-		 }
-		 });
-		JButton btnSanbay = new JButton("SÃ¢n bay");
-		btnSanbay.setFont(new Font("SansSerif", Font.BOLD, 14));
-		btnSanbay.setBackground(new Color(220, 242, 238));
-		btnSanbay.setForeground(new Color(95,  154,  156));
-		btnSanbay.addActionListener(new ActionListener(){
-			public void actionPerformed(ActionEvent arg0) {
-				scrollPane.setViewportView(tblsanbay);
-				panelhd.setVisible(false);
-				panelkh.setVisible(false);
-				panelhv.setVisible(false);
-				panel1.setVisible(false);
-				panelmb.setVisible(false);
-				paneltb.setVisible(false);
-				panelsb.setVisible(true);
-				panelvcb.setVisible(false);
-				panelpdc.setVisible(false);
-				paneldg.setVisible(false);
-				panelcb.setVisible(false);
-			}
-		});
-		btnSanbay.setBounds(10, 283, 128, 23);
-		contentPane.add(btnSanbay);
-//}
 // chuyen bay {
 		panelcb = new JPanel();
 		panelcb.setBounds(167, 269, 619, 245);
@@ -1671,170 +962,14 @@ public class Control extends JFrame {
 				scrollPane.setViewportView(tblchuyenbay);
 				panelhd.setVisible(false);
 				panelkh.setVisible(false);
-				panelhv.setVisible(false);
 				panel1.setVisible(false);
-				panelmb.setVisible(false);
-				paneltb.setVisible(false);
-				panelsb.setVisible(false);
 				panelvcb.setVisible(false);
-				panelpdc.setVisible(false);
-				paneldg.setVisible(false);
 				panelcb.setVisible(true);
 			}
 		});
 		btnChuyenbay.setBounds(10, 317, 128, 23);
 		contentPane.add(btnChuyenbay);
-//}
-// tuyen bay {			
-		
-		paneltb = new JPanel();
-		paneltb.setBounds(167, 269, 619, 245);
-		paneltb.setBackground(new Color(0, 0,0,0));
-		
-		JTextField txtmatb = new JTextField();
-		txtmatb.setBounds(88, 5, 96, 19);
-		txtmatb.setColumns(10);
-		
-		JTextField txtsanbaydi = new JTextField();
-		txtsanbaydi.setBounds(272, 5, 96, 19);
-		txtsanbaydi.setColumns(10);
-		
-		JTextField txtsanbayden = new JTextField();
-		txtsanbayden.setBounds(462, 5, 96, 19);
-		txtsanbayden.setColumns(10);
-		
-		JLabel lblmatb = new JLabel("MÃ£ tuyáº¿n bay");
-		lblmatb.setBounds(10, 9, 81, 13);
-		
-		JLabel lblsanbaydi = new JLabel("SÃ¢n bay Ä‘i");
-		lblsanbaydi.setBounds(211, 9, 60, 13);
-		
-		
-		JLabel lblsanbayden = new JLabel("SÃ¢n bay Ä‘áº¿n");
-		lblsanbayden.setBounds(390, 9, 74, 13);
-		paneltb.setLayout(null);
-		
-		paneltb.add(txtmatb);
-		paneltb.add(txtsanbaydi);
-		paneltb.add(txtsanbayden);
-		paneltb.add(lblmatb);
-		paneltb.add(lblsanbaydi);
-		paneltb.add(lblsanbayden);
-		paneltb.setVisible(false);
-		
-		JButton btnItb = new JButton("Insert");
-		btnItb.setBounds(212, 163, 100, 57);
-		btnItb.setFont(new Font("SansSerif", Font.BOLD, 12));
-		btnItb.addActionListener(new ActionListener() {
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			TuyenBayDTO tb = new TuyenBayDTO();
-			
-			tb.setSanbaydi(txtsanbaydi.getText());
-			tb.setSanbayden(txtsanbayden.getText());
-			
-			
-			TuyenBayBLL tbbll = new TuyenBayBLL();
-			try {
-				int result = tbbll.insertTuyenBay(tb);
-				if(result !=0) {
-					JOptionPane.showConfirmDialog(null,"thÃªm thÃ nh cÃ´ng!","thÃ´ng bÃ¡o",JOptionPane.INFORMATION_MESSAGE);
-				}
-				loadAllTuyenBay();
-			} catch (Exception ex) {
-				ex.printStackTrace();
-			  }
-		}
-		});
-		JButton btnEtb = new JButton("Edit");
-		btnEtb.setBounds(482, 163, 111, 57);
-		btnEtb.setFont(new Font("SansSerif", Font.BOLD, 12));
-		btnEtb.addActionListener(new ActionListener() {
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			TuyenBayDTO tb = new TuyenBayDTO();
-			tb.setMa_tuyenbay(txtmatb.getText());
-			tb.setSanbaydi(txtsanbaydi.getText());
-			tb.setSanbayden(txtsanbayden.getText());
-			
-			TuyenBayBLL tbbll = new TuyenBayBLL();
-			try {
-				int result = tbbll.updateTuyenBay (tb);
-				if(result !=0) {
-					JOptionPane.showConfirmDialog(null,"cáº­p nháº­t thÃ nh cÃ´ng!","thÃ´ng bÃ¡o",JOptionPane.INFORMATION_MESSAGE);
-				}
-				loadAllTuyenBay();
-			} catch (Exception ex) {
-				ex.printStackTrace();
-			  }
-		}
-		});
-		JButton btnDtb = new JButton("Delete");
-		btnDtb.setBounds(345, 163, 111, 57);
-		btnDtb.setFont(new Font("SansSerif", Font.BOLD, 12));
-		btnDtb.addActionListener(new ActionListener() {
-		 public void actionPerformed(ActionEvent arg0) {
-			 TuyenBayDTO tb = new TuyenBayDTO();
-			 tb.setMa_tuyenbay(txtmatb.getText());
-			 TuyenBayBLL tbbll = new TuyenBayBLL();
-			 int choice = JOptionPane.showConfirmDialog(null,
-			 "Báº¡n cÃ³ cháº¯c cháº¯n xÃ³a dá»¯ liá»‡u!", "XÃ¡c nháº­n",
-			 JOptionPane.YES_NO_OPTION);
-			 if (choice == JOptionPane.YES_OPTION) {
-			 try {
-				 @SuppressWarnings("unused")
-				 int result = tbbll.deleteTuyenBay(tb);
-				 loadAllTuyenBay();
-			 } catch (Exception ex) {
-				 ex.printStackTrace();
-			 	}
-			 }
-		}
-		});
-		paneltb.add(btnEtb);
-		paneltb.add(btnDtb);
-		
-		contentPane.add(paneltb);
-		
-		
-		tbltuyenbay = new JTable();
-		//
-		tbltuyenbay.setBorder(UIManager.getBorder("Table.scrollPaneBorder"));
-		tbltuyenbay.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		tbltuyenbay.addMouseListener(new MouseAdapter() {
-			 // Láº¥y thÃ´ng tin dÃ²ng dá»¯ liá»‡u Ä‘Æ°á»£c chá»�n hiá»ƒn thá»‹ lÃªn component
-			 public void mouseClicked(MouseEvent arg0) {
-			 int row = tbltuyenbay.getSelectedRow();
-			 if (row != -1) {
-			 txtmatb.setText(tbltuyenbay.getValueAt(row, 0).toString());
-			 txtsanbaydi.setText(tbltuyenbay.getValueAt(row, 1).toString());
-			 txtsanbayden.setText(tbltuyenbay.getValueAt(row, 2).toString());				
-			 
-			 }
-			 }
-			 });
-		JButton btnTuyenbay = new JButton("Tuyáº¿n bay");
-		btnTuyenbay.setFont(new Font("SansSerif", Font.BOLD, 14));
-		btnTuyenbay.setBackground(Color.white);
-		btnTuyenbay.setForeground(new Color(86, 172, 191));
-		btnTuyenbay.addActionListener(new ActionListener(){
-			public void actionPerformed(ActionEvent arg0) {
-				scrollPane.setViewportView(tbltuyenbay);
-				panelhd.setVisible(false);
-				panelkh.setVisible(false);
-				panelhv.setVisible(false);
-				panel1.setVisible(false);
-				panelsb.setVisible(false);
-				panelmb.setVisible(false);
-				panelvcb.setVisible(false);
-				panelpdc.setVisible(false);
-				paneltb.setVisible(true);
-				paneldg.setVisible(false);
-				panelcb.setVisible(false);
-			}
-		});
-		btnTuyenbay.setBounds(10, 351, 128, 23);
-		contentPane.add(btnTuyenbay);
+//}	
 		
 		JLabel lblNewLabel = new JLabel("ThÃ´ng tin chi tiáº¿t");
 		lblNewLabel.setForeground(new Color(0, 0, 0));
@@ -1856,7 +991,7 @@ public class Control extends JFrame {
 		
 		
 		
-		JLabel lblNewLabel_2 = new JLabel("ThÃ´ng tin chi tiáº¿t");
+		JLabel lblNewLabel_2 = new JLabel("THONG TIN CHI TIET");
 		lblNewLabel_2.setForeground(new Color(255, 0, 0));
 		lblNewLabel_2.setFont(new Font("Calibri", Font.BOLD, 14));
 		lblNewLabel_2.setBounds(177, 236, 128, 22);
@@ -1902,7 +1037,7 @@ public class Control extends JFrame {
 	  */
 	 public void loadAllNhanVien() throws ClassNotFoundException {
 		 //táº¡o control DefaultTableModel Ä‘á»ƒ hiá»ƒn thá»‹ danh sÃ¡ch NhanVien
-	 String[] header = { "MÃ£ nhÃ¢n viÃªn", "TÃªn nhÃ¢n viÃªn", "Email", "SDT", "Ä�á»‹a chá»‰" };
+	 String[] header = { "MA NV", "TEN NV", "Email", "SDT", "CHUC VU", "DIA CHI" };
 	 DefaultTableModel dtm = new DefaultTableModel(header, 0);
 	 //láº¥y danh sÃ¡ch NhanVienDTO (gá»�i hÃ m getAllNhanVien() trong NhanVienBLL)
 	 ArrayList<NhanVienDTO> arr = new ArrayList<NhanVienDTO>();
@@ -1918,9 +1053,10 @@ public class Control extends JFrame {
 		 String ten_nv = NhanVienDTO.getTen_nv();
 		 String email = NhanVienDTO.getEmail();
 		 String sdt = NhanVienDTO.getSDT();
+                 String chuc_vu = NhanVienDTO.getChucVu();
 		 String dia_chi = NhanVienDTO.getDiaChi();
 		 //táº¡o row Ä‘á»ƒ add vÃ o control DefaultTableModel
-		 Object[] row = { ma_nv, ten_nv, email, sdt, dia_chi };
+		 Object[] row = { ma_nv, ten_nv, email, sdt, chuc_vu, dia_chi };
 		 dtm.addRow(row);
 	 }
 	 tblnhanvien.setModel(dtm);
@@ -1931,7 +1067,7 @@ public class Control extends JFrame {
 	  */
 	 public void loadAllKhachHang() throws ClassNotFoundException {
 		 //táº¡o control DefaultTableModel Ä‘á»ƒ hiá»ƒn thá»‹ danh sÃ¡ch KhachHang
-	 String[] header = { "MÃ£ khÃ¡ch hÃ ng", "TÃªn khÃ¡ch hÃ ng","CMND/PP", "Email", "SDT", "Ä�á»‹a chá»‰" };
+	 String[] header = { "MA KH", "TEN KH","CMND/PP", "Email", "SDT", "DIA CHI" };
 	 DefaultTableModel dtm = new DefaultTableModel(header, 0);
 	 //láº¥y danh sÃ¡ch KhachHangDTO (gá»�i hÃ m getAllKhachHang() trong KhachHangBLL)
 	 ArrayList<KhachHangDTO> arr = new ArrayList<KhachHangDTO>();
@@ -1961,7 +1097,7 @@ public class Control extends JFrame {
 	  */
 	 public void loadAllChuyenBay() throws ClassNotFoundException {
 		 //táº¡o control DefaultTableModel Ä‘á»ƒ hiá»ƒn thá»‹ danh sÃ¡ch ChuyenBay
-	 String[] header = { "MÃ£ chuyáº¿n bay", "MÃ£ tuyáº¿n bay", "NgÃ y giá»�", "Thá»�i gian bay", "Sá»‘ gháº¿ háº¡ng 1", "Sá»‘ gháº¿ háº¡ng 2", "MÃ£ mÃ¡y bay" };
+	 String[] header = { "MA CB", "HANG HK", "TEN", "DIEM DI", "DIEM DEN", "SB DI", "SB DEN", "GIO", "NGAY", "LOAI GHE", "GIA", "QUY DINH" };
 	 DefaultTableModel dtm = new DefaultTableModel(header, 0);
 	 //láº¥y danh sÃ¡ch ChuyenBayDTO (gá»�i hÃ m getAllChuyenBay() trong ChuyenBayBLL)
 	 ArrayList<ChuyenBayDTO> arr = new ArrayList<ChuyenBayDTO>();
@@ -1973,80 +1109,27 @@ public class Control extends JFrame {
 	 for (int i = 0; i < arr.size(); i++) {
 		 ChuyenBayDTO = arr.get(i);
 		 
-		 String ma_cb = ChuyenBayDTO.getMa_cb();
-		 String ma_tuyenbay = ChuyenBayDTO.getMa_tuyenbay();
-		 Date ngaygio = (Date) ChuyenBayDTO.getNgaygio();
-		 String thoigianbay = ChuyenBayDTO.getThoigianbay();
-		 int soghehang1 = ChuyenBayDTO.getSoghehang1();
-		 int soghehang2 = ChuyenBayDTO.getSoghehang2();
-		 String ma_mb = ChuyenBayDTO.getMa_mb();
+		 String ma_cb = ChuyenBayDTO.getMaChuyenbay();
+		 String hang_HK = ChuyenBayDTO.getHangHK();
+                 String ten = ChuyenBayDTO.getTenMayBay();
+                 String di = ChuyenBayDTO.getDiemDi();
+                 String den = ChuyenBayDTO.getDiemDen();
+                 String sb_di = ChuyenBayDTO.getSanBayDi();
+                 String sb_den = ChuyenBayDTO.getSanBayDen();
+		 Date ngay = ChuyenBayDTO.getNgayBay();
+		 Time gio = ChuyenBayDTO.getGioBay();
+		 String loaighe = ChuyenBayDTO.getLoaiGhe();
+		 int gia = ChuyenBayDTO.getGia();
+		 String quydinh = ChuyenBayDTO.getQuyDinh();
 		 //táº¡o row Ä‘á»ƒ add vÃ o control DefaultTableModel
-		 Object[] row = { ma_cb, ma_tuyenbay, ngaygio, thoigianbay, soghehang1, soghehang2, ma_mb };
+		 Object[] row = { ma_cb, hang_HK, ten, di, den, sb_di, sb_den, ngay, gio, loaighe, gia, quydinh };
 		 dtm.addRow(row);
 	 }
 	 tblchuyenbay.setModel(dtm);
 	 }
-	 /**
-	  * Get all dongia to display table.
-	 * @throws ClassNotFoundException 
-	  */
-	 public void loadAllDonGia() throws ClassNotFoundException {
-		 //táº¡o control DefaultTableModel Ä‘á»ƒ hiá»ƒn thá»‹ danh sÃ¡ch DonGia
-	 String[] header = { "MÃ£ Ä‘Æ¡n giÃ¡", "VND", "USD" };
-	 DefaultTableModel dtm = new DefaultTableModel(header, 0);
-	 //láº¥y danh sÃ¡ch DonGiaDTO (gá»�i hÃ m getAllDonGia() trong DonGiaBLL)
-	 ArrayList<DonGiaDTO> arr = new ArrayList<DonGiaDTO>();
-	 DonGiaBLL DonGiaBLL = new DonGiaBLL();
-	 arr = DonGiaBLL.getAllDonGia();
-	 
-	 //Duyá»‡t máº£ng DonGiaDTO vá»«a láº¥y Ä‘Æ°á»£c: arr
-	 DonGiaDTO DonGiaDTO = new DonGiaDTO();
-	 for (int i = 0; i < arr.size(); i++) {
-		 DonGiaDTO = arr.get(i);
-		 
-		 String ma_dongia = DonGiaDTO.getMa_dongia();
-		 int VND = DonGiaDTO.getVND();
-		 int USD = DonGiaDTO.getUSD();
-		 //táº¡o row Ä‘á»ƒ add vÃ o control DefaultTableModel
-		 Object[] row = { ma_dongia, VND, USD };
-		 dtm.addRow(row);
-	 }
-	 tbldongia.setModel(dtm);
-	 }
-	 /**
-	  * Get all hangve to display table.
-	 * @throws ClassNotFoundException 
-	  */
-	 public void loadAllHangVe() throws ClassNotFoundException {
-		 //táº¡o control DefaultTableModel Ä‘á»ƒ hiá»ƒn thá»‹ danh sÃ¡ch HangVe
-	 String[] header = { "MÃ£ háº¡ng vÃ©", "TÃªn háº¡ng vÃ©" };
-	 DefaultTableModel dtm = new DefaultTableModel(header, 0);
-	 //láº¥y danh sÃ¡ch HangVeDTO (gá»�i hÃ m getAllHangVe() trong HangVeBLL)
-	 ArrayList<HangVeDTO> arr = new ArrayList<HangVeDTO>();
-	 HangVeBLL HangVeBLL = new HangVeBLL();
-	 arr = HangVeBLL.getAllHangVe();
-	 
-	 //Duyá»‡t máº£ng HangVeDTO vá»«a láº¥y Ä‘Æ°á»£c: arr
-	 HangVeDTO HangVeDTO = new HangVeDTO();
-	 for (int i = 0; i < arr.size(); i++) {
-		 HangVeDTO = arr.get(i);
-		 
-		 String ma_hv = HangVeDTO.getMa_hv();
-		 String ten_hv = HangVeDTO.getTen_hv();
-		 //táº¡o row Ä‘á»ƒ add vÃ o control DefaultTableModel
-		 Object[] row = { ma_hv, ten_hv };
-		 dtm.addRow(row);
-	 }
-	 tblhangve.setModel(dtm);
-	 }
-	 
-	 /**
-	  * Get all hangve to display table.
-	 * @throws ClassNotFoundException 
-	  */
 	 public void loadAllHoaDon() throws ClassNotFoundException {
 		 //táº¡o control DefaultTableModel Ä‘á»ƒ hiá»ƒn thá»‹ danh sÃ¡ch HoaDon
-	 String[] header = { "MÃ£ hÃ³a Ä‘Æ¡n","ThÃ nh tiá»�n", "NgÃ y láº­p","MÃ£ khÃ¡ch hÃ ng","MÃ£ nhÃ¢n viÃªn"};
+	 String[] header = { "MA HD, TEN, NV, KH, VE CB, THANH TIEN, TRANG THAI, NGAY"};
 	 DefaultTableModel dtm = new DefaultTableModel(header, 0);
 	 //láº¥y danh sÃ¡ch HoaDonDTO (gá»�i hÃ m getAllHoaDon() trong HoaDonBLL)
 	 ArrayList<HoaDonDTO> arr = new ArrayList<HoaDonDTO>();
@@ -2059,99 +1142,42 @@ public class Control extends JFrame {
 		 HoaDonDTO = arr.get(i);
 		 
 		 String ma_hd = HoaDonDTO.getMa_hd();
+                 String ten = HoaDonDTO.getTen_hd();
 		 int thanh_tien = HoaDonDTO.getThanh_tien();
 		 Date ngay_lap = HoaDonDTO.getNgay_Lap();
-		 String ma_kh = HoaDonDTO.getMa_kh();
+                 String ma_kh = HoaDonDTO.getMa_kh();
 		 String ma_nv = HoaDonDTO.getMa_nv();
+                 String ma_ve = HoaDonDTO.getMa_ve_cb();
+                 String trangthai = HoaDonDTO.getTrangThai();
+                 String nv = null;
+                 String kh = null;
+                 
+                 NhanVienBLL NVBLL = new NhanVienBLL();
+                 NhanVienDTO NVDTO = new NhanVienDTO();
+                 ArrayList<NhanVienDTO> nvs = new ArrayList<NhanVienDTO>();
+                 NVDTO.setMa_nv(ma_nv);
+                 nvs = NVBLL.getNhanVienByMANV(NVDTO);
+                 for (int j = 0; j < nvs.size(); j++) {
+                    NVDTO = nvs.get(j);
+                    nv = NVDTO.getTen_nv();
+                 }
+                 
+                 KhachHangBLL KHBLL = new KhachHangBLL();
+                 KhachHangDTO KHDTO = new KhachHangDTO();
+                 ArrayList<KhachHangDTO> khs = new ArrayList<KhachHangDTO>();
+                 KHDTO.setMa_kh(ma_kh);
+                 khs = KHBLL.getKhachHangByma_kh(KHDTO);
+                 for (int l = 0; l < khs.size(); l++) {
+                    KHDTO = khs.get(l);
+                    kh = KHDTO.getTen_kh();
+                 }
+                 
 		 
 		 //táº¡o row Ä‘á»ƒ add vÃ o control DefaultTableModel
-		 Object[] row = { ma_hd, thanh_tien, ngay_lap, ma_kh, ma_nv };
+		 Object[] row = { ma_hd, ten, thanh_tien, ngay_lap, nv, kh, ma_ve, trangthai };
 		 dtm.addRow(row);
 	 }
 	 tblHoadon.setModel(dtm);
-	 }
-	 
-	 /**
-	  * Get all phieudatcho to display table.
-	 * @throws ClassNotFoundException 
-	  */
-	 public void loadAllPhieuDatCho() throws ClassNotFoundException {
-		 //táº¡o control DefaultTableModel Ä‘á»ƒ hiá»ƒn thá»‹ danh sÃ¡ch PhieuDatCho
-	 String[] header = {"MÃ£ phiáº¿u","MÃ£ vÃ© chuyáº¿n bay","NgÃ y Ä‘áº·t","Sá»‘ Gháº¿"};
-	 DefaultTableModel dtm = new DefaultTableModel(header, 0);
-	 //láº¥y danh sÃ¡ch PhieuDatChoDTO (gá»�i hÃ m getAllPhieuDatCho() trong PhieuDatChoBLL)
-	 ArrayList<PhieuDatChoDTO> arr = new ArrayList<PhieuDatChoDTO>();
-	 PhieuDatChoBLL PhieuDatChoBLL = new PhieuDatChoBLL();
-	 arr = PhieuDatChoBLL.getAllPhieuDatCho();
-	 
-	 //Duyá»‡t máº£ng PhieuDatChoDTO vá»«a láº¥y Ä‘Æ°á»£c: arr
-	 PhieuDatChoDTO PhieuDatChoDTO = new PhieuDatChoDTO();
-	 for (int i = 0; i < arr.size(); i++) {
-		 PhieuDatChoDTO = arr.get(i);
-		 
-		 String ma_phieu = PhieuDatChoDTO.getMa_phieu();
-		 String ma_ve_cb = PhieuDatChoDTO.getMa_ve_cb();
-		 Date ngay_dat = (Date) PhieuDatChoDTO.getNgaydat();
-		 int so_ghe = (int) PhieuDatChoDTO.getSoghe();
-		 //táº¡o row Ä‘á»ƒ add vÃ o control DefaultTableModel
-		 Object[] row = { ma_phieu, ma_ve_cb, ngay_dat, so_ghe };
-		 dtm.addRow(row);
-	 }
-	 tblphieudatcho.setModel(dtm);
-	 }
-	 
-	 /**
-	  * Get all sanbay to display table.
-	 * @throws ClassNotFoundException 
-	  */
-	 public void loadAllSanBay() throws ClassNotFoundException {
-		 //táº¡o control DefaultTableModel Ä‘á»ƒ hiá»ƒn thá»‹ danh sÃ¡ch SanBay
-	 String[] header = { "MÃ£ sÃ¢n bay", "TÃªn sÃ¢n bay" };
-	 DefaultTableModel dtm = new DefaultTableModel(header, 0);
-	 //láº¥y danh sÃ¡ch SanBayDTO (gá»�i hÃ m getAllSanBay() trong SanBayBLL)
-	 ArrayList<SanBayDTO> arr = new ArrayList<SanBayDTO>();
-	 SanBayBLL SanBayBLL = new SanBayBLL();
-	 arr = SanBayBLL.getAllSanBay();
-	 
-	 //Duyá»‡t máº£ng SanBayDTO vá»«a láº¥y Ä‘Æ°á»£c: arr
-	 SanBayDTO SanBayDTO = new SanBayDTO();
-	 for (int i = 0; i < arr.size(); i++) {
-		 SanBayDTO = arr.get(i);
-		 
-		 String ma_sb = SanBayDTO.getMa_sb();
-		 String ten_sb = SanBayDTO.getTen_sb();
-		 //táº¡o row Ä‘á»ƒ add vÃ o control DefaultTableModel
-		 Object[] row = { ma_sb, ten_sb };
-		 dtm.addRow(row);
-	 }
-	 tblsanbay.setModel(dtm);
-	 }
-	 
-	 /**
-	  * Get all maybay to display table.
-	 * @throws ClassNotFoundException 
-	  */
-	 public void loadAllMayBay() throws ClassNotFoundException {
-		 //táº¡o control DefaultTableModel Ä‘á»ƒ hiá»ƒn thá»‹ danh sÃ¡ch MayBay
-	 String[] header = { "MÃ£ mÃ¡y bay", "TÃªn mÃ¡y bay" };
-	 DefaultTableModel dtm = new DefaultTableModel(header, 0);
-	 //láº¥y danh sÃ¡ch MayBayDTO (gá»�i hÃ m getAllMayBay() trong MayBayBLL)
-	 ArrayList<MayBayDTO> arr = new ArrayList<MayBayDTO>();
-	 MayBayBLL MayBayBLL = new MayBayBLL();
-	 arr = MayBayBLL.getAllMayBay();
-	 
-	 //Duyá»‡t máº£ng MayBayDTO vá»«a láº¥y Ä‘Æ°á»£c: arr
-	 MayBayDTO MayBayDTO = new MayBayDTO();
-	 for (int i = 0; i < arr.size(); i++) {
-		 MayBayDTO = arr.get(i);
-		 
-		 String ma_mb = MayBayDTO.getMa_mb();
-		 String ten_mb = MayBayDTO.getTen_mb();
-		 //táº¡o row Ä‘á»ƒ add vÃ o control DefaultTableModel
-		 Object[] row = { ma_mb, ten_mb };
-		 dtm.addRow(row);
-	 }
-	 tblmaybay.setModel(dtm);
 	 }
 	 
 	 /**
@@ -2160,7 +1186,7 @@ public class Control extends JFrame {
 	  */
 	 public void loadAllVeChuyenBay() throws ClassNotFoundException {
 		 //táº¡o control DefaultTableModel Ä‘á»ƒ hiá»ƒn thá»‹ danh sÃ¡ch VeChuyenBay
-	 String[] header = { "MÃ£ vÃ©","MÃ£ hÃ³a Ä‘Æ¡n","MÃ£ chuyáº¿n bay","MÃ£ Ä‘Æ¡n giÃ¡","MÃ£ háº¡ng vÃ©","TÃ¬nh Tráº¡ng" };
+	 String[] header = { "MA VE, SO GHE, MA CB, KH, NGAY, GIO, GIA, TINH TRANG VE" };
 	 DefaultTableModel dtm = new DefaultTableModel(header, 0);
 	 //láº¥y danh sÃ¡ch VeChuyenBayDTO (gá»�i hÃ m getAllVeChuyenBay() trong HVeChuyenBayBLL)
 	 ArrayList<VeChuyenBayDTO> arr = new ArrayList<VeChuyenBayDTO>();
@@ -2173,44 +1199,28 @@ public class Control extends JFrame {
 		 VeChuyenBayDTO = arr.get(i);
 		 
 		 String ma_ve_cb = VeChuyenBayDTO.getMa_ve_cb();
-		 String ma_hd = VeChuyenBayDTO.getMa_hd();
+		 String soghe = VeChuyenBayDTO.getSo_ghe();
 		 String ma_cb = VeChuyenBayDTO.getMa_cb();
-		 String ma_dongia = VeChuyenBayDTO.getMa_dongia();
-		 String ma_hv = VeChuyenBayDTO.getMa_hv();
+		 String ma_kh = VeChuyenBayDTO.getMa_kh();
+                 Time gio = VeChuyenBayDTO.getThoi_gian_bay();
+                 Date ngay = VeChuyenBayDTO.getNgay_bay();
+                 int gia = VeChuyenBayDTO.getGia();
 		 String tinh_trang = VeChuyenBayDTO.getTinhtrangve();
+                 String kh = null;
+                 
+                 KhachHangBLL KHBLL = new KhachHangBLL();
+                 KhachHangDTO KHDTO = new KhachHangDTO();
+                 ArrayList<KhachHangDTO> khs = new ArrayList<KhachHangDTO>();
+                 KHDTO.setMa_kh(ma_kh);
+                 khs = KHBLL.getKhachHangByma_kh(KHDTO);
+                 for (int l = 0; l < khs.size(); l++) {
+                    KHDTO = khs.get(l);
+                    kh = KHDTO.getTen_kh();
+                 }
 		 //táº¡o row Ä‘á»ƒ add vÃ o control DefaultTableModel
-		 Object[] row = { ma_ve_cb, ma_hd, ma_cb, ma_dongia, ma_hv, tinh_trang};
+		 Object[] row = { ma_ve_cb, soghe, ma_cb , kh, ngay, gio, gia, tinh_trang};
 		 dtm.addRow(row);
 	 }
 	 tblvechuyenbay.setModel(dtm);
-	 }
-	 
-	 /**
-	  * Get all vechuyenbay to display table.
-	 * @throws ClassNotFoundException 
-	  */
-	 public void loadAllTuyenBay() throws ClassNotFoundException {
-		 //táº¡o control DefaultTableModel Ä‘á»ƒ hiá»ƒn thá»‹ danh sÃ¡ch tuyenBay
-	 String[] header = { "MÃ£ tuyáº¿n bay","SÃ¢n bay Ä‘i", "SÃ¢n bay Ä‘áº¿n" };
-	 DefaultTableModel dtm = new DefaultTableModel(header, 0);
-	 //láº¥y danh sÃ¡ch TuyenBayDTO (gá»�i hÃ m getAllTuyenBay() trong TuyenBayBLL)
-	 ArrayList<TuyenBayDTO> arr = new ArrayList<TuyenBayDTO>();
-	 TuyenBayBLL tuyenBayBLL = new TuyenBayBLL();
-	 arr = tuyenBayBLL.getAllTuyenBay();
-	 
-	 //Duyá»‡t máº£ng TuyenbayDTO vá»«a láº¥y Ä‘Æ°á»£c: arr
-	 TuyenBayDTO TuyenBayDTO = new TuyenBayDTO();
-	 for (int i = 0; i < arr.size(); i++) {
-		 TuyenBayDTO = arr.get(i);
-		 
-		 String ma_tb = TuyenBayDTO.getMa_tuyenbay();
-		 String sb_di = TuyenBayDTO.getSanbaydi();
-		 String sb_den = TuyenBayDTO.getSanbayden();
-
-		 //táº¡o row Ä‘á»ƒ add vÃ o control DefaultTableModel
-		 Object[] row = { ma_tb, sb_di,sb_den };
-		 dtm.addRow(row);
-	 }
-	 tbltuyenbay.setModel(dtm);
 	 }
 }
