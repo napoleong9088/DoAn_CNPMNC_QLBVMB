@@ -41,5 +41,8 @@ public class KhachHangBLL {
 	 public ArrayList<KhachHangDTO> getKhachHangByEmail(KhachHangDTO KhachHangDTO)throws ClassNotFoundException {
 		 return KhachHangDAL.getKhachHangEmail(KhachHangDTO);
 	 }
+         public ArrayList<KhachHangDTO> getKHByid(KhachHangDTO khachHangDTO) throws ClassNotFoundException{
+		 return KhachHangDAL.getKHByid(khachHangDTO);
+	}
 
 }

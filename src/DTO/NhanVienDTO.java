@@ -4,7 +4,7 @@ public class NhanVienDTO {
 	private String Ma_nv;
 	private String Ten_nv;
 	private String Email;
-	private String Passworld;
+	private String Password;
 	private String SDT;
 	private String DiaChi;
 	private String ChucVu;
@@ -13,7 +13,7 @@ public class NhanVienDTO {
 		this.Ma_nv=null;
 		this.Ten_nv=null;
 		this.Email=null;
-		this.Passworld=null;
+		this.Password=null;
 		this.SDT=null;
 		this.DiaChi=null;
 		this.ChucVu=null;
@@ -22,7 +22,7 @@ public class NhanVienDTO {
 		this.Ma_nv=Ma_nv;
 		this.Ten_nv=Ten_nv;
 		this.Email=Email;
-		this.Passworld=Passworld;
+		this.Password=Password;
 		this.SDT=SDT;
 		this.DiaChi=DiaChi;
 		this.ChucVu=ChucVu;
@@ -45,11 +45,11 @@ public class NhanVienDTO {
 	public void setEmail(String email) {
 		Email = email;
 	}
-	public String getPassworld() {
-		return Passworld;
+	public String getPassword() {
+		return Password;
 	}
-	public void setPassworld(String passworld) {
-		Passworld = passworld;
+	public void setPassword(String password) {
+		Password = password;
 	}
 	public String getSDT() {
 		return SDT;

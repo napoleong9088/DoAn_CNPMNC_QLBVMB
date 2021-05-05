@@ -82,27 +82,27 @@ public class Action extends JFrame {
 		contentPane.add(tabbedPane);
 		
 		JPanel panel = new JPanel();
-		tabbedPane.addTab("ThÃ´ng tin hÃ nh khÃ¡ch", null, panel, null);
+		tabbedPane.addTab("THONG TIN KHACH HANG", null, panel, null);
 		panel.setLayout(null);
 		
 	
-		JLabel lblkhachhang = new JLabel("_ThÃ´ng tin hÃ nh khÃ¡ch____________________\n");
+		JLabel lblkhachhang = new JLabel("_THONG TIN KHACH HANG____________________\n");
 		lblkhachhang.setFont(new Font("Tahoma", Font.BOLD, 17));
 		lblkhachhang.setBounds(5, 9,  600, 21);
 		lblkhachhang.setForeground(Color.BLACK);
 		panel.add(lblkhachhang);
 		
-		JLabel lbltenkh = new JLabel("Há»� vÃ  tÃªn:");
+		JLabel lbltenkh = new JLabel("HO VA TEN:");
 		lbltenkh.setBounds(10, 40, 100, 15);
 		
 		txtkhachhangname = new JTextField();
 		txtkhachhangname.setBounds(10, 60, 140, 20);
 		txtkhachhangname.setColumns(10);
 		
-		JLabel lblcmndpp = new JLabel("CMND/Há»™ chiáº¿u:");
-		lblcmndpp.setBounds(10, 90,100,15);
+		JLabel lblcmndpp = new JLabel("CMND/HO CHIEU:");
+		lblcmndpp.setBounds(10, 90, 150, 15);
 		
-		JLabel lblemailkh = new JLabel("Email:");
+		JLabel lblemailkh = new JLabel("EMAIL:");
 		lblemailkh.setBounds(210, 40, 80, 15);
 		
 		
@@ -116,7 +116,7 @@ public class Action extends JFrame {
 		txtkhachhangemail.setBounds(210, 60,150,20);
 		
 		
-		JLabel lbldiachikh = new JLabel("Ä�á»‹a chá»‰:");
+		JLabel lbldiachikh = new JLabel("DIA CHI:");
 		lbldiachikh.setBounds(210, 90, 86, 15);
 		
 		
@@ -124,12 +124,12 @@ public class Action extends JFrame {
 		txtdiachikh.setColumns(10);
 		txtdiachikh.setBounds(210, 110, 150, 20);
 		
-		JLabel lblNewLabel_1_1_1_1_2 = new JLabel("----ThÃ´ng tin liÃªn láº¡c----");
+		JLabel lblNewLabel_1_1_1_1_2 = new JLabel("----THONG TIN LIEN LAC----");
 		lblNewLabel_1_1_1_1_2.setBounds(14, 152, 300, 14);
 		lblNewLabel_1_1_1_1_2.setForeground(Color.black);
 		panel.add(lblNewLabel_1_1_1_1_2);
 		
-		JLabel lblsdtkh = new JLabel("Sá»‘ Ä�T:");
+		JLabel lblsdtkh = new JLabel("SO DT:");
 		lblsdtkh.setBounds(10, 178, 86, 14);
 		
 		
@@ -151,7 +151,7 @@ public class Action extends JFrame {
 		
 		panel.setVisible(false);
 		
-		JButton btnNewButton = new JButton("Cáº¬P NHáº¬T");
+		JButton btnNewButton = new JButton("CAP NHAT");
 		btnNewButton.setBackground(SystemColor.activeCaptionBorder);
 		btnNewButton.setBounds(214, 152, 100, 40);
 		btnNewButton.setForeground(Color.WHITE);
@@ -169,7 +169,7 @@ public class Action extends JFrame {
 			try {
 				int result = khbll.updateKhachHang(kh);
 				if(result !=0) {
-					JOptionPane.showConfirmDialog(null,"cáº­p nháº­t thÃ nh cÃ´ng!","thÃ´ng bÃ¡o",JOptionPane.INFORMATION_MESSAGE);
+					JOptionPane.showConfirmDialog(null,"CAP NHAT THONG TIN THANH CONG!","THONG BAO",JOptionPane.INFORMATION_MESSAGE);
 				}
 			} catch (Exception ex) {
 				ex.printStackTrace();
@@ -178,7 +178,7 @@ public class Action extends JFrame {
 		});
 		panel.add(btnNewButton);
 		
-		JButton btntV = new JButton("Ä�áº·t vÃ©");
+		JButton btntV = new JButton("MUA VE");
 		btntV.setForeground(Color.WHITE);
 		btntV.setBackground(SystemColor.activeCaptionBorder);
 		btntV.setBounds(335, 152, 80, 40);

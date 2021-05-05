@@ -9,6 +9,8 @@ import javax.swing.border.EmptyBorder;
 
 import BLL.KhachHangBLL;
 import DTO.KhachHangDTO;
+import BLL.NhanVienBLL;
+import DTO.NhanVienDTO;
 import UTILS.ConnectionUtil;
 
 import javax.swing.JLabel;
@@ -72,7 +74,7 @@ public class Member extends JFrame {
 		lblNewLabel.setBounds(45, 20, 133, 40);
 		contentPane.add(lblNewLabel);
 		
-		JLabel lblNewLabel_1 = new JLabel("Ä�Äƒng Nháº­p");
+		JLabel lblNewLabel_1 = new JLabel("LOGIN");
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		lblNewLabel_1.setForeground(new Color(0, 139, 139));
 		lblNewLabel_1.setBackground(new Color(0, 139, 139));
@@ -84,7 +86,7 @@ public class Member extends JFrame {
 		contentPane.add(textField);
 		textField.setColumns(10);
 		
-		JButton btnNewButton = new JButton("Ä�Äƒng Nháº­p\n");
+		JButton btnNewButton = new JButton("LOGIN EMP\n");
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		btnNewButton.setForeground(new Color(0, 0, 0));
 		btnNewButton.setBackground(new Color(218, 165, 32));
@@ -95,13 +97,13 @@ public class Member extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				try
 				{
-					/*UserBLL userBLL = new UserBLL();
-					UserDTO userDTO = new UserDTO();*/
+					NhanVienBLL NVBLL = new NhanVienBLL();
+                                        NhanVienDTO NVDTO = new NhanVienDTO();
 
 				conUtil = new ConnectionUtil();
 				con = conUtil.getConnection();
 				@SuppressWarnings("deprecation")
-				String query = "SELECT * FROM users WHERE username = '"+textField.getText()+"' and password = '"+passwordField.getText()+"'";
+				String query = "SELECT * FROM nhanvien WHERE  email= '"+textField.getText()+"' and password = '"+passwordField.getText()+"'";
 				
 				preparedStatement = con.prepareStatement(query);
 				ResultSet rs = preparedStatement.executeQuery(query);
@@ -109,42 +111,88 @@ public class Member extends JFrame {
 				run = rs.next();
 					if(run)
 					{
-						JOptionPane.showMessageDialog(null,"Ä�Äƒng Nháº­p thÃ nh cÃ´ng","Pesan",JOptionPane.INFORMATION_MESSAGE);
-						userDTO.setUsername(textField.getText());
-						userBLL.getUserByid(userDTO);
-						if (userDTO.getRole()==1) {
+						JOptionPane.showMessageDialog(null,"LOGIN SUCCESS","",JOptionPane.INFORMATION_MESSAGE);
+						NVDTO.setEmail(textField.getText());
+						NVBLL.getNVByid(NVDTO);
+						if (NVDTO.getChucVu()=="Admin") {
 							Control control = new Control();
 							control.setVisible(true);
-						} else if (userDTO.getRole()==2) {
+						} else if (NVDTO.getChucVu()=="Emp") {
 							Option option = new Option();
 							option.setVisible(true);
-						} else {
-							Action action = new Action();
-							action.setVisible(true);
-							try {
-							ArrayList<KhachHangDTO> kh = new ArrayList<KhachHangDTO>();
-							KhachHangBLL khbll = new KhachHangBLL();
-							KhachHangDTO khDto =new KhachHangDTO();
-							khDto.setEmail(userDTO.getUsername());
-							kh = khbll.getKhachHangByEmail(khDto);
-							khDto = kh.get(0);
-							khDto.setTen_kh(khDto.getTen_kh());
-							khDto.setCmnd(khDto.getCmnd());
-							khDto.setSDT(khDto.getSDT());
-							khDto.setDiaChi(khDto.getDiaChi());
-							action.getkh(khDto);
-							action.getlscb(khDto);
-							} catch (Exception e1) {
-								// TODO: handle exception
-							}
-							
-							
 						}
 
 					}
 					else
 					{
-						JOptionPane.showMessageDialog(null,"Ä�Äƒng Nháº­p khÃ´ng thÃ nh cÃ´ng ","Pesan",JOptionPane.ERROR_MESSAGE);
+						JOptionPane.showMessageDialog(null,"LOGIN FAIL ","",JOptionPane.ERROR_MESSAGE);
+						textField.setText(" ");
+						passwordField.setText("");
+						textField.requestFocus();
+					}
+				}
+				catch(Exception ex)
+				{
+					System.out.println(ex);
+				}
+				
+			}
+
+		});
+                
+                JButton btnButton = new JButton("LOGIN CUSTOMER\n");
+		btnButton.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		btnButton.setForeground(new Color(0, 0, 0));
+		btnButton.setBackground(new Color(218, 165, 32));
+		btnButton.setBounds(10, 175, 190, 39);
+		contentPane.add(btnButton);
+		btnButton.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				try
+				{
+					KhachHangBLL KHBLL = new KhachHangBLL();
+                                        KhachHangDTO KHDTO = new KhachHangDTO();
+
+				conUtil = new ConnectionUtil();
+				con = conUtil.getConnection();
+				@SuppressWarnings("deprecation")
+				String query = "SELECT * FROM khachhang WHERE  email= '"+textField.getText()+"' and password = '"+passwordField.getText()+"'";
+				
+				preparedStatement = con.prepareStatement(query);
+				ResultSet rs = preparedStatement.executeQuery(query);
+				boolean run = false;
+				run = rs.next();
+					if(run)
+					{
+						JOptionPane.showMessageDialog(null,"LOGIN SUCCESS","",JOptionPane.INFORMATION_MESSAGE);
+						KHDTO.setEmail(textField.getText());
+						KHBLL.getKHByid(KHDTO);
+						
+						Action action = new Action();
+						action.setVisible(true);
+						try {
+						ArrayList<KhachHangDTO> kh = new ArrayList<KhachHangDTO>();
+						KhachHangBLL khbll = new KhachHangBLL();
+						KhachHangDTO khDto =new KhachHangDTO();
+						khDto.setEmail(KHDTO.getEmail());
+						kh = khbll.getKhachHangByEmail(khDto);
+						khDto = kh.get(0);
+						khDto.setTen_kh(khDto.getTen_kh());
+						khDto.setCmnd(khDto.getCmnd());
+						khDto.setSDT(khDto.getSDT());
+						khDto.setDiaChi(khDto.getDiaChi());
+						action.getkh(khDto);
+						action.getlscb(khDto);
+						} catch (Exception e1) {
+							// TODO: handle exception
+						}
+							
+
+					}
+					else
+					{
+						JOptionPane.showMessageDialog(null,"LOGIN FAIL ","",JOptionPane.ERROR_MESSAGE);
 						textField.setText(" ");
 						passwordField.setText("");
 						textField.requestFocus();
