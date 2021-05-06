@@ -30,16 +30,10 @@ import org.apache.poi.xssf.usermodel.*;
 import BLL.ChuyenBayBLL;
 import BLL.HoaDonBLL;
 import BLL.KhachHangBLL;
-import BLL.MayBayBLL;
-import BLL.TuyenBayBLL;
-import BLL.UserBLL;
 import BLL.VeChuyenBayBLL;
 import DTO.ChuyenBayDTO;
 import DTO.HoaDonDTO;
 import DTO.KhachHangDTO;
-import DTO.MayBayDTO;
-import DTO.TuyenBayDTO;
-import DTO.UserDTO;
 import DTO.VeChuyenBayDTO;
 import UTILS.ConnectionUtil;
 
@@ -258,42 +252,33 @@ public class Thanhtoan extends JFrame{
 	 ChuyenBayBLL ChuyenBayBLL = new ChuyenBayBLL();
 	//Duyệt mảng ChuyenBayDTO vừa lấy được: arr
 	 ChuyenBayDTO ChuyenBayDTO = new ChuyenBayDTO();
-	 ChuyenBayDTO.setMa_cb(cb);	 
+	 ChuyenBayDTO.setMaChuyenbay(cb);	 
 	 arr = ChuyenBayBLL.getChuyenBayByma_cb(ChuyenBayDTO);
 	 
-	 TuyenBayDTO TuyenBayDTO = new TuyenBayDTO();
-	 ArrayList<TuyenBayDTO> tuyenbay = new ArrayList<TuyenBayDTO>();
-	 TuyenBayBLL TuyenBayBLL = new TuyenBayBLL();
-	 
-	 MayBayDTO MayBayDTO = new MayBayDTO();
-	 ArrayList<MayBayDTO> maybay = new ArrayList<MayBayDTO>();
-	 MayBayBLL MayBayBLL = new MayBayBLL();
+//	 TuyenBayDTO TuyenBayDTO = new TuyenBayDTO();
+//	 ArrayList<TuyenBayDTO> tuyenbay = new ArrayList<TuyenBayDTO>();
+//	 TuyenBayBLL TuyenBayBLL = new TuyenBayBLL();
+//	 
+//	 MayBayDTO MayBayDTO = new MayBayDTO();
+//	 ArrayList<MayBayDTO> maybay = new ArrayList<MayBayDTO>();
+//	 MayBayBLL MayBayBLL = new MayBayBLL();
 	 
 	 for (int i = 0; i < arr.size(); i++) {
-		 ChuyenBayDTO = arr.get(i);
-		 
-		 String ma_cb = ChuyenBayDTO.getMa_cb();
-		 Date ngaygio = (Date) ChuyenBayDTO.getNgaygio();
-		 String thoigianbay = ChuyenBayDTO.getThoigianbay();
-		 String ma_mb = ChuyenBayDTO.getMa_mb();
-		 String ma_tb = ChuyenBayDTO.getMa_tuyenbay();
-		 TuyenBayDTO.setMa_tuyenbay(ma_tb);
-		 MayBayDTO.setMa_mb(ma_mb);
-		 
-		 maybay = MayBayBLL.getMayBayByma_mb(MayBayDTO);
-		 MayBayDTO = maybay.get(0);
-		 String ten_mb = MayBayDTO.getTen_mb();
-		 
-		 tuyenbay = TuyenBayBLL.getTuyenBayByma_tuyenbay(TuyenBayDTO);
-		 TuyenBayDTO = tuyenbay.get(0);
-		 String diem_di = TuyenBayDTO.getSanbaydi();
-		 String diem_den = TuyenBayDTO.getSanbayden();
-		 
-		 textField_2.setText(diem_di);
-		 textField_3.setText(diem_den);
-		 //tạo row để add vào control DefaultTableModel
-		 Object[] row = { ma_cb, ten_mb,ngaygio, thoigianbay,diem_di,diem_den};
-		 dtm.addRow(row);
+            ChuyenBayDTO = arr.get(i);
+
+            String ma_cb = ChuyenBayDTO.getMaChuyenbay();
+            Date ngaygio = (Date) ChuyenBayDTO.getNgayBay();
+            String thoigianbay = String.valueOf(ChuyenBayDTO.getGioBay());
+            String khmb = ChuyenBayDTO.getKyHieuMB();
+            String ten_mb = ChuyenBayDTO.getTenMayBay();
+            String diem_di = ChuyenBayDTO.getDiemDi();
+            String diem_den = ChuyenBayDTO.getDiemDen();
+
+            textField_2.setText(diem_di);
+            textField_3.setText(diem_den);
+            //tạo row để add vào control DefaultTableModel
+            Object[] row = { ma_cb, ten_mb,ngaygio, thoigianbay,diem_di,diem_den};
+            dtm.addRow(row);
 	 }
 	 table.setModel(dtm);
 	 }
@@ -308,8 +293,8 @@ public class Thanhtoan extends JFrame{
 		textField_7.setText(khDto.getSDT());
 	}
 	public void getcb(ChuyenBayDTO cb) throws ClassNotFoundException {
-		txtma_cb.setText(cb.getMa_cb());
-		loadAllChuyenBay(cb.getMa_cb());
+		txtma_cb.setText(cb.getMaChuyenbay());
+		loadAllChuyenBay(cb.getMaChuyenbay());
 		
 	}
 	public void print(String mcb){
@@ -362,7 +347,7 @@ public class Thanhtoan extends JFrame{
 			            for (int i = 0; i < list.size(); i++) {
 			            	vcbDto = list.get(i);
 			            	table.addCell(new Phrase(""+vcbDto.getMa_cb()));
-			                table.addCell(new Phrase(""+vcbDto.getMa_dongia()));
+			                table.addCell(new Phrase(""+vcbDto.getGia()));
 			                table.addCell(new Phrase(""+vcbDto.getMa_ve_cb()));
 			                table.addCell(new Phrase(""+hdDTO.getMa_nv()));
 			                table.addCell(new Phrase(""+hdDTO.getThanh_tien()));
