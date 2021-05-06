@@ -238,7 +238,7 @@ public class Control extends JFrame {
 				try {
 					int result = vcbbll.updateVeChuyenBay(vcb);
 					if(result !=0) {
-						JOptionPane.showConfirmDialog(null,"cáº­p nháº­t thÃ nh cÃ´ng!","thÃ´ng bÃ¡o",JOptionPane.INFORMATION_MESSAGE);
+						JOptionPane.showConfirmDialog(null,"cÃ¡ÂºÂ­p nhÃ¡ÂºÂ­t thÃƒÂ nh cÃƒÂ´ng!","thÃƒÂ´ng bÃƒÂ¡o",JOptionPane.INFORMATION_MESSAGE);
 					}
 					loadAllVeChuyenBay();
 				} catch (Exception ex) {
@@ -254,7 +254,7 @@ public class Control extends JFrame {
 		tblvechuyenbay.setBorder(UIManager.getBorder("Table.scrollPaneBorder"));
 		tblvechuyenbay.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		tblvechuyenbay.addMouseListener(new MouseAdapter() {
-			 // Láº¥y thÃ´ng tin dÃ²ng dá»¯ liá»‡u Ä‘Æ°á»£c chá»�n hiá»ƒn thá»‹ lÃªn component
+			 // LÃ¡ÂºÂ¥y thÃƒÂ´ng tin dÃƒÂ²ng dÃ¡Â»Â¯ liÃ¡Â»â€¡u Ã„â€˜Ã†Â°Ã¡Â»Â£c chÃ¡Â»ï¿½n hiÃ¡Â»Æ’n thÃ¡Â»â€¹ lÃƒÂªn component
 			 public void mouseClicked(MouseEvent arg0) {
 			 int row = tblvechuyenbay.getSelectedRow();
 			 if (row != -1) {
@@ -305,7 +305,7 @@ public class Control extends JFrame {
 		txtkhhd.setColumns(10);
 		
 		JTextField txtngaylap = new JTextField();
-		txtngaylap.setBounds(116, 57, 96, 19);
+		txtngaylap.setBounds(513, 113, 96, 19);
 		
 		JTextField txtmave = new JTextField();
 		txtmave.setColumns(10);
@@ -317,7 +317,7 @@ public class Control extends JFrame {
                 
                 JTextField txttinhtranghd = new JTextField();
 		txttinhtranghd.setColumns(10);
-		txttinhtranghd.setBounds(513, 113, 96, 19);
+		txttinhtranghd.setBounds(116, 57, 96, 19);
                 
                 JTextField txtmahd = new JTextField();
                 
@@ -356,7 +356,7 @@ public class Control extends JFrame {
 		panelhd.add(lblkhhd);
 		panelhd.add(lblnvhd);
                 panelhd.add(lbltinhtranghd);
-                panelhd.add(lblngaylap);
+                panelhd.add(lblmave);
 		panelhd.setVisible(false);
 		
 		/*JButton btnEhd = new JButton("Edit");
@@ -375,7 +375,7 @@ public class Control extends JFrame {
 			try {
 				int result = hdbll.updateHoaDon(hd);
 				if(result !=0) {
-					JOptionPane.showConfirmDialog(null,"cáº­p nháº­t thÃ nh cÃ´ng!","thÃ´ng bÃ¡o",JOptionPane.INFORMATION_MESSAGE);
+					JOptionPane.showConfirmDialog(null,"cÃ¡ÂºÂ­p nhÃ¡ÂºÂ­t thÃƒÂ nh cÃƒÂ´ng!","thÃƒÂ´ng bÃƒÂ¡o",JOptionPane.INFORMATION_MESSAGE);
 				}
 				loadAllHoaDon();
 			} catch (Exception ex) {
@@ -415,17 +415,17 @@ public class Control extends JFrame {
 		 tblHoadon.setBorder(UIManager.getBorder("Table.scrollPaneBorder"));
 		 tblHoadon.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		 tblHoadon.addMouseListener(new MouseAdapter() {
-			 // Láº¥y thÃ´ng tin dÃ²ng dá»¯ liá»‡u Ä‘Æ°á»£c chá»�n hiá»ƒn thá»‹ lÃªn component
+			 // LÃ¡ÂºÂ¥y thÃƒÂ´ng tin dÃƒÂ²ng dÃ¡Â»Â¯ liÃ¡Â»â€¡u Ã„â€˜Ã†Â°Ã¡Â»Â£c chÃ¡Â»ï¿½n hiÃ¡Â»Æ’n thÃ¡Â»â€¹ lÃƒÂªn component
 			 public void mouseClicked(MouseEvent arg0) {
 			 int row = tblHoadon.getSelectedRow();
 			 if (row != -1) {
 			 txttenhd.setText(tblHoadon.getValueAt(row, 0).toString());
 			 txtnvhd.setText(tblHoadon.getValueAt(row, 1).toString());
 			 txtkhhd.setText(tblHoadon.getValueAt(row, 2).toString());				
-			 txtngaylap.setText(tblHoadon.getValueAt(row, 3).toString());
-			 txtmave.setText(tblHoadon.getValueAt(row, 4).toString());
-                         txtthanhtien.setText(tblHoadon.getValueAt(row, 5).toString());
-                         txttinhtrangve.setText(tblHoadon.getValueAt(row, 6).toString());
+			 txtmave.setText(tblHoadon.getValueAt(row, 3).toString());
+			 txtthanhtien.setText(tblHoadon.getValueAt(row, 4).toString());
+                         txttinhtranghd.setText(tblHoadon.getValueAt(row, 5).toString());
+                         txtngaylap.setText(tblHoadon.getValueAt(row, 6).toString());
 			 }
 			 }
 			 });
@@ -596,7 +596,7 @@ public class Control extends JFrame {
 		tblKhachhang.setBorder(UIManager.getBorder("Table.scrollPaneBorder"));
 		tblKhachhang.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		tblKhachhang.addMouseListener(new MouseAdapter() {
-		 // Láº¥y thÃ´ng tin dÃ²ng dá»¯ liá»‡u Ä‘Æ°á»£c chá»�n hiá»ƒn thá»‹ lÃªn component
+		 // LÃ¡ÂºÂ¥y thÃƒÂ´ng tin dÃƒÂ²ng dÃ¡Â»Â¯ liÃ¡Â»â€¡u Ã„â€˜Ã†Â°Ã¡Â»Â£c chÃ¡Â»ï¿½n hiÃ¡Â»Æ’n thÃ¡Â»â€¹ lÃƒÂªn component
 		 public void mouseClicked(MouseEvent arg0) {
 		 int row = tblKhachhang.getSelectedRow();
 		 if (row != -1) {
@@ -734,6 +734,7 @@ public class Control extends JFrame {
 			nv.setTen_nv(txtnvname.getText());
 			nv.setDiaChi(txtdiachinv.getText());
 			nv.setSDT(txtsdtnv.getText());
+                        nv.setMa_nv(txtmanv.getText());
 			NhanVienBLL nvbll = new NhanVienBLL();
 			try {
 				int result = nvbll.updateNhanVien(nv);
@@ -778,7 +779,7 @@ public class Control extends JFrame {
 		 tblnhanvien.setBorder(UIManager.getBorder("Table.scrollPaneBorder"));
 		 tblnhanvien.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		 tblnhanvien.addMouseListener(new MouseAdapter() {
-		 // Láº¥y thÃ´ng tin dÃ²ng dá»¯ liá»‡u Ä‘Æ°á»£c chá»�n hiá»ƒn thá»‹ lÃªn component
+		 // LÃ¡ÂºÂ¥y thÃƒÂ´ng tin dÃƒÂ²ng dÃ¡Â»Â¯ liÃ¡Â»â€¡u Ã„â€˜Ã†Â°Ã¡Â»Â£c chÃ¡Â»ï¿½n hiÃ¡Â»Æ’n thÃ¡Â»â€¹ lÃƒÂªn component
 		 public void mouseClicked(MouseEvent arg0) {
 		 int row = tblnhanvien.getSelectedRow();
 		 if (row != -1) {
@@ -834,7 +835,7 @@ public class Control extends JFrame {
 				try {
 					int result = sbbll.updateChuyenBay (cb);
 					if(result !=0) {
-						JOptionPane.showConfirmDialog(null,"cáº­p nháº­t thÃ nh cÃ´ng!","thÃ´ng bÃ¡o",JOptionPane.INFORMATION_MESSAGE);
+						JOptionPane.showConfirmDialog(null,"cÃ¡ÂºÂ­p nhÃ¡ÂºÂ­t thÃƒÂ nh cÃƒÂ´ng!","thÃƒÂ´ng bÃƒÂ¡o",JOptionPane.INFORMATION_MESSAGE);
 					}
 					loadAllChuyenBay();
 				} catch (Exception ex) {
@@ -851,7 +852,7 @@ public class Control extends JFrame {
 				 cb.setMa_cb(txtchuyenbayid.getText());
 				 ChuyenBayBLL cbbll = new ChuyenBayBLL();
 				 int choice = JOptionPane.showConfirmDialog(null,
-				 "Báº¡n cÃ³ cháº¯c cháº¯n xÃ³a dá»¯ liá»‡u!", "XÃ¡c nháº­n",
+				 "BÃ¡ÂºÂ¡n cÃƒÂ³ chÃ¡ÂºÂ¯c chÃ¡ÂºÂ¯n xÃƒÂ³a dÃ¡Â»Â¯ liÃ¡Â»â€¡u!", "XÃƒÂ¡c nhÃ¡ÂºÂ­n",
 				 JOptionPane.YES_NO_OPTION);
 				 if (choice == JOptionPane.YES_OPTION) {
 				 try {
@@ -874,7 +875,7 @@ public class Control extends JFrame {
 		tblchuyenbay.setBorder(UIManager.getBorder("Table.scrollPaneBorder"));
 		tblchuyenbay.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		tblchuyenbay.addMouseListener(new MouseAdapter() {
-			 // Láº¥y thÃ´ng tin dÃ²ng dá»¯ liá»‡u Ä‘Æ°á»£c chá»�n hiá»ƒn thá»‹ lÃªn component
+			 // LÃ¡ÂºÂ¥y thÃƒÂ´ng tin dÃƒÂ²ng dÃ¡Â»Â¯ liÃ¡Â»â€¡u Ã„â€˜Ã†Â°Ã¡Â»Â£c chÃ¡Â»ï¿½n hiÃ¡Â»Æ’n thÃ¡Â»â€¹ lÃƒÂªn component
 			 public void mouseClicked(MouseEvent arg0) {
 			 int row = tblchuyenbay.getSelectedRow();
 			 if (row != -1) {
@@ -965,15 +966,15 @@ public class Control extends JFrame {
 	 * @throws ClassNotFoundException 
 	  */
 	 public void loadAllNhanVien() throws ClassNotFoundException {
-		 //táº¡o control DefaultTableModel Ä‘á»ƒ hiá»ƒn thá»‹ danh sÃ¡ch NhanVien
+		 //tÃ¡ÂºÂ¡o control DefaultTableModel Ã„â€˜Ã¡Â»Æ’ hiÃ¡Â»Æ’n thÃ¡Â»â€¹ danh sÃƒÂ¡ch NhanVien
 	 String[] header = { "MA NV", "TEN NV", "Email", "SDT", "CHUC VU", "DIA CHI" };
 	 DefaultTableModel dtm = new DefaultTableModel(header, 0);
-	 //láº¥y danh sÃ¡ch NhanVienDTO (gá»�i hÃ m getAllNhanVien() trong NhanVienBLL)
+	 //lÃ¡ÂºÂ¥y danh sÃƒÂ¡ch NhanVienDTO (gÃ¡Â»ï¿½i hÃƒÂ m getAllNhanVien() trong NhanVienBLL)
 	 ArrayList<NhanVienDTO> arr = new ArrayList<NhanVienDTO>();
 	 NhanVienBLL NhanVienBLL = new NhanVienBLL();
 	 arr = NhanVienBLL.getAllNhanVien();
 	 
-	 //Duyá»‡t máº£ng NhanVienDTO vá»«a láº¥y Ä‘Æ°á»£c: arr
+	 //DuyÃ¡Â»â€¡t mÃ¡ÂºÂ£ng NhanVienDTO vÃ¡Â»Â«a lÃ¡ÂºÂ¥y Ã„â€˜Ã†Â°Ã¡Â»Â£c: arr
 	 NhanVienDTO NhanVienDTO = new NhanVienDTO();
 	 for (int i = 0; i < arr.size(); i++) {
 		 NhanVienDTO = arr.get(i);
@@ -984,7 +985,7 @@ public class Control extends JFrame {
 		 String sdt = NhanVienDTO.getSDT();
                  String chuc_vu = NhanVienDTO.getChucVu();
 		 String dia_chi = NhanVienDTO.getDiaChi();
-		 //táº¡o row Ä‘á»ƒ add vÃ o control DefaultTableModel
+		 //tÃ¡ÂºÂ¡o row Ã„â€˜Ã¡Â»Æ’ add vÃƒÂ o control DefaultTableModel
 		 Object[] row = { ma_nv, ten_nv, email, sdt, chuc_vu, dia_chi };
 		 dtm.addRow(row);
 	 }
@@ -995,15 +996,15 @@ public class Control extends JFrame {
 	 * @throws ClassNotFoundException 
 	  */
 	 public void loadAllKhachHang() throws ClassNotFoundException {
-		 //táº¡o control DefaultTableModel Ä‘á»ƒ hiá»ƒn thá»‹ danh sÃ¡ch KhachHang
+		 //tÃ¡ÂºÂ¡o control DefaultTableModel Ã„â€˜Ã¡Â»Æ’ hiÃ¡Â»Æ’n thÃ¡Â»â€¹ danh sÃƒÂ¡ch KhachHang
 	 String[] header = { "MA KH", "TEN KH","CMND/PP", "Email", "SDT", "DIA CHI" };
 	 DefaultTableModel dtm = new DefaultTableModel(header, 0);
-	 //láº¥y danh sÃ¡ch KhachHangDTO (gá»�i hÃ m getAllKhachHang() trong KhachHangBLL)
+	 //lÃ¡ÂºÂ¥y danh sÃƒÂ¡ch KhachHangDTO (gÃ¡Â»ï¿½i hÃƒÂ m getAllKhachHang() trong KhachHangBLL)
 	 ArrayList<KhachHangDTO> arr = new ArrayList<KhachHangDTO>();
 	 KhachHangBLL KhachHangBLL = new KhachHangBLL();
 	 arr = KhachHangBLL.getAllKhachHang();
 	 
-	 //Duyá»‡t máº£ng KhachHangDTO vá»«a láº¥y Ä‘Æ°á»£c: arr
+	 //DuyÃ¡Â»â€¡t mÃ¡ÂºÂ£ng KhachHangDTO vÃ¡Â»Â«a lÃ¡ÂºÂ¥y Ã„â€˜Ã†Â°Ã¡Â»Â£c: arr
 	 KhachHangDTO KhachHangDTO = new KhachHangDTO();
 	 for (int i = 0; i < arr.size(); i++) {
 		 KhachHangDTO = arr.get(i);
@@ -1014,7 +1015,7 @@ public class Control extends JFrame {
 		 String email = KhachHangDTO.getEmail();
 		 String sdt = KhachHangDTO.getSDT();
 		 String dia_chi = KhachHangDTO.getDiaChi();
-		 //táº¡o row Ä‘á»ƒ add vÃ o control DefaultTableModel
+		 //tÃ¡ÂºÂ¡o row Ã„â€˜Ã¡Â»Æ’ add vÃƒÂ o control DefaultTableModel
 		 Object[] row = { ma_kh, ten_kh, cmnd, email, sdt, dia_chi };
 		 dtm.addRow(row);
 	 }
@@ -1025,15 +1026,15 @@ public class Control extends JFrame {
 	 * @throws ClassNotFoundException 
 	  */
 	 public void loadAllChuyenBay() throws ClassNotFoundException {
-		 //táº¡o control DefaultTableModel Ä‘á»ƒ hiá»ƒn thá»‹ danh sÃ¡ch ChuyenBay
+		 //tÃ¡ÂºÂ¡o control DefaultTableModel Ã„â€˜Ã¡Â»Æ’ hiÃ¡Â»Æ’n thÃ¡Â»â€¹ danh sÃƒÂ¡ch ChuyenBay
 	 String[] header = { "MA CB", "HANG HK", "TEN", "DIEM DI", "DIEM DEN", "SB DI", "SB DEN", "GIO", "NGAY", "LOAI GHE", "GIA", "QUY DINH" };
 	 DefaultTableModel dtm = new DefaultTableModel(header, 0);
-	 //láº¥y danh sÃ¡ch ChuyenBayDTO (gá»�i hÃ m getAllChuyenBay() trong ChuyenBayBLL)
+	 //lÃ¡ÂºÂ¥y danh sÃƒÂ¡ch ChuyenBayDTO (gÃ¡Â»ï¿½i hÃƒÂ m getAllChuyenBay() trong ChuyenBayBLL)
 	 ArrayList<ChuyenBayDTO> arr = new ArrayList<ChuyenBayDTO>();
 	 ChuyenBayBLL ChuyenBayBLL = new ChuyenBayBLL();
 	 arr = ChuyenBayBLL.getAllChuyenBay();
 	 
-	 //Duyá»‡t máº£ng ChuyenBayDTO vá»«a láº¥y Ä‘Æ°á»£c: arr
+	 //DuyÃ¡Â»â€¡t mÃ¡ÂºÂ£ng ChuyenBayDTO vÃ¡Â»Â«a lÃ¡ÂºÂ¥y Ã„â€˜Ã†Â°Ã¡Â»Â£c: arr
 	 ChuyenBayDTO ChuyenBayDTO = new ChuyenBayDTO();
 	 for (int i = 0; i < arr.size(); i++) {
 		 ChuyenBayDTO = arr.get(i);
@@ -1050,22 +1051,22 @@ public class Control extends JFrame {
 		 String loaighe = ChuyenBayDTO.getLoaiGhe();
 		 int gia = ChuyenBayDTO.getGia();
 		 String quydinh = ChuyenBayDTO.getQuyDinh();
-		 //táº¡o row Ä‘á»ƒ add vÃ o control DefaultTableModel
+		 //tÃ¡ÂºÂ¡o row Ã„â€˜Ã¡Â»Æ’ add vÃƒÂ o control DefaultTableModel
 		 Object[] row = { ma_cb, hang_HK, ten, di, den, sb_di, sb_den, ngay, gio, loaighe, gia, quydinh };
 		 dtm.addRow(row);
 	 }
 	 tblchuyenbay.setModel(dtm);
 	 }
 	 public void loadAllHoaDon() throws ClassNotFoundException {
-		 //táº¡o control DefaultTableModel Ä‘á»ƒ hiá»ƒn thá»‹ danh sÃ¡ch HoaDon
-	 String[] header = { "MA HD", "TEN", "NV", "KH", "VE CB", "THANH TIEN", "TRANG THAI", "NGAY"};
+		 //tÃ¡ÂºÂ¡o control DefaultTableModel Ã„â€˜Ã¡Â»Æ’ hiÃ¡Â»Æ’n thÃ¡Â»â€¹ danh sÃƒÂ¡ch HoaDon
+	 String[] header = { "TEN", "NV", "KH", "VE CB", "THANH TIEN", "TRANG THAI", "NGAY"};
 	 DefaultTableModel dtm = new DefaultTableModel(header, 0);
-	 //láº¥y danh sÃ¡ch HoaDonDTO (gá»�i hÃ m getAllHoaDon() trong HoaDonBLL)
+	 //lÃ¡ÂºÂ¥y danh sÃƒÂ¡ch HoaDonDTO (gÃ¡Â»ï¿½i hÃƒÂ m getAllHoaDon() trong HoaDonBLL)
 	 ArrayList<HoaDonDTO> arr = new ArrayList<HoaDonDTO>();
 	 HoaDonBLL HoaDonBLL = new HoaDonBLL();
 	 arr = HoaDonBLL.getAllHoaDon();
 	 
-	 //Duyá»‡t máº£ng HoaDonDTO vá»«a láº¥y Ä‘Æ°á»£c: arr
+	 //DuyÃ¡Â»â€¡t mÃ¡ÂºÂ£ng HoaDonDTO vÃ¡Â»Â«a lÃ¡ÂºÂ¥y Ã„â€˜Ã†Â°Ã¡Â»Â£c: arr
 	 HoaDonDTO HoaDonDTO = new HoaDonDTO();
 	 for (int i = 0; i < arr.size(); i++) {
 		 HoaDonDTO = arr.get(i);
@@ -1102,8 +1103,8 @@ public class Control extends JFrame {
                  }
                  
 		 
-		 //táº¡o row Ä‘á»ƒ add vÃ o control DefaultTableModel
-		 Object[] row = { ma_hd, ten, thanh_tien, ngay_lap, nv, kh, ma_ve, trangthai };
+		 //tÃ¡ÂºÂ¡o row Ã„â€˜Ã¡Â»Æ’ add vÃƒÂ o control DefaultTableModel
+		 Object[] row = { ten, nv, kh, ma_ve, thanh_tien, ngay_lap, trangthai };
 		 dtm.addRow(row);
 	 }
 	 tblHoadon.setModel(dtm);
@@ -1114,15 +1115,15 @@ public class Control extends JFrame {
 	 * @throws ClassNotFoundException 
 	  */
 	 public void loadAllVeChuyenBay() throws ClassNotFoundException {
-		 //táº¡o control DefaultTableModel Ä‘á»ƒ hiá»ƒn thá»‹ danh sÃ¡ch VeChuyenBay
+		 //tÃ¡ÂºÂ¡o control DefaultTableModel Ã„â€˜Ã¡Â»Æ’ hiÃ¡Â»Æ’n thÃ¡Â»â€¹ danh sÃƒÂ¡ch VeChuyenBay
 	 String[] header = { "MA VE", "SO GHE", "MA CB", "KH", "NGAY", "GIO", "GIA", "TINH TRANG VE" };
 	 DefaultTableModel dtm = new DefaultTableModel(header, 0);
-	 //láº¥y danh sÃ¡ch VeChuyenBayDTO (gá»�i hÃ m getAllVeChuyenBay() trong HVeChuyenBayBLL)
+	 //lÃ¡ÂºÂ¥y danh sÃƒÂ¡ch VeChuyenBayDTO (gÃ¡Â»ï¿½i hÃƒÂ m getAllVeChuyenBay() trong HVeChuyenBayBLL)
 	 ArrayList<VeChuyenBayDTO> arr = new ArrayList<VeChuyenBayDTO>();
 	 VeChuyenBayBLL VeChuyenBayBLL = new VeChuyenBayBLL();
 	 arr = VeChuyenBayBLL.getAllVeChuyenBay();
 	 
-	 //Duyá»‡t máº£ng HoaDonDTO vá»«a láº¥y Ä‘Æ°á»£c: arr
+	 //DuyÃ¡Â»â€¡t mÃ¡ÂºÂ£ng HoaDonDTO vÃ¡Â»Â«a lÃ¡ÂºÂ¥y Ã„â€˜Ã†Â°Ã¡Â»Â£c: arr
 	 VeChuyenBayDTO VeChuyenBayDTO = new VeChuyenBayDTO();
 	 for (int i = 0; i < arr.size(); i++) {
 		 VeChuyenBayDTO = arr.get(i);
@@ -1147,7 +1148,7 @@ public class Control extends JFrame {
                     kh = KHDTO.getTen_kh();
                     
                  }
-		 //táº¡o row Ä‘á»ƒ add vÃ o control DefaultTableModel
+		 //tÃ¡ÂºÂ¡o row Ã„â€˜Ã¡Â»Æ’ add vÃƒÂ o control DefaultTableModel
 		 Object[] row = { ma_ve_cb, soghe, ma_cb, kh, ngay, gio, gia, tinh_trang };
 		 dtm.addRow(row);
 	 }

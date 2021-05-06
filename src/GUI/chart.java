@@ -51,6 +51,7 @@ public class chart extends ApplicationFrame {
 		 int thanh_tien = HoaDonDTO.getThanh_tien();
 		 Date ngay_lap = HoaDonDTO.getNgay_Lap();
                  String a = String.valueOf(thanh_tien);
+                 dataset.addValue(10, ngay_lap, a);
                  
          }
          
