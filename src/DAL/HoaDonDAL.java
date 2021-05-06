@@ -12,27 +12,27 @@ import DTO.HoaDonDTO;
 import UTILS.ConnectionUtil;
 
 public class HoaDonDAL {
-	//thực hiện kết nối csdl
+	//thá»±c hiá»‡n káº¿t ná»‘i csdl
 	private ConnectionUtil conUtil=null;
 	private Connection con=null;
-	//thực hiện các câu truy vấn
+	//thá»±c hiá»‡n cÃ¡c cÃ¢u truy váº¥n
 	private PreparedStatement preparedStatement;
-	//chứa kết quả truy vấn
+	//chá»©a káº¿t quáº£ truy váº¥n
 	private ResultSet resultSet;
 	
 	private Statement st;
 
-	//func hiển thị table hoa_don
+	//func hiá»ƒn thá»‹ table hoa_don
 	public ArrayList<HoaDonDTO> getAllHoaDon() throws ClassNotFoundException {
-		// Khởi tạo mảng đối tượng HoaDonDTO để chứa kết quả truy vấn	
+		// Khá»Ÿi táº¡o máº£ng Ä‘á»‘i tÆ°á»£ng HoaDonDTO Ä‘á»ƒ chá»©a káº¿t quáº£ truy váº¥n	
 		ArrayList<HoaDonDTO> result = new ArrayList<HoaDonDTO>();
 		String sqlSelectAll = "select * from hoadon";
 			
 		try {
-			//mở kết nối tới CSDL
+			//má»Ÿ káº¿t ná»‘i tá»›i CSDL
 			conUtil = new ConnectionUtil();
 			con = conUtil.getConnection();
-			//thực thi câu truy vấn
+			//thá»±c thi cÃ¢u truy váº¥n
 			preparedStatement = con.prepareStatement(sqlSelectAll);
 			resultSet = preparedStatement.executeQuery();
 			
@@ -40,8 +40,8 @@ public class HoaDonDAL {
 				HoaDonDTO HoaDonDTO = new HoaDonDTO();
 				HoaDonDTO.setMa_hd(resultSet.getString("ma_hd"));
                                 HoaDonDTO.setTen_hd(resultSet.getString("ten_hd"));
-				HoaDonDTO.setThanh_tien(resultSet.getInt("thanhtien"));
-				HoaDonDTO.setNgay_Lap(resultSet.getDate("ngaylap"));
+				HoaDonDTO.setThanh_tien(resultSet.getInt("thanh_tien"));
+				HoaDonDTO.setNgay_Lap(resultSet.getDate("ngay_lap"));
 				HoaDonDTO.setMa_nv(resultSet.getString("ma_nv"));
 				HoaDonDTO.setMa_kh(resultSet.getString("ma_kh"));
                                 HoaDonDTO.setTrangThai(resultSet.getString("TrangThai"));
@@ -53,7 +53,7 @@ public class HoaDonDAL {
 		}
 		finally {
 			try {
-				//ngắt kết nối csdl
+				//ngáº¯t káº¿t ná»‘i csdl
 				con.close();
 				preparedStatement.close();
 				resultSet.close();
@@ -63,17 +63,17 @@ public class HoaDonDAL {
 		}
 		return result;
 	}
-	//func tìm kiếm dữ liệu bằng ma_hd
+	//func tÃ¬m kiáº¿m dá»¯ liá»‡u báº±ng ma_hd
 	public ArrayList<HoaDonDTO> getHoaDonByMa_hd(HoaDonDTO HoaDonDTO) throws ClassNotFoundException {
-		// Khởi tạo mảng đối tượng HoaDonDTO để chứa kết quả truy vấn	
+		// Khá»Ÿi táº¡o máº£ng Ä‘á»‘i tÆ°á»£ng HoaDonDTO Ä‘á»ƒ chá»©a káº¿t quáº£ truy váº¥n	
 		ArrayList<HoaDonDTO> result = new ArrayList<HoaDonDTO>();
 		String sqlSelectByMa_hd = "select * from hoadon where ma_hd = ?";
 			
 		try {
-			//mở kết nối tới CSDL		
+			//má»Ÿ káº¿t ná»‘i tá»›i CSDL		
 			conUtil = new ConnectionUtil();
 			con = conUtil.getConnection();
-			//thực thi câu truy vấn
+			//thá»±c thi cÃ¢u truy váº¥n
 			preparedStatement = con.prepareStatement(sqlSelectByMa_hd);
 			preparedStatement.setString(1, HoaDonDTO.getMa_hd());
 			resultSet  = preparedStatement.executeQuery();
@@ -82,8 +82,8 @@ public class HoaDonDAL {
 				HoaDonDTO HoaDon = new HoaDonDTO();
 				HoaDon.setMa_hd(resultSet.getString("ma_hd"));
                                 HoaDon.setTen_hd(resultSet.getString("ten_hd"));
-				HoaDon.setThanh_tien(resultSet.getInt("thanhtien"));
-				HoaDon.setNgay_Lap(resultSet.getDate("ngaylap"));
+				HoaDon.setThanh_tien(resultSet.getInt("thanh_tien"));
+				HoaDon.setNgay_Lap(resultSet.getDate("ngay_lap"));
 				HoaDon.setMa_nv(resultSet.getString("ma_nv"));
 				HoaDon.setMa_kh(resultSet.getString("ma_kh"));
                                 HoaDon.setTrangThai(resultSet.getString("TrangThai"));
@@ -95,7 +95,7 @@ public class HoaDonDAL {
 		}
 		finally {
 			try {
-				//ngắt kết nối csdl
+				//ngáº¯t káº¿t ná»‘i csdl
 				con.close();
 				preparedStatement.close();
 				resultSet.close();
@@ -105,17 +105,17 @@ public class HoaDonDAL {
 		}
 		return result;
 	}
-	//func thêm hóa đơn
+	//func thÃªm hÃ³a Ä‘Æ¡n
 	public int insertHoaDon(HoaDonDTO HoaDonDTO) throws ClassNotFoundException {
-		// Khởi tạo mảng đối tượng HoaDonDTO để chứa kết quả truy vấn	
+		// Khá»Ÿi táº¡o máº£ng Ä‘á»‘i tÆ°á»£ng HoaDonDTO Ä‘á»ƒ chá»©a káº¿t quáº£ truy váº¥n	
 		int result = 0;
 		String sqlInsert = "insert into hoa_don(ma_hd,ten_hd,thanh_tien, ngay_lap, ma_nv, ma_kh,ma) values(?,?,?,?,?,?)";
 		
 		try {
-			//mở kết nối tới CSDL	
+			//má»Ÿ káº¿t ná»‘i tá»›i CSDL	
 			conUtil = new ConnectionUtil();
 			con = conUtil.getConnection();
-			//thực thi câu truy vấn
+			//thá»±c thi cÃ¢u truy váº¥n
 			preparedStatement = con.prepareStatement(sqlInsert);
 			preparedStatement.setString(1, HoaDonDTO.getMa_hd());
 			preparedStatement.setInt(2, HoaDonDTO.getThanh_tien());
@@ -136,17 +136,17 @@ public class HoaDonDAL {
 		}
 		return result;
 	}
-	//func sửa HoaDon
+	//func sá»­a HoaDon
 		public int updateHoaDon(HoaDonDTO HoaDonDTO) throws ClassNotFoundException {
-			// Khởi tạo mảng đối tượng HoaDonDTO để chứa kết quả truy vấn	
+			// Khá»Ÿi táº¡o máº£ng Ä‘á»‘i tÆ°á»£ng HoaDonDTO Ä‘á»ƒ chá»©a káº¿t quáº£ truy váº¥n	
 			int result = 0;
 			String sqlUpdate = "update hoa_don set ten_hd=?, thanh_tien=?, ngay_lap=?, ma_nv=?, ma_kh=?, ma_ve_cb=?, TrangThai=? where ma_hd=?";
 			
 			try {
-				//mở kết nối tới CSDL	
+				//má»Ÿ káº¿t ná»‘i tá»›i CSDL	
 				conUtil = new ConnectionUtil();
 				con = conUtil.getConnection();
-				//thực thi câu truy vấn
+				//thá»±c thi cÃ¢u truy váº¥n
 				preparedStatement = con.prepareStatement(sqlUpdate);
                                 preparedStatement.setString(1, HoaDonDTO.getTen_hd());
 				preparedStatement.setInt(2, HoaDonDTO.getThanh_tien());
@@ -170,17 +170,17 @@ public class HoaDonDAL {
 			}
 			return result;
 		}
-		//func xóa hóa đơn
+		//func xÃ³a hÃ³a Ä‘Æ¡n
 		public int deleteHoaDon(HoaDonDTO HoaDonDTO) throws ClassNotFoundException {
-			// Khởi tạo mảng đối tượng HoaDonDTO để chứa kết quả truy vấn	
+			// Khá»Ÿi táº¡o máº£ng Ä‘á»‘i tÆ°á»£ng HoaDonDTO Ä‘á»ƒ chá»©a káº¿t quáº£ truy váº¥n	
 			int result = 0;
 			String sqlDelete = "delete from hoadon where ma_hd = ?";
 			
 			try {
-				//mở kết nối tới CSDL	
+				//má»Ÿ káº¿t ná»‘i tá»›i CSDL	
 				conUtil = new ConnectionUtil();
 				con = conUtil.getConnection();
-				//thực thi câu truy vấn
+				//thá»±c thi cÃ¢u truy váº¥n
 				preparedStatement = con.prepareStatement(sqlDelete);
 				preparedStatement.setString(1, HoaDonDTO.getMa_hd());
 				result = preparedStatement.executeUpdate();
@@ -198,15 +198,15 @@ public class HoaDonDAL {
 			return result;
 		}
 		public ArrayList<HoaDonDTO> getHoaDonByMa_kh(HoaDonDTO HoaDonDTO) throws ClassNotFoundException {
-			// Khởi tạo mảng đối tượng HoaDonDTO để chứa kết quả truy vấn	
+			// Khá»Ÿi táº¡o máº£ng Ä‘á»‘i tÆ°á»£ng HoaDonDTO Ä‘á»ƒ chá»©a káº¿t quáº£ truy váº¥n	
 			ArrayList<HoaDonDTO> result = new ArrayList<HoaDonDTO>();
 			String sqlSelectByMa_kh = "select * from hoadon where ma_kh = ?";
 				
 			try {
-				//mở kết nối tới CSDL		
+				//má»Ÿ káº¿t ná»‘i tá»›i CSDL		
 				conUtil = new ConnectionUtil();
 				con = conUtil.getConnection();
-				//thực thi câu truy vấn
+				//thá»±c thi cÃ¢u truy váº¥n
 				preparedStatement = con.prepareStatement(sqlSelectByMa_kh);
 				preparedStatement.setString(1, HoaDonDTO.getMa_kh());
 				resultSet  = preparedStatement.executeQuery();
@@ -215,8 +215,8 @@ public class HoaDonDAL {
 					HoaDonDTO HoaDon = new HoaDonDTO();
 					HoaDon.setMa_hd(resultSet.getString("ma_hd"));
                                         HoaDon.setTen_hd(resultSet.getString("ten_hd"));
-                                        HoaDon.setThanh_tien(resultSet.getInt("thanhtien"));
-                                        HoaDon.setNgay_Lap(resultSet.getDate("ngaylap"));
+                                        HoaDon.setThanh_tien(resultSet.getInt("thanh_tien"));
+                                        HoaDon.setNgay_Lap(resultSet.getDate("ngay_lap"));
                                         HoaDon.setMa_nv(resultSet.getString("ma_nv"));
                                         HoaDon.setMa_kh(resultSet.getString("ma_kh"));
                                         HoaDon.setTrangThai(resultSet.getString("TrangThai"));
@@ -228,7 +228,7 @@ public class HoaDonDAL {
 			}
 			finally {
 				try {
-					//ngắt kết nối csdl
+					//ngáº¯t káº¿t ná»‘i csdl
 					con.close();
 					preparedStatement.close();
 					resultSet.close();
@@ -240,15 +240,15 @@ public class HoaDonDAL {
 		}
                 
                 public ArrayList<HoaDonDTO> getHoaDonByMa_khMa_cb(HoaDonDTO HoaDonDTO) throws ClassNotFoundException {
-			// Khởi tạo mảng đối tượng HoaDonDTO để chứa kết quả truy vấn	
+			// Khá»Ÿi táº¡o máº£ng Ä‘á»‘i tÆ°á»£ng HoaDonDTO Ä‘á»ƒ chá»©a káº¿t quáº£ truy váº¥n	
 			ArrayList<HoaDonDTO> result = new ArrayList<HoaDonDTO>();
 			String sqlSelectByMa_khcb = "select * from hoadon where ma_kh = ? and ma_ve_cb=?";
 				
 			try {
-				//mở kết nối tới CSDL		
+				//má»Ÿ káº¿t ná»‘i tá»›i CSDL		
 				conUtil = new ConnectionUtil();
 				con = conUtil.getConnection();
-				//thực thi câu truy vấn
+				//thá»±c thi cÃ¢u truy váº¥n
 				preparedStatement = con.prepareStatement(sqlSelectByMa_khcb);
 				preparedStatement.setString(1, HoaDonDTO.getMa_kh());
                                 preparedStatement.setString(2, HoaDonDTO.getMa_ve_cb());
@@ -258,8 +258,8 @@ public class HoaDonDAL {
 					HoaDonDTO HoaDon = new HoaDonDTO();
 					HoaDon.setMa_hd(resultSet.getString("ma_hd"));
                                         HoaDon.setTen_hd(resultSet.getString("ten_hd"));
-                                        HoaDon.setThanh_tien(resultSet.getInt("thanhtien"));
-                                        HoaDon.setNgay_Lap(resultSet.getDate("ngaylap"));
+                                        HoaDon.setThanh_tien(resultSet.getInt("thanh_tien"));
+                                        HoaDon.setNgay_Lap(resultSet.getDate("ngay_lap"));
                                         HoaDon.setMa_nv(resultSet.getString("ma_nv"));
                                         HoaDon.setMa_kh(resultSet.getString("ma_kh"));
                                         HoaDon.setTrangThai(resultSet.getString("TrangThai"));
@@ -271,7 +271,7 @@ public class HoaDonDAL {
 			}
 			finally {
 				try {
-					//ngắt kết nối csdl
+					//ngáº¯t káº¿t ná»‘i csdl
 					con.close();
 					preparedStatement.close();
 					resultSet.close();

@@ -11,27 +11,27 @@ import DTO.NhanVienDTO;
 import UTILS.ConnectionUtil;
 
 public class NhanVienDAL {
-	//thực hiện kết nối csdl
+	//thá»±c hiá»‡n káº¿t ná»‘i csdl
 		private ConnectionUtil conUtil=null;
 		private Connection con=null;
-		//thực hiện các câu truy vấn
+		//thá»±c hiá»‡n cÃ¡c cÃ¢u truy váº¥n
 		private PreparedStatement preparedStatement;
-		//chứa kết quả truy vấn
+		//chá»©a káº¿t quáº£ truy váº¥n
 		private ResultSet resultSet;
 		
 		private Statement st;
 
-		//func hiển thị table nhanvien
+		//func hiá»ƒn thá»‹ table nhanvien
 		public ArrayList<NhanVienDTO> getAllNhanVien() throws ClassNotFoundException {
-			// Khởi tạo mảng đối tượng NhanVienDTO để chứa kết quả truy vấn	
+			// Khá»Ÿi táº¡o máº£ng Ä‘á»‘i tÆ°á»£ng NhanVienDTO Ä‘á»ƒ chá»©a káº¿t quáº£ truy váº¥n	
 			ArrayList<NhanVienDTO> result = new ArrayList<NhanVienDTO>();
 			String sqlSelectAll = "select * from nhanvien";
 				
 			try {
-				//mở kết nối tới CSDL
+				//má»Ÿ káº¿t ná»‘i tá»›i CSDL
 				conUtil = new ConnectionUtil();
 				con = conUtil.getConnection();
-				//thực thi câu truy vấn
+				//thá»±c thi cÃ¢u truy váº¥n
 				preparedStatement = con.prepareStatement(sqlSelectAll);
 				resultSet = preparedStatement.executeQuery();
 				
@@ -50,7 +50,7 @@ public class NhanVienDAL {
 			}
 			finally {
 				try {
-					//ngắt kết nối csdl
+					//ngáº¯t káº¿t ná»‘i csdl
 					con.close();
 					preparedStatement.close();
 					resultSet.close();
@@ -60,17 +60,17 @@ public class NhanVienDAL {
 			}
 			return result;
 		}
-		//func tìm kiếm dữ liệu bằng MANV
+		//func tÃ¬m kiáº¿m dá»¯ liá»‡u báº±ng MANV
 		public ArrayList<NhanVienDTO> getNhanVienByMANV(NhanVienDTO NhanVienDTO) throws ClassNotFoundException {
-			// Khởi tạo mảng đối tượng NhanVienDTO để chứa kết quả truy vấn	
+			// Khá»Ÿi táº¡o máº£ng Ä‘á»‘i tÆ°á»£ng NhanVienDTO Ä‘á»ƒ chá»©a káº¿t quáº£ truy váº¥n	
 			ArrayList<NhanVienDTO> result = new ArrayList<NhanVienDTO>();
 			String sqlSelectByMANV = "select * from nhanvien where ma_nv = ?";
 				
 			try {
-				//mở kết nối tới CSDL		
+				//má»Ÿ káº¿t ná»‘i tá»›i CSDL		
 				conUtil = new ConnectionUtil();
 				con = conUtil.getConnection();
-				//thực thi câu truy vấn
+				//thá»±c thi cÃ¢u truy váº¥n
 				preparedStatement = con.prepareStatement(sqlSelectByMANV);
 				preparedStatement.setString(1, NhanVienDTO.getMa_nv());
 				resultSet  = preparedStatement.executeQuery();
@@ -90,7 +90,7 @@ public class NhanVienDAL {
 			}
 			finally {
 				try {
-					//ngắt kết nối csdl
+					//ngáº¯t káº¿t ná»‘i csdl
 					con.close();
 					preparedStatement.close();
 					resultSet.close();
@@ -100,17 +100,17 @@ public class NhanVienDAL {
 			}
 			return result;
 		}
-		//func thêm nhân viên
+		//func thÃªm nhÃ¢n viÃªn
 		public int insertNhanVien(NhanVienDTO NhanVienDTO) throws ClassNotFoundException {
-			// Khởi tạo mảng đối tượng NhanVienDTO để chứa kết quả truy vấn	
+			// Khá»Ÿi táº¡o máº£ng Ä‘á»‘i tÆ°á»£ng NhanVienDTO Ä‘á»ƒ chá»©a káº¿t quáº£ truy váº¥n	
 			int result = 0;
 			String sqlInsert = "insert into nhanvien(ma_nv,ten_nv,email,password,sdt,diachi,chucvu) values(?,?,?,?,?,?,?)";
 			
 			try {
-				//mở kết nối tới CSDL	
+				//má»Ÿ káº¿t ná»‘i tá»›i CSDL	
 				conUtil = new ConnectionUtil();
 				con = conUtil.getConnection();
-				//thực thi câu truy vấn
+				//thá»±c thi cÃ¢u truy váº¥n
 				preparedStatement = con.prepareStatement(sqlInsert);
 				preparedStatement.setString(1, NhanVienDTO.getMa_nv());
 				preparedStatement.setString(2, NhanVienDTO.getTen_nv());
@@ -133,22 +133,22 @@ public class NhanVienDAL {
 			}
 			return result;
 		}
-		//func sửa nhân viên
+		//func sá»­a nhÃ¢n viÃªn
 			public int updateNhanVien(NhanVienDTO NhanVienDTO) throws ClassNotFoundException {
-				// Khởi tạo mảng đối tượng NhanVienDTO để chứa kết quả truy vấn	
+				// Khá»Ÿi táº¡o máº£ng Ä‘á»‘i tÆ°á»£ng NhanVienDTO Ä‘á»ƒ chá»©a káº¿t quáº£ truy váº¥n	
 				int result = 0;
 				String sqlUpdate = "update nhanvien set ten_nv=? ,sdt=?,diachi=? where ma_nv=?";
 				
 				try {
-					//mở kết nối tới CSDL	
+					//má»Ÿ káº¿t ná»‘i tá»›i CSDL	
 					conUtil = new ConnectionUtil();
 					con = conUtil.getConnection();
-					//thực thi câu truy vấn
+					//thá»±c thi cÃ¢u truy váº¥n
 					preparedStatement = con.prepareStatement(sqlUpdate);
-					preparedStatement.setString(1, NhanVienDTO.getTen_nv());
-					preparedStatement.setString(2, NhanVienDTO.getSDT());
-					preparedStatement.setString(3, NhanVienDTO.getDiaChi());
-                                        preparedStatement.setString(4, NhanVienDTO.getMa_nv());
+					preparedStatement.setString(1, NhanVienDTO.getTen_nv().toString());
+					preparedStatement.setString(2, NhanVienDTO.getSDT().toString());
+					preparedStatement.setString(3, NhanVienDTO.getDiaChi().toString());
+                                        preparedStatement.setString(4, NhanVienDTO.getMa_nv().toString());
 					result = preparedStatement.executeUpdate();
 				} catch (SQLException e) {
 					e.printStackTrace();
@@ -163,17 +163,17 @@ public class NhanVienDAL {
 				}
 				return result;
 			}
-			//func xóa nhân viên
+			//func xÃ³a nhÃ¢n viÃªn
 			public int deleteNhanVien(NhanVienDTO NhanVienDTO) throws ClassNotFoundException {
-				// Khởi tạo mảng đối tượng NhanVienDTO để chứa kết quả truy vấn	
+				// Khá»Ÿi táº¡o máº£ng Ä‘á»‘i tÆ°á»£ng NhanVienDTO Ä‘á»ƒ chá»©a káº¿t quáº£ truy váº¥n	
 				int result = 0;
 				String sqlDelete = "delete from nhanvien where ma_nv = ?";
 				
 				try {
-					//mở kết nối tới CSDL	
+					//má»Ÿ káº¿t ná»‘i tá»›i CSDL	
 					conUtil = new ConnectionUtil();
 					con = conUtil.getConnection();
-					//thực thi câu truy vấn
+					//thá»±c thi cÃ¢u truy váº¥n
 					preparedStatement = con.prepareStatement(sqlDelete);
 					preparedStatement.setString(1, NhanVienDTO.getMa_nv());
 					result = preparedStatement.executeUpdate();
