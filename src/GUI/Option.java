@@ -23,6 +23,7 @@ import DTO.ChuyenBayDTO;
 import DTO.HoaDonDTO;
 import DTO.KhachHangDTO;
 import DTO.VeChuyenBayDTO;
+import com.toedter.calendar.JDateChooser;
 
 import javax.swing.JScrollPane;
 import java.awt.Button;
@@ -33,6 +34,7 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import java.sql.Time;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -42,14 +44,11 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JTextArea;
 import javax.swing.JRadioButton;
-import org.jdatepicker.impl.JDatePanelImpl;
-import org.jdatepicker.impl.JDatePickerImpl;
-import org.jdatepicker.impl.UtilDateModel;
 
 public class Option extends JFrame {
 	private JPanel contentPane;
 	private JTextField txtchuyenbayid;
-	private JTextField txtngaygio;
+	private JDateChooser ngaygio;
 	private JTextField txtmaybayname;
 	private JTextField txtgheh1;
 	private JTextField txtgia;
@@ -167,7 +166,7 @@ public class Option extends JFrame {
 		panel_2.add(lbldiemden);
                 
                 JLabel lblngaybay = new JLabel("Ngày:");
-		lblngaybay.setBounds(224, 64, 63, 14);
+                lblngaybay.setBounds(224, 64, 63, 14);
 		panel_2.add(lblngaybay);
 		
 		JComboBox comboBox = new JComboBox(diemdis);
@@ -181,9 +180,9 @@ public class Option extends JFrame {
 		comboBox_1.setBackground(Color.WHITE);
 		panel_2.add(comboBox_1);
                 
-                JTextField txtngaybay = new JTextField();
-                txtngaybay.setBounds(297, 60, 100, 20);
-                panel_2.add(txtngaybay);
+                JDateChooser ngaybay = new JDateChooser();
+                ngaybay.setBounds(297, 60, 100, 20);
+                panel_2.add(ngaybay);
 		
 		JButton btnNewButton = new JButton("Tìm Vé");
 		btnNewButton.setBounds(431, 15, 89, 23);
@@ -195,11 +194,9 @@ public class Option extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				diem_di = (String) comboBox.getSelectedItem();
 				diem_den = (String) comboBox_1.getSelectedItem();
-                            try {
-                                ngay = formatter.parse(txtngaybay.getText().toString());
-                            } catch (ParseException ex) {
-                                Logger.getLogger(Option.class.getName()).log(Level.SEVERE, null, ex);
-                            }
+                                DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+                                Date ngay = ngaygio.getDate();
+                                //ngay = formatter.parse(ngaybay.getText().toString());
 				try {
 					searchChuyenBay(diem_di, diem_den, ngay);
 				} catch (ClassNotFoundException e1) {
@@ -224,15 +221,21 @@ public class Option extends JFrame {
 			 if (row != -1) {
 			 txtchuyenbayid.setText(table_1.getValueAt(row, 0).toString());
 			 txtmaybayname.setText(table_1.getValueAt(row, 1).toString());
-			 txtngaygio.setText(table_1.getValueAt(row, 2).toString());				
+			 
+                         //ngaygio.setText(table_1.getValueAt(row, 2).toString());	
+                         
+//                        DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+//                        String ngayGio;
+//                        ngayGio = df.format(ngaygio.getDate());
+        
 			 textField.setText(table_1.getValueAt(row, 3).toString());
 			 txtsanbaydiname.setText(table_1.getValueAt(row, 4).toString());
 			 txtsanbaydenname.setText(table_1.getValueAt(row, 5).toString());
 			 txtgheh1.setText(table_1.getValueAt(row, 6).toString());
 			 txtgia.setText(table_1.getValueAt(row, 7).toString());
-			 }
-			 }
-			 });
+                        }
+                    }
+                });
 		
 		JButton btnNewButton_1 = new JButton("Mua vé");
 		btnNewButton_1.addActionListener(new ActionListener() {
