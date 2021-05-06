@@ -213,7 +213,7 @@ public class ChuyenBayDAL {
 		}
 		public ArrayList<ChuyenBayDTO> getChuyenBayBydiem(ChuyenBayDTO chuyenBayDTO) throws ClassNotFoundException {
 			ArrayList<ChuyenBayDTO> result = new ArrayList<ChuyenBayDTO>();
-			String sql = "select * from chuyen_bay where sb_di = ? and sb_den=? ";
+			String sql = "select * from chuyenbay where sb_di = ? and sb_den=? and ngaybay=?";
 			ChuyenBayDTO CBDTO = new ChuyenBayDTO(); 
 			try {
 				conUtil = new ConnectionUtil();
@@ -221,6 +221,7 @@ public class ChuyenBayDAL {
 				preparedStatement = con.prepareStatement(sql);
 				preparedStatement.setString(1, CBDTO.getSanBayDi());
 				preparedStatement.setString(2, CBDTO.getSanBayDen());
+                                preparedStatement.setDate(3, CBDTO.getNgayBay());
 				resultSet  = preparedStatement.executeQuery();
 				while(resultSet.next()) {
 					ChuyenBayDTO ChuyenBay = new ChuyenBayDTO();

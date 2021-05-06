@@ -196,7 +196,7 @@ public class KhachHangDAL {
 				public ArrayList<KhachHangDTO> getKhachHangByCMND_PP(KhachHangDTO KhachHangDTO) throws ClassNotFoundException {
 					// Khởi tạo mảng đối tượng KhachHangDTO để chứa kết quả truy vấn	
 					ArrayList<KhachHangDTO> result = new ArrayList<KhachHangDTO>();
-					String sql = "select * from khachhang where cmnd = ?";
+					String sql = "select * from khachhang where cmnd like ?";
 						
 					try {
 						//mở kết nối tới CSDL		
@@ -204,7 +204,7 @@ public class KhachHangDAL {
 						con = conUtil.getConnection();
 						//thực thi câu truy vấn
 						preparedStatement = con.prepareStatement(sql);
-						preparedStatement.setString(1, KhachHangDTO.getCmnd());
+						preparedStatement.setString(1, KhachHangDTO.getCmnd()+"%");
 						resultSet  = preparedStatement.executeQuery();
 						
 						while(resultSet.next()) {
@@ -236,7 +236,7 @@ public class KhachHangDAL {
 				public ArrayList<KhachHangDTO> getKhachHangBySDT(KhachHangDTO KhachHangDTO) throws ClassNotFoundException {
 					// Khởi tạo mảng đối tượng KhachHangDTO để chứa kết quả truy vấn	
 					ArrayList<KhachHangDTO> result = new ArrayList<KhachHangDTO>();
-					String sql = "select * from khachhang where sdt = ?";
+					String sql = "select * from khachhang where sdt like ?";
 						
 					try {
 						//mở kết nối tới CSDL		
@@ -244,7 +244,7 @@ public class KhachHangDAL {
 						con = conUtil.getConnection();
 						//thực thi câu truy vấn
 						preparedStatement = con.prepareStatement(sql);
-						preparedStatement.setString(1, KhachHangDTO.getSDT());
+						preparedStatement.setString(1, KhachHangDTO.getSDT()+"%");
 						resultSet  = preparedStatement.executeQuery();
 						
 						while(resultSet.next()) {

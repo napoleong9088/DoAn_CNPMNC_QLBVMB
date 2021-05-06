@@ -12,7 +12,7 @@ public class ChuyenBayBLL {
 	 return ChuyenBayDAL.getAllChuyenBay();
 	 }
 
-	 public ChuyenBayDTO getChuyenBayByma_cb(ChuyenBayDTO ChuyenBayDTO) throws ClassNotFoundException{
+	 public ArrayList<ChuyenBayDTO> getChuyenBayByma_cb(ChuyenBayDTO ChuyenBayDTO) throws ClassNotFoundException{
 	 return ChuyenBayDAL.getChuyenBayByma_cb(ChuyenBayDTO);
 	 }
 
@@ -34,4 +34,5 @@ public class ChuyenBayBLL {
 	 public ArrayList<ChuyenBayDTO> getChuyenBayBydiem(ChuyenBayDTO chuyenBayDTO) throws ClassNotFoundException{
 		 return ChuyenBayDAL.getChuyenBayBydiem(chuyenBayDTO);
 	 }
+         
 }
