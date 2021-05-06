@@ -1,10 +1,14 @@
 package GUI;
+import BLL.ChuyenBayBLL;
 import BLL.HoaDonBLL;
 import BLL.KhachHangBLL;
 import BLL.NhanVienBLL;
+import BLL.VeChuyenBayBLL;
+import DTO.ChuyenBayDTO;
 import DTO.HoaDonDTO;
 import DTO.KhachHangDTO;
 import DTO.NhanVienDTO;
+import DTO.VeChuyenBayDTO;
 import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.table.DefaultTableModel;
@@ -34,12 +38,12 @@ public class chart extends ApplicationFrame {
 
    private DefaultCategoryDataset createDataset( ) throws ClassNotFoundException {
       DefaultCategoryDataset dataset = new DefaultCategoryDataset( );
-      /*dataset.addValue( 15 , "schools" , "1970" );
+      dataset.addValue( 15 , "schools" , "1970" );
       dataset.addValue( 30 , "schools" , "1980" );
       dataset.addValue( 60 , "schools" ,  "1990" );
       dataset.addValue( 120 , "schools" , "2000" );
       dataset.addValue( 240 , "schools" , "2010" );
-      dataset.addValue( 300 , "schools" , "2014" );*/
+      dataset.addValue( 300 , "schools" , "2014" );
       ArrayList<HoaDonDTO> arr = new ArrayList<HoaDonDTO>();
 	 HoaDonBLL HoaDonBLL = new HoaDonBLL();
 	 arr = HoaDonBLL.getAllHoaDon();
@@ -50,8 +54,30 @@ public class chart extends ApplicationFrame {
 		 
 		 int thanh_tien = HoaDonDTO.getThanh_tien();
 		 Date ngay_lap = HoaDonDTO.getNgay_Lap();
+                 String ma_vecb = HoaDonDTO.getMa_ve_cb();
+                 String ma_nv = HoaDonDTO.getMa_nv();
+                 String makh = HoaDonDTO.getMa_kh();
+                 
+                ArrayList<KhachHangDTO> kh = new ArrayList<KhachHangDTO>();
+                KhachHangBLL khbll = new KhachHangBLL();
+                KhachHangDTO khDto =new KhachHangDTO();
+
+                ArrayList<ChuyenBayDTO> vcbs = new ArrayList<ChuyenBayDTO>();
+                ChuyenBayBLL ChuyenBayBLL = new ChuyenBayBLL();
+                ChuyenBayDTO ChuyenBayDTO = new ChuyenBayDTO();
+                //ChuyenBayDTO.setMaChuyenbay();
+                vcbs = ChuyenBayBLL.getChuyenBayByma_cb(ChuyenBayDTO);
+
+
+                ArrayList<VeChuyenBayDTO> vcb = new ArrayList<VeChuyenBayDTO>();
+                VeChuyenBayBLL VeChuyenBayBLL = new VeChuyenBayBLL();
+                VeChuyenBayDTO VeChuyenBayDTO = new VeChuyenBayDTO();
+                
+                
                  String a = String.valueOf(thanh_tien);
-                 dataset.addValue(10, ngay_lap, a);
+                 dataset.addValue(10, a, ngay_lap);
+                 dataset.addValue(15, a,ngay_lap);
+                 dataset.addValue(20, a,ngay_lap);
                  
          }
          
