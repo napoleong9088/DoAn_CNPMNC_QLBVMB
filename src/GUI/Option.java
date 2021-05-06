@@ -48,7 +48,7 @@ import javax.swing.JRadioButton;
 public class Option extends JFrame {
 	private JPanel contentPane;
 	private JTextField txtchuyenbayid;
-	private JDateChooser ngaygio;
+	private JDateChooser jdatengaygio;
 	private JTextField txtmaybayname;
 	private JTextField txtgheh1;
 	private JTextField txtgia;
@@ -181,7 +181,7 @@ public class Option extends JFrame {
 		panel_2.add(comboBox_1);
                 
                 JDateChooser ngaybay = new JDateChooser();
-                ngaybay.setBounds(297, 60, 100, 20);
+                ngaybay.setBounds(297, 60, 120, 20);
                 panel_2.add(ngaybay);
 		
 		JButton btnNewButton = new JButton("Tìm Vé");
@@ -194,9 +194,13 @@ public class Option extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				diem_di = (String) comboBox.getSelectedItem();
 				diem_den = (String) comboBox_1.getSelectedItem();
-                                DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-                                Date ngay = ngaygio.getDate();
-                                //ngay = formatter.parse(ngaybay.getText().toString());
+                                //DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+                                Date ngay = jdatengaygio.getDate();
+                            try {
+                                ngay = formatter.parse(ngay.toString());
+                            } catch (ParseException ex) {
+                                Logger.getLogger(Option.class.getName()).log(Level.SEVERE, null, ex);
+                            }
 				try {
 					searchChuyenBay(diem_di, diem_den, ngay);
 				} catch (ClassNotFoundException e1) {
