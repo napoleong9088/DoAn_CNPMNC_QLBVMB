@@ -114,10 +114,10 @@ public class Member extends JFrame {
 						JOptionPane.showMessageDialog(null,"LOGIN SUCCESS","",JOptionPane.INFORMATION_MESSAGE);
 						NVDTO.setEmail(textField.getText());
 						NVBLL.getNVByid(NVDTO);
-						if (NVDTO.getChucVu()=="Admin") {
+						if (NVDTO.getChucVu().equals("admin")) {
 							Control control = new Control();
 							control.setVisible(true);
-						} else if (NVDTO.getChucVu()=="Emp") {
+						} else if (NVDTO.getChucVu().equals("emp")) {
 							Option option = new Option();
 							option.setVisible(true);
 						}
@@ -183,7 +183,6 @@ public class Member extends JFrame {
 						khDto.setSDT(khDto.getSDT());
 						khDto.setDiaChi(khDto.getDiaChi());
 						action.getkh(khDto);
-						action.getlscb(khDto);
 						} catch (Exception e1) {
 							// TODO: handle exception
 						}

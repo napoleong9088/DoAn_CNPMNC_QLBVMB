@@ -12,27 +12,27 @@ import DTO.NhanVienDTO;
 import UTILS.ConnectionUtil;
 
 public class KhachHangDAL {
-	//thực hiện kết nối csdl
+	//thá»±c hiá»‡n káº¿t ná»‘i csdl
 			private ConnectionUtil conUtil=null;
 			private Connection con=null;
-			//thực hiện các câu truy vấn
+			//thá»±c hiá»‡n cÃ¡c cÃ¢u truy váº¥n
 			private PreparedStatement preparedStatement;
-			//chứa kết quả truy vấn
+			//chá»©a káº¿t quáº£ truy váº¥n
 			private ResultSet resultSet;
 			
 			private Statement st;
 
-			//func hiển thị table nhanvien
+			//func hiá»ƒn thá»‹ table nhanvien
 			public ArrayList<KhachHangDTO> getAllKhachhang() throws ClassNotFoundException {
-				// Khởi tạo mảng đối tượng KhachHangDTO để chứa kết quả truy vấn	
+				// Khá»Ÿi táº¡o máº£ng Ä‘á»‘i tÆ°á»£ng KhachHangDTO Ä‘á»ƒ chá»©a káº¿t quáº£ truy váº¥n	
 				ArrayList<KhachHangDTO> result = new ArrayList<KhachHangDTO>();
 				String sqlSelectAll = "select * from khachhang";
 					
 				try {
-					//mở kết nối tới CSDL
+					//má»Ÿ káº¿t ná»‘i tá»›i CSDL
 					conUtil = new ConnectionUtil();
 					con = conUtil.getConnection();
-					//thực thi câu truy vấn
+					//thá»±c thi cÃ¢u truy váº¥n
 					preparedStatement = con.prepareStatement(sqlSelectAll);
 					resultSet = preparedStatement.executeQuery();
 					
@@ -41,9 +41,10 @@ public class KhachHangDAL {
 						KhachHangDTO.setMa_kh(resultSet.getString("ma_kh"));
 						KhachHangDTO.setTen_kh(resultSet.getString("ten_kh"));
 						KhachHangDTO.setEmail(resultSet.getString("email"));
-						KhachHangDTO.setCmnd(resultSet.getString("CMND_PP"));
+						KhachHangDTO.setCmnd(resultSet.getString("cmnd"));
 						KhachHangDTO.setSDT(resultSet.getString("sdt"));
-						KhachHangDTO.setDiaChi(resultSet.getString("dia_chi"));
+						KhachHangDTO.setDiaChi(resultSet.getString("diachi"));
+                                                KhachHangDTO.setPassword(resultSet.getString("password"));
 						result.add(KhachHangDTO);
 					}
 				} catch (SQLException e) {
@@ -51,7 +52,7 @@ public class KhachHangDAL {
 				}
 				finally {
 					try {
-						//ngắt kết nối csdl
+						//ngáº¯t káº¿t ná»‘i csdl
 						con.close();
 						preparedStatement.close();
 						resultSet.close();
@@ -61,17 +62,17 @@ public class KhachHangDAL {
 				}
 				return result;
 			}
-			//func tìm kiếm dữ liệu bằng ma_kh
+			//func tÃ¬m kiáº¿m dá»¯ liá»‡u báº±ng ma_kh
 			public ArrayList<KhachHangDTO> getKhachHangByMa_kh(KhachHangDTO KhachHangDTO) throws ClassNotFoundException {
-				// Khởi tạo mảng đối tượng KhachHangDTO để chứa kết quả truy vấn	
+				// Khá»Ÿi táº¡o máº£ng Ä‘á»‘i tÆ°á»£ng KhachHangDTO Ä‘á»ƒ chá»©a káº¿t quáº£ truy váº¥n	
 				ArrayList<KhachHangDTO> result = new ArrayList<KhachHangDTO>();
 				String sqlSelectByMa_kh = "select * from khachhang where ma_kh = ?";
 					
 				try {
-					//mở kết nối tới CSDL		
+					//má»Ÿ káº¿t ná»‘i tá»›i CSDL		
 					conUtil = new ConnectionUtil();
 					con = conUtil.getConnection();
-					//thực thi câu truy vấn
+					//thá»±c thi cÃ¢u truy váº¥n
 					preparedStatement = con.prepareStatement(sqlSelectByMa_kh);
 					preparedStatement.setString(1, KhachHangDTO.getMa_kh());
 					resultSet  = preparedStatement.executeQuery();
@@ -81,9 +82,9 @@ public class KhachHangDAL {
 						KhachHang.setMa_kh(resultSet.getString("ma_kh"));
 						KhachHang.setTen_kh(resultSet.getString("ten_kh"));
 						KhachHang.setEmail(resultSet.getString("email"));
-						KhachHang.setCmnd(resultSet.getString("CMND_PP"));
+						KhachHang.setCmnd(resultSet.getString("cmnd"));
 						KhachHang.setSDT(resultSet.getString("sdt"));
-						KhachHang.setDiaChi(resultSet.getString("dia_chi"));
+						KhachHang.setDiaChi(resultSet.getString("diachi"));
 						result.add(KhachHang);
 					}
 				} catch (SQLException e) {
@@ -91,7 +92,7 @@ public class KhachHangDAL {
 				}
 				finally {
 					try {
-						//ngắt kết nối csdl
+						//ngáº¯t káº¿t ná»‘i csdl
 						con.close();
 						preparedStatement.close();
 						resultSet.close();
@@ -101,17 +102,17 @@ public class KhachHangDAL {
 				}
 				return result;
 			}
-			//func thêm khach hang
+			//func thÃªm khach hang
 			public int insertKhachHang(KhachHangDTO KhachHangDTO) throws ClassNotFoundException {
-				// Khởi tạo mảng đối tượng KhachHangDTO để chứa kết quả truy vấn	
+				// Khá»Ÿi táº¡o máº£ng Ä‘á»‘i tÆ°á»£ng KhachHangDTO Ä‘á»ƒ chá»©a káº¿t quáº£ truy váº¥n	
 				int result = 0;
-				String sqlInsert = "insert into khachhang(ma_kh,ten_kh,email,password,cmnd_pp,sdt,dia_chi) values(?,?,?,?,?,?,?)";
+				String sqlInsert = "insert into khachhang(ma_kh,ten_kh,email,password,cmnd,sdt,diachi) values(?,?,?,?,?,?,?)";
 				
 				try {
-					//mở kết nối tới CSDL	
+					//má»Ÿ káº¿t ná»‘i tá»›i CSDL	
 					conUtil = new ConnectionUtil();
 					con = conUtil.getConnection();
-					//thực thi câu truy vấn
+					//thá»±c thi cÃ¢u truy váº¥n
 					preparedStatement = con.prepareStatement(sqlInsert);
 					preparedStatement.setString(1, KhachHangDTO.getMa_kh());
 					preparedStatement.setString(2, KhachHangDTO.getTen_kh());
@@ -134,23 +135,23 @@ public class KhachHangDAL {
 				}
 				return result;
 			}
-			//func sửa khachhang
+			//func sá»­a khachhang
 				public int updateKhachHang(KhachHangDTO KhachHangDTO) throws ClassNotFoundException {
-					// Khởi tạo mảng đối tượng KhachHangDTO để chứa kết quả truy vấn	
+					// Khá»Ÿi táº¡o máº£ng Ä‘á»‘i tÆ°á»£ng KhachHangDTO Ä‘á»ƒ chá»©a káº¿t quáº£ truy váº¥n	
 					int result = 0;
-					String sqlUpdate = "update khachhang set ten_kh=? ,sdt=?,cmnd_pp=?,dia_chi=? where ma_kh=?";
+					String sqlUpdate = "update khachhang set ten_kh=? ,sdt=?,cmnd=?,diachi=? where ma_kh=?";
 					
 					try {
-						//mở kết nối tới CSDL	
+						//má»Ÿ káº¿t ná»‘i tá»›i CSDL	
 						conUtil = new ConnectionUtil();
 						con = conUtil.getConnection();
-						//thực thi câu truy vấn
+						//thá»±c thi cÃ¢u truy váº¥n
 						preparedStatement = con.prepareStatement(sqlUpdate);
-						preparedStatement.setString(1, KhachHangDTO.getTen_kh());
-						preparedStatement.setString(2, KhachHangDTO.getSDT());
-						preparedStatement.setString(3, KhachHangDTO.getCmnd());
-						preparedStatement.setString(4, KhachHangDTO.getDiaChi());
-						preparedStatement.setString(5, KhachHangDTO.getMa_kh());
+						preparedStatement.setString(1, KhachHangDTO.getTen_kh().toString());
+						preparedStatement.setString(2, KhachHangDTO.getSDT().toString());
+						preparedStatement.setString(3, KhachHangDTO.getCmnd().toString());
+						preparedStatement.setString(4, KhachHangDTO.getDiaChi().toString());
+						preparedStatement.setString(5, KhachHangDTO.getMa_kh().toString());
 						result = preparedStatement.executeUpdate();
 					} catch (SQLException e) {
 						e.printStackTrace();
@@ -165,17 +166,17 @@ public class KhachHangDAL {
 					}
 					return result;
 				}
-				//func xóa khách hàng
+				//func xÃ³a khÃ¡ch hÃ ng
 				public int deleteKhachHang(KhachHangDTO KhachHangDTO) throws ClassNotFoundException {
-					// Khởi tạo mảng đối tượng KhachHangDTO để chứa kết quả truy vấn	
+					// Khá»Ÿi táº¡o máº£ng Ä‘á»‘i tÆ°á»£ng KhachHangDTO Ä‘á»ƒ chá»©a káº¿t quáº£ truy váº¥n	
 					int result = 0;
 					String sqlDelete = "delete from khachhang where ma_kh = ?";
 					
 					try {
-						//mở kết nối tới CSDL	
+						//má»Ÿ káº¿t ná»‘i tá»›i CSDL	
 						conUtil = new ConnectionUtil();
 						con = conUtil.getConnection();
-						//thực thi câu truy vấn
+						//thá»±c thi cÃ¢u truy váº¥n
 						preparedStatement = con.prepareStatement(sqlDelete);
 						preparedStatement.setString(1, KhachHangDTO.getMa_kh());
 						result = preparedStatement.executeUpdate();
@@ -193,17 +194,17 @@ public class KhachHangDAL {
 					return result;
 				}
 				public ArrayList<KhachHangDTO> getKhachHangByCMND_PP(KhachHangDTO KhachHangDTO) throws ClassNotFoundException {
-					// Khởi tạo mảng đối tượng KhachHangDTO để chứa kết quả truy vấn	
+					// Khá»Ÿi táº¡o máº£ng Ä‘á»‘i tÆ°á»£ng KhachHangDTO Ä‘á»ƒ chá»©a káº¿t quáº£ truy váº¥n	
 					ArrayList<KhachHangDTO> result = new ArrayList<KhachHangDTO>();
-					String sql = "select * from khachhang where CMND_PP = ?";
+					String sql = "select * from khachhang where cmnd like ?";
 						
 					try {
-						//mở kết nối tới CSDL		
+						//má»Ÿ káº¿t ná»‘i tá»›i CSDL		
 						conUtil = new ConnectionUtil();
 						con = conUtil.getConnection();
-						//thực thi câu truy vấn
+						//thá»±c thi cÃ¢u truy váº¥n
 						preparedStatement = con.prepareStatement(sql);
-						preparedStatement.setString(1, KhachHangDTO.getCmnd());
+						preparedStatement.setString(1, KhachHangDTO.getCmnd()+"%");
 						resultSet  = preparedStatement.executeQuery();
 						
 						while(resultSet.next()) {
@@ -211,9 +212,9 @@ public class KhachHangDAL {
 							KhachHang.setMa_kh(resultSet.getString("ma_kh"));
 							KhachHang.setTen_kh(resultSet.getString("ten_kh"));
 							KhachHang.setEmail(resultSet.getString("email"));
-							KhachHang.setCmnd(resultSet.getString("CMND_PP"));
+							KhachHang.setCmnd(resultSet.getString("cmnd"));
 							KhachHang.setSDT(resultSet.getString("sdt"));
-							KhachHang.setDiaChi(resultSet.getString("dia_chi"));
+							KhachHang.setDiaChi(resultSet.getString("diachi"));
 							result.add(KhachHang);
 						}
 					} catch (SQLException e) {
@@ -221,7 +222,7 @@ public class KhachHangDAL {
 					}
 					finally {
 						try {
-							//ngắt kết nối csdl
+							//ngáº¯t káº¿t ná»‘i csdl
 							con.close();
 							preparedStatement.close();
 							resultSet.close();
@@ -233,17 +234,17 @@ public class KhachHangDAL {
 				}
 				
 				public ArrayList<KhachHangDTO> getKhachHangBySDT(KhachHangDTO KhachHangDTO) throws ClassNotFoundException {
-					// Khởi tạo mảng đối tượng KhachHangDTO để chứa kết quả truy vấn	
+					// Khá»Ÿi táº¡o máº£ng Ä‘á»‘i tÆ°á»£ng KhachHangDTO Ä‘á»ƒ chá»©a káº¿t quáº£ truy váº¥n	
 					ArrayList<KhachHangDTO> result = new ArrayList<KhachHangDTO>();
-					String sql = "select * from khachhang where SDT = ?";
+					String sql = "select * from khachhang where sdt like ?";
 						
 					try {
-						//mở kết nối tới CSDL		
+						//má»Ÿ káº¿t ná»‘i tá»›i CSDL		
 						conUtil = new ConnectionUtil();
 						con = conUtil.getConnection();
-						//thực thi câu truy vấn
+						//thá»±c thi cÃ¢u truy váº¥n
 						preparedStatement = con.prepareStatement(sql);
-						preparedStatement.setString(1, KhachHangDTO.getSDT());
+						preparedStatement.setString(1, KhachHangDTO.getSDT()+"%");
 						resultSet  = preparedStatement.executeQuery();
 						
 						while(resultSet.next()) {
@@ -251,9 +252,9 @@ public class KhachHangDAL {
 							KhachHang.setMa_kh(resultSet.getString("ma_kh"));
 							KhachHang.setTen_kh(resultSet.getString("ten_kh"));
 							KhachHang.setEmail(resultSet.getString("email"));
-							KhachHang.setCmnd(resultSet.getString("CMND_PP"));
+							KhachHang.setCmnd(resultSet.getString("cmnd"));
 							KhachHang.setSDT(resultSet.getString("sdt"));
-							KhachHang.setDiaChi(resultSet.getString("dia_chi"));
+							KhachHang.setDiaChi(resultSet.getString("diachi"));
 							result.add(KhachHang);
 						}
 					} catch (SQLException e) {
@@ -261,7 +262,7 @@ public class KhachHangDAL {
 					}
 					finally {
 						try {
-							//ngắt kết nối csdl
+							//ngáº¯t káº¿t ná»‘i csdl
 							con.close();
 							preparedStatement.close();
 							resultSet.close();
@@ -272,15 +273,15 @@ public class KhachHangDAL {
 					return result;
 				}
 				public ArrayList<KhachHangDTO> getKhachHangEmail(KhachHangDTO KhachHangDTO) throws ClassNotFoundException {
-					// Khởi tạo mảng đối tượng KhachHangDTO để chứa kết quả truy vấn	
+					// Khá»Ÿi táº¡o máº£ng Ä‘á»‘i tÆ°á»£ng KhachHangDTO Ä‘á»ƒ chá»©a káº¿t quáº£ truy váº¥n	
 					ArrayList<KhachHangDTO> result = new ArrayList<KhachHangDTO>();
 					String sqlSelectByMa_kh = "select * from khachhang where email = ?";
 						
 					try {
-						//mở kết nối tới CSDL		
+						//má»Ÿ káº¿t ná»‘i tá»›i CSDL		
 						conUtil = new ConnectionUtil();
 						con = conUtil.getConnection();
-						//thực thi câu truy vấn
+						//thá»±c thi cÃ¢u truy váº¥n
 						preparedStatement = con.prepareStatement(sqlSelectByMa_kh);
 						preparedStatement.setString(1, KhachHangDTO.getEmail());
 						resultSet  = preparedStatement.executeQuery();
@@ -300,7 +301,7 @@ public class KhachHangDAL {
 					}
 					finally {
 						try {
-							//ngắt kết nối csdl
+							//ngáº¯t káº¿t ná»‘i csdl
 							con.close();
 							preparedStatement.close();
 							resultSet.close();

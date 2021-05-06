@@ -151,7 +151,7 @@ public class Action extends JFrame {
 		
 		panel.setVisible(false);
 		
-		JButton btnNewButton = new JButton("CAP NHAT");
+		/*JButton btnNewButton = new JButton("CAP NHAT");
 		btnNewButton.setBackground(SystemColor.activeCaptionBorder);
 		btnNewButton.setBounds(214, 152, 100, 40);
 		btnNewButton.setForeground(Color.WHITE);
@@ -176,7 +176,7 @@ public class Action extends JFrame {
 			  }
 		}
 		});
-		panel.add(btnNewButton);
+		panel.add(btnNewButton);*/
 		
 		JButton btntV = new JButton("MUA VE");
 		btntV.setForeground(Color.WHITE);

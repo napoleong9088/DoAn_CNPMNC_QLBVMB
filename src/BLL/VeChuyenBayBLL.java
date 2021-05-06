@@ -31,13 +31,12 @@ public class VeChuyenBayBLL {
 	 return result;
 	 }
 	 
-	 /*public ArrayList<VeChuyenBayDTO> getVeChuyenBayByma_hd(VeChuyenBayDTO VeChuyenBayDTO) throws ClassNotFoundException{
-		 return VeChuyenBayDAL.getVeChuyenBayByMa_hd(VeChuyenBayDTO);
-	 }
-	 
 	 public ArrayList<VeChuyenBayDTO> getVeChuyenBayByma_cb(VeChuyenBayDTO VeChuyenBayDTO) throws ClassNotFoundException{
 		 return VeChuyenBayDAL.getVeChuyenBayByMa_cb(VeChuyenBayDTO);
-	 }*/
+	 }
+         public ArrayList<VeChuyenBayDTO> getVeChuyenBayByma_kh(VeChuyenBayDTO VeChuyenBayDTO) throws ClassNotFoundException{
+		 return VeChuyenBayDAL.getVeChuyenBayByMa_kh(VeChuyenBayDTO);
+	 }
 
 
 }

@@ -30,16 +30,10 @@ import org.apache.poi.xssf.usermodel.*;
 import BLL.ChuyenBayBLL;
 import BLL.HoaDonBLL;
 import BLL.KhachHangBLL;
-import BLL.MayBayBLL;
-import BLL.TuyenBayBLL;
-import BLL.UserBLL;
 import BLL.VeChuyenBayBLL;
 import DTO.ChuyenBayDTO;
 import DTO.HoaDonDTO;
 import DTO.KhachHangDTO;
-import DTO.MayBayDTO;
-import DTO.TuyenBayDTO;
-import DTO.UserDTO;
 import DTO.VeChuyenBayDTO;
 import UTILS.ConnectionUtil;
 
@@ -50,15 +44,21 @@ import javax.swing.JTextField;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.sql.Date;
 import java.sql.ResultSet;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import javax.swing.ButtonGroup;
 
 import javax.swing.JButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import org.jfree.util.PublicCloneable;
 
 public class Thanhtoan extends JFrame{
 	private JPanel contentPane;
@@ -70,7 +70,15 @@ public class Thanhtoan extends JFrame{
 	private JTextField textField_8;
 	private JTable table ;
 	private JTextField txtma_cb;
-    
+        private JTextField txttong;
+        private JLabel lblNewLabel_16;
+        public String hanhLy;
+        private int tong;
+        private JTextField tenhd;
+        private JTextField thanhtien;
+        private JTextField manv;
+        private JTextField makh;
+        private JTextField mave;
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -87,8 +95,6 @@ public class Thanhtoan extends JFrame{
 
 	public Thanhtoan() throws ClassNotFoundException {
 		font();
-		//loadAllChuyenBay();
-		//getkh(khDto);
 	}
 	
 
@@ -177,7 +183,7 @@ public class Thanhtoan extends JFrame{
 		textField_6.setColumns(10);
 		contentPane.add(textField_6);
 	
-     	JLabel lblThngTinLin = new JLabel("___Thông tin liên hệ___\n");
+                JLabel lblThngTinLin = new JLabel("___Thông tin liên hệ___\n");
 		lblThngTinLin.setFont(new Font("Tahoma", Font.BOLD, 13));
 		lblThngTinLin.setForeground(new Color(57,153,255));
 		lblThngTinLin.setBounds(400, 170, 200, 22);
@@ -206,24 +212,71 @@ public class Thanhtoan extends JFrame{
 		lblNewLabel_15.setFont(new Font("Tahoma", Font.BOLD, 13));
 		lblNewLabel_15.setForeground(Color.RED);
 		contentPane.add(lblNewLabel_15);
+                
+                JLabel lbltong = new JLabel("TỔNG");
+		lbltong.setBounds(300, 263, 60, 14);
+		lbltong.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lbltong.setForeground(Color.RED);
+		contentPane.add(lbltong);
+                
+                txttong = new JTextField();
+                txttong.setColumns(10);
+		txttong.setBounds(350, 263, 100, 20);
+                txttong.setEditable(false);
+		contentPane.add(txttong);                
 		
-		JLabel lblNewLabel_16 = new JLabel("Hành lý xách tay     Mỗi hành khách được đem tối đa 7kg hành lý xách tay.\n");
+		lblNewLabel_16 = new JLabel("Hành lý xách tay     được "+ hanhLy + " hành lý xách tay.\n");
 		lblNewLabel_16.setBounds(10, 290, 500, 17);
 		lblNewLabel_16.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		contentPane.add(lblNewLabel_16);
 		
-		JLabel lblNewLabel_18 = new JLabel("Hành lý ký gửi         Mỗi hành khách được đem tối đa 20kg hành lý ký gửi.\n");
-		lblNewLabel_18.setBounds(10, 315, 500, 17);
+		JLabel lblNewLabel_18 = new JLabel("Hành lý ký gửi Mua Thêm");
+		lblNewLabel_18.setBounds(10, 315, 170, 17);
 		lblNewLabel_18.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		contentPane.add(lblNewLabel_18);
-		
+                txttong.setText(String.valueOf(tong));
+
+                    JRadioButton radioBtn1 = new JRadioButton("+15kg");
+                    JRadioButton radioBtn2 = new JRadioButton("+20kg");
+                    JRadioButton radioBtn3 = new JRadioButton("+30kg");
+                    radioBtn1.setBounds(190, 315, 80, 17);
+                    radioBtn2.setBounds(270, 315, 80, 17);
+                    radioBtn3.setBounds(350, 315, 80, 17);
+                    
+                    radioBtn1.addItemListener(new ItemListener() {
+                        public void itemStateChanged(ItemEvent e) {
+                            txttong.setText(String.valueOf(tong+200000));
+                        }
+                    });
+                    radioBtn2.addItemListener(new ItemListener() {
+                        public void itemStateChanged(ItemEvent e) {
+                            txttong.setText(String.valueOf(tong+250000));
+                        }
+                    });
+                    radioBtn3.addItemListener(new ItemListener() {
+                        public void itemStateChanged(ItemEvent e) {
+                            txttong.setText(String.valueOf(tong+300000));
+                        }
+                    });
+
+                    ButtonGroup bg = new ButtonGroup();
+
+                    bg.add(radioBtn1);
+                    bg.add(radioBtn2);
+                    bg.add(radioBtn3);
+                    
+                    contentPane.add(radioBtn1);
+                    contentPane.add(radioBtn2);
+                    contentPane.add(radioBtn3);
+                    
 		JButton btnNewButton = new JButton("THANH TOÁN");
-		btnNewButton.setBounds(455, 285, 120, 50);
+		btnNewButton.setBounds(455, 255, 120, 50);
 		btnNewButton.setForeground(Color.WHITE);
 		btnNewButton.setBackground(new Color(57,153,255));
 		btnNewButton.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
+                                
 				print(txtma_cb.getText());
 				//ex();
 			}
@@ -244,56 +297,50 @@ public class Thanhtoan extends JFrame{
         txtma_cb.setBounds(104, 43, 120, 20);
         contentPane.add(txtma_cb);
         
-        JLabel tblma_cb = new JLabel("Mã chuyến bay");
+        JLabel tblma_cb = new JLabel("Mã HANG HK");
         tblma_cb.setBounds(10, 43, 100, 14);
         contentPane.add(tblma_cb);
 	}
-	public void loadAllChuyenBay(String cb) throws ClassNotFoundException {
+	public void loadChuyenBay(String cb) throws ClassNotFoundException {
 		
 		 //tạo control DefaultTableModel để hiển thị danh sách ChuyenBay
-	 String[] header = { "Mã chuyến bay", "Máy Bay","Ngày giờ", "Thời gian bay","Điểm đi","Điểm đến"};
+	  String[] header = { "HANG HK", "TEN", "GIO", "NGAY", "LOAI GHE", "GIA" };
 	 DefaultTableModel dtm = new DefaultTableModel(header, 0);
-	 //lấy danh sách ChuyenBayDTO (gọi hàm getAllChuyenBay() trong ChuyenBayBLL)
+	 //lÃ¡ÂºÂ¥y danh sÃƒÂ¡ch ChuyenBayDTO (gÃ¡Â»ï¿½i hÃƒÂ m getAllChuyenBay() trong ChuyenBayBLL)
 	 ArrayList<ChuyenBayDTO> arr = new ArrayList<ChuyenBayDTO>();
 	 ChuyenBayBLL ChuyenBayBLL = new ChuyenBayBLL();
-	//Duyệt mảng ChuyenBayDTO vừa lấy được: arr
-	 ChuyenBayDTO ChuyenBayDTO = new ChuyenBayDTO();
-	 ChuyenBayDTO.setMa_cb(cb);	 
+         ChuyenBayDTO ChuyenBayDTO = new ChuyenBayDTO();
+         ChuyenBayDTO.setMaChuyenbay(cb);
 	 arr = ChuyenBayBLL.getChuyenBayByma_cb(ChuyenBayDTO);
-	 
-	 TuyenBayDTO TuyenBayDTO = new TuyenBayDTO();
-	 ArrayList<TuyenBayDTO> tuyenbay = new ArrayList<TuyenBayDTO>();
-	 TuyenBayBLL TuyenBayBLL = new TuyenBayBLL();
-	 
-	 MayBayDTO MayBayDTO = new MayBayDTO();
-	 ArrayList<MayBayDTO> maybay = new ArrayList<MayBayDTO>();
-	 MayBayBLL MayBayBLL = new MayBayBLL();
-	 
+	 //DuyÃ¡Â»â€¡t mÃ¡ÂºÂ£ng ChuyenBayDTO vÃ¡Â»Â«a lÃ¡ÂºÂ¥y Ã„â€˜Ã†Â°Ã¡Â»Â£c: arr
 	 for (int i = 0; i < arr.size(); i++) {
 		 ChuyenBayDTO = arr.get(i);
 		 
-		 String ma_cb = ChuyenBayDTO.getMa_cb();
-		 Date ngaygio = (Date) ChuyenBayDTO.getNgaygio();
-		 String thoigianbay = ChuyenBayDTO.getThoigianbay();
-		 String ma_mb = ChuyenBayDTO.getMa_mb();
-		 String ma_tb = ChuyenBayDTO.getMa_tuyenbay();
-		 TuyenBayDTO.setMa_tuyenbay(ma_tb);
-		 MayBayDTO.setMa_mb(ma_mb);
+		 String ma_cb = ChuyenBayDTO.getMaChuyenbay();
+		 String hang_HK = ChuyenBayDTO.getHangHK();
+                 String ten = ChuyenBayDTO.getTenMayBay();
+                 String di = ChuyenBayDTO.getDiemDi();
+                 String den = ChuyenBayDTO.getDiemDen();
+                 String sb_di = ChuyenBayDTO.getSanBayDi();
+                 String sb_den = ChuyenBayDTO.getSanBayDen();
+		 java.util.Date ngay = ChuyenBayDTO.getNgayBay();
+		 Time gio = ChuyenBayDTO.getGioBay();
+		 String loaighe = ChuyenBayDTO.getLoaiGhe();
+		 int gia = ChuyenBayDTO.getGia();
+                 tong = gia;
+                 txttong.setText(String.valueOf(tong));
+		 String quydinh = ChuyenBayDTO.getQuyDinh();
+                 hanhLy = quydinh;
+                 lblNewLabel_16.setText("Hành lý xách tay     được "+ hanhLy + " hành lý xách tay.\n");
+		 //tÃ¡ÂºÂ¡o row Ã„â€˜Ã¡Â»Æ’ add vÃƒÂ o control DefaultTableModel
 		 
-		 maybay = MayBayBLL.getMayBayByma_mb(MayBayDTO);
-		 MayBayDTO = maybay.get(0);
-		 String ten_mb = MayBayDTO.getTen_mb();
-		 
-		 tuyenbay = TuyenBayBLL.getTuyenBayByma_tuyenbay(TuyenBayDTO);
-		 TuyenBayDTO = tuyenbay.get(0);
-		 String diem_di = TuyenBayDTO.getSanbaydi();
-		 String diem_den = TuyenBayDTO.getSanbayden();
-		 
-		 textField_2.setText(diem_di);
-		 textField_3.setText(diem_den);
-		 //tạo row để add vào control DefaultTableModel
-		 Object[] row = { ma_cb, ten_mb,ngaygio, thoigianbay,diem_di,diem_den};
-		 dtm.addRow(row);
+
+            textField_2.setText(di);
+            textField_3.setText(den);
+            txtma_cb.setText(hang_HK);
+            //tạo row để add vào control DefaultTableModel
+            Object[] row = { hang_HK, ten, ngay, gio, loaighe, gia };
+            dtm.addRow(row);
 	 }
 	 table.setModel(dtm);
 	 }
@@ -302,14 +349,17 @@ public class Thanhtoan extends JFrame{
 		KhachHangBLL khbll = new KhachHangBLL();
 		kh = khbll.getKhachHangByma_kh(khDto);
 		khDto= kh.get(0);*/
+                makh = new JTextField();
+                makh.setText(khDto.getMa_kh());
 		textField_5.setText(khDto.getTen_kh());
 		textField_8.setText(khDto.getEmail());
 		textField_6.setText(khDto.getCmnd());
 		textField_7.setText(khDto.getSDT());
+                
 	}
 	public void getcb(ChuyenBayDTO cb) throws ClassNotFoundException {
-		txtma_cb.setText(cb.getMa_cb());
-		loadAllChuyenBay(cb.getMa_cb());
+		txtma_cb.setText(cb.getMaChuyenbay());
+		loadChuyenBay(cb.getMaChuyenbay());
 		
 	}
 	public void print(String mcb){
@@ -362,7 +412,7 @@ public class Thanhtoan extends JFrame{
 			            for (int i = 0; i < list.size(); i++) {
 			            	vcbDto = list.get(i);
 			            	table.addCell(new Phrase(""+vcbDto.getMa_cb()));
-			                table.addCell(new Phrase(""+vcbDto.getMa_dongia()));
+			                table.addCell(new Phrase(""+vcbDto.getGia()));
 			                table.addCell(new Phrase(""+vcbDto.getMa_ve_cb()));
 			                table.addCell(new Phrase(""+hdDTO.getMa_nv()));
 			                table.addCell(new Phrase(""+hdDTO.getThanh_tien()));
@@ -381,7 +431,7 @@ public class Thanhtoan extends JFrame{
 				}
 	public void ex() {
 		
-		        String jdbcURL = "jdbc:mysql://localhost:3306/qlbvmb";
+		        String jdbcURL = "jdbc:mysql://localhost:3306/qlbvmb_nc";
 		        String username = "root";
 		        String password = "123456";
 		 
@@ -459,6 +509,5 @@ public class Thanhtoan extends JFrame{
 		        }
 		 
 	}
-		
 	
 }

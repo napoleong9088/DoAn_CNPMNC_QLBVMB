@@ -24,7 +24,7 @@ public class VeChuyenBayDAL {
 	public ArrayList<VeChuyenBayDTO> getAllVeChuyenBay() throws ClassNotFoundException {
 			
 		ArrayList<VeChuyenBayDTO> result = new ArrayList<VeChuyenBayDTO>();
-		String sqlSelectAll = "select * from ve_chuyen_bay";
+		String sqlSelectAll = "select * from vechuyenbay";
 			
 		try {
 			
@@ -38,10 +38,10 @@ public class VeChuyenBayDAL {
 				VeChuyenBayDTO VeChuyenBayDTO = new VeChuyenBayDTO();
 				VeChuyenBayDTO.setMa_ve_cb(resultSet.getString("ma_ve_cb"));
 				VeChuyenBayDTO.setMa_cb(resultSet.getString("ma_cb"));
-				VeChuyenBayDTO.setSo_ghe(resultSet.getString("so_ghe"));
+				VeChuyenBayDTO.setSo_ghe(resultSet.getString("soghe"));
 				VeChuyenBayDTO.setMa_kh(resultSet.getString("ma_kh"));
-				VeChuyenBayDTO.setThoi_gian_bay(resultSet.getTime("thoi_gian_bay"));
-				VeChuyenBayDTO.setNgay_bay(resultSet.getDate("ngay_bay"));
+				VeChuyenBayDTO.setThoi_gian_bay(resultSet.getTime("giobay"));
+				VeChuyenBayDTO.setNgay_bay(resultSet.getDate("ngaybay"));
 				VeChuyenBayDTO.setGia(resultSet.getInt("gia"));
 				VeChuyenBayDTO.setTinhtrangve(resultSet.getString("tinh_trang_ve"));
 				
@@ -67,7 +67,7 @@ public class VeChuyenBayDAL {
 	public ArrayList<VeChuyenBayDTO> getVeChuyenBayByMa_ve_cb(VeChuyenBayDTO VeChuyenBayDTO) throws ClassNotFoundException {
 			
 		ArrayList<VeChuyenBayDTO> result = new ArrayList<VeChuyenBayDTO>();
-		String sqlSelectByma_ve_cb = "select * from ve_chuyen_bay where ma_ve_cb = ?";
+		String sqlSelectByma_ve_cb = "select * from vechuyenbay where ma_ve_cb = ?";
 			
 		try {
 				
@@ -82,10 +82,10 @@ public class VeChuyenBayDAL {
 				VeChuyenBayDTO VeChuyenBay = new VeChuyenBayDTO();
 				VeChuyenBay.setMa_ve_cb(resultSet.getString("ma_ve_cb"));
 				VeChuyenBay.setMa_cb(resultSet.getString("ma_cb"));
-				VeChuyenBay.setSo_ghe(resultSet.getString("so_ghe"));
+				VeChuyenBay.setSo_ghe(resultSet.getString("soghe"));
 				VeChuyenBay.setMa_kh(resultSet.getString("ma_kh"));
-				VeChuyenBay.setThoi_gian_bay(resultSet.getTime("thoi_gian_bay"));
-				VeChuyenBay.setNgay_bay(resultSet.getDate("ngay_bay"));
+				VeChuyenBay.setThoi_gian_bay(resultSet.getTime("giobay"));
+				VeChuyenBay.setNgay_bay(resultSet.getDate("ngaybay"));
 				VeChuyenBay.setGia(resultSet.getInt("gia"));
 				VeChuyenBay.setTinhtrangve(resultSet.getString("tinh_trang_ve"));
 				
@@ -110,7 +110,7 @@ public class VeChuyenBayDAL {
 	public int insertVeChuyenBay(VeChuyenBayDTO VeChuyenBayDTO) throws ClassNotFoundException {
 		
 		int result = 0;
-		String sqlInsert = "insert into ve_chuyen_bay(ma_ve_cb,so_ghe,ma_cb,ma_kh,thoi_gian_bay,ngay_bay,gia,tinh_trang_ve) values(?,?,?,?,?,?,?,?)";
+		String sqlInsert = "insert into vechuyenbay(ma_ve_cb,soghe,ma_cb,ma_kh,giobay,ngaybay,gia,tinh_trang_ve) values(?,?,?,?,?,?,?,?)";
 		
 		try {
 			
@@ -121,7 +121,7 @@ public class VeChuyenBayDAL {
 			preparedStatement.setString(1,VeChuyenBayDTO.getMa_ve_cb());
 			preparedStatement.setString(2, VeChuyenBayDTO.getSo_ghe());
 			preparedStatement.setString(3, VeChuyenBayDTO.getMa_cb());
-            preparedStatement.setString(4, VeChuyenBayDTO.getMa_kh());
+                        preparedStatement.setString(4, VeChuyenBayDTO.getMa_kh());
 			preparedStatement.setTime(5, VeChuyenBayDTO.getThoi_gian_bay());
 			preparedStatement.setDate(6, VeChuyenBayDTO.getNgay_bay());
 			preparedStatement.setInt(7, VeChuyenBayDTO.getGia());
@@ -146,7 +146,7 @@ public class VeChuyenBayDAL {
 		public int updateVeChuyenBay(VeChuyenBayDTO VeChuyenBayDTO) throws ClassNotFoundException {
 			
 			int result = 0;
-			String sqlUpdate = "update ve_chuyen_bay set so_ghe=?,ma_cb=?,ma_kh=?,thoi_gian_bay=?,ngay_bay=?,tinh_trang_ve=? where ma_ve_cb=? ";
+			String sqlUpdate = "update ve_chuyen_bay set soghe=?,ma_cb=?,ma_kh=?,giobay=?,ngaybay=?,gia=?,tinh_trang_ve=? where ma_ve_cb=? ";
 			
 			try {
 			
@@ -181,7 +181,7 @@ public class VeChuyenBayDAL {
 		public int deleteVeChuyenBay(VeChuyenBayDTO VeChuyenBayDTO) throws ClassNotFoundException {
 				
 			int result = 0;
-			String sqlDelete = "delete from ve_chuyen_bay where ma_ve_cb = ?";
+			String sqlDelete = "delete from vechuyenbay where ma_ve_cb = ?";
 			
 			try {
 					
@@ -205,10 +205,10 @@ public class VeChuyenBayDAL {
 			return result;
 		}
 		
-		/*public ArrayList<VeChuyenBayDTO> getVeChuyenBayByMa_hd(VeChuyenBayDTO VeChuyenBayDTO) throws ClassNotFoundException {
+		public ArrayList<VeChuyenBayDTO> getVeChuyenBayByMa_cb(VeChuyenBayDTO VeChuyenBayDTO) throws ClassNotFoundException {
 			
 			ArrayList<VeChuyenBayDTO> result = new ArrayList<VeChuyenBayDTO>();
-			String sqlSelectByma_ve_cb = "select * from ve_chuyen_bay where ma_hd = ?";
+			String sqlSelectByma_ve_cb = "select * from vechuyenbay where ma_cb = ?";
 				
 			try {
 					
@@ -216,17 +216,19 @@ public class VeChuyenBayDAL {
 				con = conUtil.getConnection();
 				
 				preparedStatement = con.prepareStatement(sqlSelectByma_ve_cb);
-				preparedStatement.setString(1, VeChuyenBayDTO.getMa_hd());
+				preparedStatement.setString(1, VeChuyenBayDTO.getMa_cb());
 				resultSet  = preparedStatement.executeQuery();			
 				
 				while(resultSet.next()) {
 					VeChuyenBayDTO VeChuyenBay = new VeChuyenBayDTO();
 					VeChuyenBay.setMa_ve_cb(resultSet.getString("ma_ve_cb"));
-					VeChuyenBay.setMa_hd(resultSet.getString("ma_hd"));
-					VeChuyenBay.setMa_cb(resultSet.getString("ma_cb"));
-					VeChuyenBay.setMa_dongia(resultSet.getString("ma_don_gia"));
-					VeChuyenBay.setMa_hv(resultSet.getString("ma_hv"));
-					VeChuyenBay.setTinhtrangve(resultSet.getString("tinh_trang_ve"));
+                                        VeChuyenBay.setMa_cb(resultSet.getString("ma_cb"));
+                                        VeChuyenBay.setSo_ghe(resultSet.getString("soghe"));
+                                        VeChuyenBay.setMa_kh(resultSet.getString("ma_kh"));
+                                        VeChuyenBay.setThoi_gian_bay(resultSet.getTime("giobay"));
+                                        VeChuyenBay.setNgay_bay(resultSet.getDate("ngaybay"));
+                                        VeChuyenBay.setGia(resultSet.getInt("gia"));
+                                        VeChuyenBay.setTinhtrangve(resultSet.getString("tinh_trang_ve"));
 					
 					result.add(VeChuyenBay);
 				}
@@ -245,44 +247,46 @@ public class VeChuyenBayDAL {
 			}
 			return result;
 		}
-		public ArrayList<VeChuyenBayDTO> getVeChuyenBayByMa_cb(VeChuyenBayDTO VeChuyenBayDTO) throws ClassNotFoundException {
+                public ArrayList<VeChuyenBayDTO> getVeChuyenBayByMa_kh(VeChuyenBayDTO VeChuyenBayDTO) throws ClassNotFoundException {
 			
-			ArrayList<VeChuyenBayDTO> result = new ArrayList<VeChuyenBayDTO>();
-			String sqlSelectByma_ve_cb = "select * from ve_chuyen_bay where ma_cb = ?";
+		ArrayList<VeChuyenBayDTO> result = new ArrayList<VeChuyenBayDTO>();
+		String sqlSelectByma_kh = "select * from vechuyenbay where ma_kh = ?";
+			
+		try {
 				
+			conUtil = new ConnectionUtil();
+			con = conUtil.getConnection();
+			
+			preparedStatement = con.prepareStatement(sqlSelectByma_kh);
+			preparedStatement.setString(1, VeChuyenBayDTO.getMa_kh());
+			resultSet  = preparedStatement.executeQuery();			
+			
+			while(resultSet.next()) {
+				VeChuyenBayDTO VeChuyenBay = new VeChuyenBayDTO();
+				VeChuyenBay.setMa_ve_cb(resultSet.getString("ma_ve_cb"));
+				VeChuyenBay.setMa_cb(resultSet.getString("ma_cb"));
+				VeChuyenBay.setSo_ghe(resultSet.getString("soghe"));
+				VeChuyenBay.setMa_kh(resultSet.getString("ma_kh"));
+				VeChuyenBay.setThoi_gian_bay(resultSet.getTime("giobay"));
+				VeChuyenBay.setNgay_bay(resultSet.getDate("ngaybay"));
+				VeChuyenBay.setGia(resultSet.getInt("gia"));
+				VeChuyenBay.setTinhtrangve(resultSet.getString("tinh_trang_ve"));
+				
+				result.add(VeChuyenBay);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		finally {
 			try {
-					
-				conUtil = new ConnectionUtil();
-				con = conUtil.getConnection();
 				
-				preparedStatement = con.prepareStatement(sqlSelectByma_ve_cb);
-				preparedStatement.setString(1, VeChuyenBayDTO.getMa_cb());
-				resultSet  = preparedStatement.executeQuery();			
-				
-				while(resultSet.next()) {
-					VeChuyenBayDTO VeChuyenBay = new VeChuyenBayDTO();
-					VeChuyenBay.setMa_ve_cb(resultSet.getString("ma_ve_cb"));
-					VeChuyenBay.setMa_hd(resultSet.getString("ma_hd"));
-					VeChuyenBay.setMa_cb(resultSet.getString("ma_cb"));
-					VeChuyenBay.setMa_dongia(resultSet.getString("ma_don_gia"));
-					VeChuyenBay.setMa_hv(resultSet.getString("ma_hv"));
-					VeChuyenBay.setTinhtrangve(resultSet.getString("tinh_trang_ve"));
-					
-					result.add(VeChuyenBay);
-				}
+				con.close();
+				preparedStatement.close();
+				resultSet.close();
 			} catch (SQLException e) {
 				e.printStackTrace();
-			}
-			finally {
-				try {
-					
-					con.close();
-					preparedStatement.close();
-					resultSet.close();
-				} catch (SQLException e) {
-					e.printStackTrace();
-				  }
-			}
-			return result;
-		}*/
+			  }
+		}
+		return result;
+	}
 }
