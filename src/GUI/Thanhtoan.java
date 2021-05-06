@@ -44,10 +44,14 @@ import javax.swing.JTextField;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.sql.Date;
 import java.sql.ResultSet;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import javax.swing.ButtonGroup;
 
@@ -66,8 +70,15 @@ public class Thanhtoan extends JFrame{
 	private JTextField textField_8;
 	private JTable table ;
 	private JTextField txtma_cb;
+        private JTextField txttong;
+        private JLabel lblNewLabel_16;
         public String hanhLy;
-    
+        private int tong;
+        private JTextField tenhd;
+        private JTextField thanhtien;
+        private JTextField manv;
+        private JTextField makh;
+        private JTextField mave;
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -208,14 +219,13 @@ public class Thanhtoan extends JFrame{
 		lbltong.setForeground(Color.RED);
 		contentPane.add(lbltong);
                 
-                JTextField txttong = new JTextField();
+                txttong = new JTextField();
                 txttong.setColumns(10);
 		txttong.setBounds(350, 263, 100, 20);
                 txttong.setEditable(false);
-		contentPane.add(txttong);
-                
+		contentPane.add(txttong);                
 		
-		JLabel lblNewLabel_16 = new JLabel("Hành lý xách tay     được "+ hanhLy + " hành lý xách tay.\n");
+		lblNewLabel_16 = new JLabel("Hành lý xách tay     được "+ hanhLy + " hành lý xách tay.\n");
 		lblNewLabel_16.setBounds(10, 290, 500, 17);
 		lblNewLabel_16.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		contentPane.add(lblNewLabel_16);
@@ -224,6 +234,7 @@ public class Thanhtoan extends JFrame{
 		lblNewLabel_18.setBounds(10, 315, 170, 17);
 		lblNewLabel_18.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		contentPane.add(lblNewLabel_18);
+                txttong.setText(String.valueOf(tong));
 
                     JRadioButton radioBtn1 = new JRadioButton("+15kg");
                     JRadioButton radioBtn2 = new JRadioButton("+20kg");
@@ -231,6 +242,22 @@ public class Thanhtoan extends JFrame{
                     radioBtn1.setBounds(190, 315, 80, 17);
                     radioBtn2.setBounds(270, 315, 80, 17);
                     radioBtn3.setBounds(350, 315, 80, 17);
+                    
+                    radioBtn1.addItemListener(new ItemListener() {
+                        public void itemStateChanged(ItemEvent e) {
+                            txttong.setText(String.valueOf(tong+200000));
+                        }
+                    });
+                    radioBtn2.addItemListener(new ItemListener() {
+                        public void itemStateChanged(ItemEvent e) {
+                            txttong.setText(String.valueOf(tong+250000));
+                        }
+                    });
+                    radioBtn3.addItemListener(new ItemListener() {
+                        public void itemStateChanged(ItemEvent e) {
+                            txttong.setText(String.valueOf(tong+300000));
+                        }
+                    });
 
                     ButtonGroup bg = new ButtonGroup();
 
@@ -249,6 +276,7 @@ public class Thanhtoan extends JFrame{
 		btnNewButton.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
+                                
 				print(txtma_cb.getText());
 				//ex();
 			}
@@ -284,9 +312,7 @@ public class Thanhtoan extends JFrame{
          ChuyenBayDTO ChuyenBayDTO = new ChuyenBayDTO();
          ChuyenBayDTO.setMaChuyenbay(cb);
 	 arr = ChuyenBayBLL.getChuyenBayByma_cb(ChuyenBayDTO);
-	 
 	 //DuyÃ¡Â»â€¡t mÃ¡ÂºÂ£ng ChuyenBayDTO vÃ¡Â»Â«a lÃ¡ÂºÂ¥y Ã„â€˜Ã†Â°Ã¡Â»Â£c: arr
-	 
 	 for (int i = 0; i < arr.size(); i++) {
 		 ChuyenBayDTO = arr.get(i);
 		 
@@ -301,8 +327,11 @@ public class Thanhtoan extends JFrame{
 		 Time gio = ChuyenBayDTO.getGioBay();
 		 String loaighe = ChuyenBayDTO.getLoaiGhe();
 		 int gia = ChuyenBayDTO.getGia();
+                 tong = gia;
+                 txttong.setText(String.valueOf(tong));
 		 String quydinh = ChuyenBayDTO.getQuyDinh();
                  hanhLy = quydinh;
+                 lblNewLabel_16.setText("Hành lý xách tay     được "+ hanhLy + " hành lý xách tay.\n");
 		 //tÃ¡ÂºÂ¡o row Ã„â€˜Ã¡Â»Æ’ add vÃƒÂ o control DefaultTableModel
 		 
 
@@ -320,10 +349,13 @@ public class Thanhtoan extends JFrame{
 		KhachHangBLL khbll = new KhachHangBLL();
 		kh = khbll.getKhachHangByma_kh(khDto);
 		khDto= kh.get(0);*/
+                makh = new JTextField();
+                makh.setText(khDto.getMa_kh());
 		textField_5.setText(khDto.getTen_kh());
 		textField_8.setText(khDto.getEmail());
 		textField_6.setText(khDto.getCmnd());
 		textField_7.setText(khDto.getSDT());
+                
 	}
 	public void getcb(ChuyenBayDTO cb) throws ClassNotFoundException {
 		txtma_cb.setText(cb.getMaChuyenbay());
@@ -399,7 +431,7 @@ public class Thanhtoan extends JFrame{
 				}
 	public void ex() {
 		
-		        String jdbcURL = "jdbc:mysql://localhost:3306/qlbvmb";
+		        String jdbcURL = "jdbc:mysql://localhost:3306/qlbvmb_nc";
 		        String username = "root";
 		        String password = "123456";
 		 
@@ -477,6 +509,5 @@ public class Thanhtoan extends JFrame{
 		        }
 		 
 	}
-		
 	
 }

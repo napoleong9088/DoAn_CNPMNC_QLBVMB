@@ -84,9 +84,9 @@ public class Option extends JFrame {
 
 	public Option() throws ClassNotFoundException {
 		font();
-		searchChuyenBay(diem_di, diem_den, ngay);
+		/*searchChuyenBay(diem_di, diem_den, ngay);
 		loadAllKhachHangByCmnd(txtcmndpp.getText());
-		loadAllKhachHangBySDT(txtsdtkh.getText());
+		loadAllKhachHangBySDT(txtsdtkh.getText());*/
 	}
 	
 	/**
@@ -609,9 +609,6 @@ public class Option extends JFrame {
 		 //tạo row để add vào control DefaultTableModel*/
 		 Object[] row = { ten_kh, sdt,cmnd,ma_cb, ngay, thoigianbay, diem_di,diem_den, tt };
 		 dtm.addRow(row);
-                 if(row.length<1) {
-                     JOptionPane.showMessageDialog(null,"dữ Liệu trùng hoặc không tìm thấy ","",JOptionPane.ERROR_MESSAGE);
-                 }
 	 }
 	 } catch (Exception e) {
 		 JOptionPane.showMessageDialog(null,"dữ Liệu trùng hoặc không tìm thấy ","Pesan",JOptionPane.ERROR_MESSAGE);
@@ -664,9 +661,6 @@ public class Option extends JFrame {
 		 //tạo row để add vào control DefaultTableModel
 		 Object[] row = { ma_kh,ten_kh, sdt,cmnd,ma_cb,ngaygio, thoigianbay,diem_di,diem_den, tt };
 		 dtm.addRow(row);
-                 if(row.length<1) {
-                     JOptionPane.showMessageDialog(null,"dữ Liệu trùng hoặc không tìm thấy ","",JOptionPane.ERROR_MESSAGE);
-                 }
 	 }
 	 } catch (Exception e) {
 		 JOptionPane.showMessageDialog(null,"dữ Liệu trùng hoặc không tìm thấy ","Pesan",JOptionPane.ERROR_MESSAGE);
