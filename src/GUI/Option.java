@@ -63,8 +63,7 @@ public class Option extends JFrame {
 	private JTextField textField;
 	private String diem_di;
 	private String diem_den;
-        private Date ngay;
-       // private SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd");
+        private String ngay;
         private DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
         private String diemdis[] = {"SGN", "HAN", "DAD", "PQC" };
         private String diemdens[] = {"SGN", "HAN", "DAD", "PQC" };
@@ -198,13 +197,13 @@ public class Option extends JFrame {
                                 
 //                                String day = df.format(jdatengaygio.getDate());
 //                                System.out.print(day);
-                                ngay = jdatengaygio.getDate();
+                                ngay = df.format(jdatengaygio.getDate());
 				System.out.print(ngay);
-                                try {
-					searchChuyenBay(diem_di, diem_den, ngay);
-				} catch (ClassNotFoundException e1) {
-					e1.printStackTrace();
-				}
+                            try {
+                                searchChuyenBay(diem_di, diem_den, ngay);
+                            } catch (ClassNotFoundException ex) {
+                                Logger.getLogger(Option.class.getName()).log(Level.SEVERE, null, ex);
+                            }
 			}
 		});
 		panel_2.add(btnNewButton);
@@ -462,7 +461,7 @@ public class Option extends JFrame {
 	  * Get all chuyenbay to display table.
 	 * @throws ClassNotFoundException 
 	  */
-	 public void searchChuyenBay( String di, String den, Date ngay) throws ClassNotFoundException {
+	 public void searchChuyenBay( String di, String den, String ngay) throws ClassNotFoundException {
 		 //tạo control DefaultTableModel để hiển thị danh sách ChuyenBay
 	 String[] header = { "MA CB", "HANG HK", "TEN", "DIEM DI", "DIEM DEN", "SB DI", "SB DEN", "GIO", "NGAY", "LOAI GHE", "GIA", "QUY DINH"};
 	 DefaultTableModel dtm = new DefaultTableModel(header, 0);
@@ -470,7 +469,7 @@ public class Option extends JFrame {
 	 ArrayList<ChuyenBayDTO> arr = new ArrayList<ChuyenBayDTO>();
 	 ChuyenBayBLL ChuyenBayBLL = new ChuyenBayBLL();
 	 ChuyenBayDTO ChuyenBayDTO = new ChuyenBayDTO();
-         arr = ChuyenBayBLL.getChuyenBayBydiem(ChuyenBayDTO);
+         arr = ChuyenBayBLL.getChuyenBayBydiem(di, den, ngay);
 
 	 for (int i = 0; i < arr.size(); i++) {
 		 ChuyenBayDTO = arr.get(i);

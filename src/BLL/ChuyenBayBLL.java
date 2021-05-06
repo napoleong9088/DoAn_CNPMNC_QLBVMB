@@ -31,8 +31,8 @@ public class ChuyenBayBLL {
 	 return result;
 	 }
 	 
-	 public ArrayList<ChuyenBayDTO> getChuyenBayBydiem(ChuyenBayDTO chuyenBayDTO) throws ClassNotFoundException{
-		 return ChuyenBayDAL.getChuyenBayBydiem(chuyenBayDTO);
+	 public ArrayList<ChuyenBayDTO> getChuyenBayBydiem(String di, String den, String ngay) throws ClassNotFoundException{
+		 return ChuyenBayDAL.getChuyenBayBydiem(di, den, ngay);
 	 }
          
 }
