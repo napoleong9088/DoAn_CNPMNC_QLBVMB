@@ -64,7 +64,8 @@ public class Option extends JFrame {
 	private String diem_di;
 	private String diem_den;
         private Date ngay;
-        private SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd");
+       // private SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd");
+        private DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
         private String diemdis[] = {"SGN", "HAN", "DAD", "PQC" };
         private String diemdens[] = {"SGN", "HAN", "DAD", "PQC" };
 
@@ -180,9 +181,9 @@ public class Option extends JFrame {
 		comboBox_1.setBackground(Color.WHITE);
 		panel_2.add(comboBox_1);
                 
-                JDateChooser ngaybay = new JDateChooser();
-                ngaybay.setBounds(297, 60, 120, 20);
-                panel_2.add(ngaybay);
+                jdatengaygio = new JDateChooser();
+                jdatengaygio.setBounds(297, 60, 120, 20);
+                panel_2.add(jdatengaygio);
 		
 		JButton btnNewButton = new JButton("Tìm Vé");
 		btnNewButton.setBounds(431, 15, 89, 23);
@@ -194,14 +195,12 @@ public class Option extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				diem_di = (String) comboBox.getSelectedItem();
 				diem_den = (String) comboBox_1.getSelectedItem();
-                                //DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-                                Date ngay = jdatengaygio.getDate();
-                            try {
-                                ngay = formatter.parse(ngay.toString());
-                            } catch (ParseException ex) {
-                                Logger.getLogger(Option.class.getName()).log(Level.SEVERE, null, ex);
-                            }
-				try {
+                                
+//                                String day = df.format(jdatengaygio.getDate());
+//                                System.out.print(day);
+                                ngay = jdatengaygio.getDate();
+				System.out.print(ngay);
+                                try {
 					searchChuyenBay(diem_di, diem_den, ngay);
 				} catch (ClassNotFoundException e1) {
 					e1.printStackTrace();
