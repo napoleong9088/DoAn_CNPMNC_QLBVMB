@@ -96,14 +96,14 @@ public class Option extends JFrame {
 	 */
 	public void font() throws ClassNotFoundException {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 583, 449);
+		setBounds(100, 100, 800, 500);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
-		tabbedPane.setBounds(10, 11, 547, 388);
+		tabbedPane.setBounds(10, 11, 760, 388);
 		tabbedPane.setBackground(new Color(57,153,255));
 		tabbedPane.setForeground(Color.WHITE);
 		contentPane.add(tabbedPane);
@@ -210,7 +210,7 @@ public class Option extends JFrame {
 		panel_2.add(btnNewButton);
 		
 		JScrollPane scrollPane_1 = new JScrollPane();
-		scrollPane_1.setBounds(10, 110, 522, 196);
+		scrollPane_1.setBounds(10, 110, 735, 196);
 		panel_2.add(scrollPane_1);
 		
 		table_1 = new JTable();
@@ -277,11 +277,58 @@ public class Option extends JFrame {
 		panel_1.setLayout(null);
 		
 		JScrollPane scrollPane_2 = new JScrollPane();
-		scrollPane_2.setBounds(6, 45, 522, 101);
+		scrollPane_2.setBounds(6, 45, 735, 101);
 		panel_1.add(scrollPane_2);
+                
+                JLabel lblten = new JLabel("TEN");
+		lblten.setBounds(460, 165, 130, 14);
+		panel_1.add(lblten);
+                
+                JTextField txtten = new JTextField();
+		txtten.setBounds(590, 165, 150, 20);
+		panel_1.add(txtten);
+		txtten.setColumns(10);
+		
+		JLabel lblmacb = new JLabel("MA CB");
+		lblmacb.setBounds(460, 222, 100, 20);
+		panel_1.add(lblmacb);
+                
+                JTextField txtmacb = new JTextField();
+		txtmacb.setColumns(10);
+		txtmacb.setBounds(590, 222, 150, 20);
+		panel_1.add(txtmacb);
+                
+                Button buttonHuy = new Button("Huy Ve");
+		buttonHuy.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					HuyVe(txtmacb.getText());
+				} catch (ClassNotFoundException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		});
+		buttonHuy.setBounds(600, 279, 140, 60);
+		buttonHuy.setBackground(new Color(57,153,255));
+		buttonHuy.setForeground(Color.WHITE);
+		panel_1.add(buttonHuy);
 		
 		table_2 = new JTable();
+                table_2.setBorder(UIManager.getBorder("Table.scrollPaneBorder"));
+		table_2.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		scrollPane_2.setViewportView(table_2);
+		table_2.addMouseListener(new MouseAdapter() {
+			 // Lấy thông tin dòng dữ liệu được chọn hiển thị lên component
+			 public void mouseClicked(MouseEvent arg0) {
+			 int row = table_2.getSelectedRow();
+			 if (row != -1) {
+			 txtmacb.setText(table_2.getValueAt(row, 3).toString());
+			 txtten.setText(table_2.getValueAt(row, 0).toString());
+			 }
+			 }
+			 });
+		
 		
 		JLabel lblNewLabel_18 = new JLabel("___Thông tin khách hàng___");
 		lblNewLabel_18.setBounds(145, 15, 600, 20);
@@ -363,6 +410,8 @@ public class Option extends JFrame {
 		button_1_2.setBackground(new Color(57,153,255));
 		button_1_2.setForeground(Color.WHITE);
 		panel_1.add(button_1_2);
+                
+                
 		
 	}
 
@@ -444,7 +493,7 @@ public class Option extends JFrame {
 	  */
 	 public void loadAllKhachHangByCmnd(String CMND) throws ClassNotFoundException {
 		 //tạo control DefaultTableModel để hiển thị danh sách ChuyenBay
-	 String[] header = { "Ten KH","SDT", "CMND/PP","Ma CB","NgayBay","Gio","Diem di","Diem den",};
+	 String[] header = { "Ten KH","SDT", "CMND/PP","Ma CB","NgayBay","Gio","Diem di","Diem den","Tinh Trang"};
 	 DefaultTableModel dtm = new DefaultTableModel(header, 0);
 
 	 ArrayList<KhachHangDTO> kh = new ArrayList<KhachHangDTO>();
@@ -471,6 +520,7 @@ public class Option extends JFrame {
 		 String sdt = khDto.getSDT();
 		 String cmnd = khDto.getCmnd();
                  String ma_cb = null;
+                 String tt = null;
 		
                  VeChuyenBayDTO.setMa_kh(ma_kh);
                  vcb = VeChuyenBayBLL.getVeChuyenBayByma_kh(VeChuyenBayDTO);
@@ -478,6 +528,7 @@ public class Option extends JFrame {
 		 VeChuyenBayDTO = vcb.get(j);
 		 
 		 ma_cb = VeChuyenBayDTO.getMa_cb();
+                 tt = VeChuyenBayDTO.getTinhtrangve();
                  }
                  
                  
@@ -491,7 +542,7 @@ public class Option extends JFrame {
 		 String diem_di = ChuyenBayDTO.getDiemDi();
 		 String diem_den = ChuyenBayDTO.getDiemDen();
 		 //tạo row để add vào control DefaultTableModel*/
-		 Object[] row = { ten_kh, sdt,cmnd,ma_cb, ngay, thoigianbay, diem_di,diem_den };
+		 Object[] row = { ten_kh, sdt,cmnd,ma_cb, ngay, thoigianbay, diem_di,diem_den, tt };
 		 dtm.addRow(row);
                  if(row.length<1) {
                      JOptionPane.showMessageDialog(null,"dữ Liệu trùng hoặc không tìm thấy ","",JOptionPane.ERROR_MESSAGE);
@@ -503,7 +554,7 @@ public class Option extends JFrame {
 	 }
 	 public void loadAllKhachHangBySDT(String SDT) throws ClassNotFoundException {
 		 //tạo control DefaultTableModel để hiển thị danh sách ChuyenBay
-	 String[] header = { "Ten KH","SDT", "CMND/PP","Ma CB","NgayBay","Gio","Diem di","Diem den",};
+	 String[] header = { "Ten KH","SDT", "CMND/PP","Ma CB","NgayBay","Gio","Diem di","Diem den", "Tinh Trang"};
 	 DefaultTableModel dtm = new DefaultTableModel(header, 0);
 
 	 ArrayList<KhachHangDTO> kh = new ArrayList<KhachHangDTO>();
@@ -530,6 +581,7 @@ public class Option extends JFrame {
 		 String sdt = khDto.getSDT();
 		 String cmnd = khDto.getCmnd();
                  String ma_cb = null;
+                 String tt = null;
 		
                  VeChuyenBayDTO.setMa_kh(ma_kh);
                  vcb = VeChuyenBayBLL.getVeChuyenBayByma_kh(VeChuyenBayDTO);
@@ -537,6 +589,7 @@ public class Option extends JFrame {
 		 VeChuyenBayDTO = vcb.get(j);
 		 
 		 ma_cb = VeChuyenBayDTO.getMa_cb();
+                 tt = VeChuyenBayDTO.getTinhtrangve();
                  }
                  
                  
@@ -550,7 +603,7 @@ public class Option extends JFrame {
 		 String diem_di = ChuyenBayDTO.getDiemDi();
 		 String diem_den = ChuyenBayDTO.getDiemDen();
 		 //tạo row để add vào control DefaultTableModel*/
-		 Object[] row = { ten_kh, sdt,cmnd,ma_cb, ngay, thoigianbay, diem_di,diem_den };
+		 Object[] row = { ten_kh, sdt,cmnd,ma_cb, ngay, thoigianbay, diem_di,diem_den, tt };
 		 dtm.addRow(row);
                  if(row.length<1) {
                      JOptionPane.showMessageDialog(null,"dữ Liệu trùng hoặc không tìm thấy ","",JOptionPane.ERROR_MESSAGE);
@@ -563,7 +616,7 @@ public class Option extends JFrame {
 	 }
 	 public void loadAllKhachHangByma_cb(String macb ) throws ClassNotFoundException {
 		 //tạo control DefaultTableModel để hiển thị danh sách ChuyenBay
-	 String[] header = { "Ten KH","SDT", "CMND/PP","Ma CB","NgayBay","Gio","Diem di","Diem den",};
+	 String[] header = { "Ten KH","SDT", "CMND/PP","Ma CB","NgayBay","Gio","Diem di","Diem den", "Tinh Trang"};
 	 DefaultTableModel dtm = new DefaultTableModel(header, 0);
 
 	 ArrayList<KhachHangDTO> kh = new ArrayList<KhachHangDTO>();
@@ -596,6 +649,7 @@ public class Option extends JFrame {
 		 VeChuyenBayDTO=vcb.get(0);
 		 String ma_ve_cb = VeChuyenBayDTO.getMa_ve_cb();
 		 String ma_kh = VeChuyenBayDTO.getMa_kh();
+                 String tt = VeChuyenBayDTO.getTinhtrangve();
 		 
 		 khDto.setMa_kh(ma_kh);
 		 kh = khbll.getKhachHangByma_kh(khDto);
@@ -604,7 +658,7 @@ public class Option extends JFrame {
 		 String sdt = khDto.getSDT();
 		 String cmnd = khDto.getCmnd();
 		 //tạo row để add vào control DefaultTableModel
-		 Object[] row = { ma_kh,ten_kh, sdt,cmnd,ma_cb,ngaygio, thoigianbay,diem_di,diem_den };
+		 Object[] row = { ma_kh,ten_kh, sdt,cmnd,ma_cb,ngaygio, thoigianbay,diem_di,diem_den, tt };
 		 dtm.addRow(row);
                  if(row.length<1) {
                      JOptionPane.showMessageDialog(null,"dữ Liệu trùng hoặc không tìm thấy ","",JOptionPane.ERROR_MESSAGE);
@@ -663,4 +717,62 @@ public class Option extends JFrame {
                 Logger.getLogger(Option.class.getName()).log(Level.SEVERE, null, ex);
             }
          }*/
+         
+         public void HuyVe(String macb) throws ClassNotFoundException{
+             ArrayList<KhachHangDTO> kh = new ArrayList<KhachHangDTO>();
+            KhachHangBLL khbll = new KhachHangBLL();
+            KhachHangDTO khDto =new KhachHangDTO();
+
+            ArrayList<ChuyenBayDTO> arr = new ArrayList<ChuyenBayDTO>();
+            ChuyenBayBLL ChuyenBayBLL = new ChuyenBayBLL();
+            ChuyenBayDTO ChuyenBayDTO = new ChuyenBayDTO();
+            ChuyenBayDTO.setMaChuyenbay(macb);
+            arr = ChuyenBayBLL.getChuyenBayByma_cb(ChuyenBayDTO);
+
+
+            ArrayList<VeChuyenBayDTO> vcb = new ArrayList<VeChuyenBayDTO>();
+            VeChuyenBayBLL VeChuyenBayBLL = new VeChuyenBayBLL();
+            VeChuyenBayDTO VeChuyenBayDTO = new VeChuyenBayDTO();
+            
+            ArrayList<HoaDonDTO> hd = new ArrayList<HoaDonDTO>();
+            HoaDonBLL HoaDonBLL = new HoaDonBLL();
+            HoaDonDTO HoaDonDTO = new HoaDonDTO();
+
+            String ma_hd = null;
+            String ma_ve_cb_hd =null;
+            
+            try {
+            for (int i = 0; i < arr.size(); i++) {
+                    ChuyenBayDTO = arr.get(i);
+
+
+                    String ma_cb = ChuyenBayDTO.getMaChuyenbay();
+
+                    VeChuyenBayDTO.setMa_cb(ma_cb);
+                    vcb = VeChuyenBayBLL.getVeChuyenBayByma_cb(VeChuyenBayDTO);
+                    VeChuyenBayDTO=vcb.get(0);
+                    String ma_ve_cb = VeChuyenBayDTO.getMa_ve_cb();
+                    String ma_kh = VeChuyenBayDTO.getMa_kh();
+                    
+                    HoaDonDTO.setMa_kh(ma_kh);
+                    HoaDonDTO.setMa_ve_cb(ma_ve_cb);
+                    hd = HoaDonBLL.getHoaDonByma_khcb(HoaDonDTO);
+                    HoaDonDTO=hd.get(0);
+                    ma_hd = HoaDonDTO.getMa_hd();
+                    ma_ve_cb_hd = HoaDonDTO.getMa_ve_cb();
+            }
+            HoaDonDTO HdDTO = new HoaDonDTO();
+            HdDTO.setMa_hd(ma_hd);
+            HdDTO.setTrangThai("huy ve");
+            HoaDonBLL.updateHoaDon(HdDTO);
+            
+            VeChuyenBayDTO vcbDTO = new VeChuyenBayDTO();
+            vcbDTO.setMa_ve_cb(ma_ve_cb_hd);
+            vcbDTO.setTinhtrangve("huy ve");
+            VeChuyenBayBLL.updateVeChuyenBay(vcbDTO);
+                loadAllKhachHangByma_cb(macb);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(Option.class.getName()).log(Level.SEVERE, null, ex);
+            }
+         }
 }

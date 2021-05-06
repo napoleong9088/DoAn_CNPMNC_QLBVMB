@@ -34,5 +34,9 @@ public class HoaDonBLL {
 	 public ArrayList<HoaDonDTO> getHoaDonByma_kh(HoaDonDTO HoaDonDTO)throws ClassNotFoundException {
 		 return HoaDonDAL.getHoaDonByMa_kh(HoaDonDTO);
 	 }
+         
+         public ArrayList<HoaDonDTO> getHoaDonByma_khcb(HoaDonDTO HoaDonDTO)throws ClassNotFoundException {
+		 return HoaDonDAL.getHoaDonByMa_khMa_cb(HoaDonDTO);
+	 }
 
 }

@@ -238,4 +238,47 @@ public class HoaDonDAL {
 			}
 			return result;
 		}
+                
+                public ArrayList<HoaDonDTO> getHoaDonByMa_khMa_cb(HoaDonDTO HoaDonDTO) throws ClassNotFoundException {
+			// Khởi tạo mảng đối tượng HoaDonDTO để chứa kết quả truy vấn	
+			ArrayList<HoaDonDTO> result = new ArrayList<HoaDonDTO>();
+			String sqlSelectByMa_khcb = "select * from hoadon where ma_kh = ? and ma_ve_cb=?";
+				
+			try {
+				//mở kết nối tới CSDL		
+				conUtil = new ConnectionUtil();
+				con = conUtil.getConnection();
+				//thực thi câu truy vấn
+				preparedStatement = con.prepareStatement(sqlSelectByMa_khcb);
+				preparedStatement.setString(1, HoaDonDTO.getMa_kh());
+                                preparedStatement.setString(2, HoaDonDTO.getMa_ve_cb());
+				resultSet  = preparedStatement.executeQuery();
+				
+				while(resultSet.next()) {
+					HoaDonDTO HoaDon = new HoaDonDTO();
+					HoaDon.setMa_hd(resultSet.getString("ma_hd"));
+                                        HoaDon.setTen_hd(resultSet.getString("ten_hd"));
+                                        HoaDon.setThanh_tien(resultSet.getInt("thanhtien"));
+                                        HoaDon.setNgay_Lap(resultSet.getDate("ngaylap"));
+                                        HoaDon.setMa_nv(resultSet.getString("ma_nv"));
+                                        HoaDon.setMa_kh(resultSet.getString("ma_kh"));
+                                        HoaDon.setTrangThai(resultSet.getString("TrangThai"));
+                                        HoaDon.setMa_ve_cb(resultSet.getString("ma_ve_cb"));
+					result.add(HoaDon);
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			finally {
+				try {
+					//ngắt kết nối csdl
+					con.close();
+					preparedStatement.close();
+					resultSet.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				  }
+			}
+			return result;
+		}
 }
