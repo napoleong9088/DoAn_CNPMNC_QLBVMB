@@ -38,12 +38,12 @@ public class chart extends ApplicationFrame {
 
    private DefaultCategoryDataset createDataset( ) throws ClassNotFoundException {
       DefaultCategoryDataset dataset = new DefaultCategoryDataset( );
-      dataset.addValue( 15 , "schools" , "1970" );
+      /*dataset.addValue( 15 , "schools" , "1970" );
       dataset.addValue( 30 , "schools" , "1980" );
       dataset.addValue( 60 , "schools" ,  "1990" );
       dataset.addValue( 120 , "schools" , "2000" );
       dataset.addValue( 240 , "schools" , "2010" );
-      dataset.addValue( 300 , "schools" , "2014" );
+      dataset.addValue( 300 , "schools" , "2014" );*/
       ArrayList<HoaDonDTO> arr = new ArrayList<HoaDonDTO>();
 	 HoaDonBLL HoaDonBLL = new HoaDonBLL();
 	 arr = HoaDonBLL.getAllHoaDon();
@@ -62,11 +62,16 @@ public class chart extends ApplicationFrame {
                 KhachHangBLL khbll = new KhachHangBLL();
                 KhachHangDTO khDto =new KhachHangDTO();
 
-                ArrayList<ChuyenBayDTO> vcbs = new ArrayList<ChuyenBayDTO>();
+                ArrayList<ChuyenBayDTO> cbs = new ArrayList<ChuyenBayDTO>();
                 ChuyenBayBLL ChuyenBayBLL = new ChuyenBayBLL();
                 ChuyenBayDTO ChuyenBayDTO = new ChuyenBayDTO();
                 //ChuyenBayDTO.setMaChuyenbay();
-                vcbs = ChuyenBayBLL.getChuyenBayByma_cb(ChuyenBayDTO);
+                cbs = ChuyenBayBLL.getChuyenBayByma_cb(ChuyenBayDTO);
+                for (int j = 0; j < cbs.size(); j++) {
+		 ChuyenBayDTO = cbs.get(j);
+                String hangHK = ChuyenBayDTO.getHangHK();
+                
+                
 
 
                 ArrayList<VeChuyenBayDTO> vcb = new ArrayList<VeChuyenBayDTO>();
@@ -75,10 +80,8 @@ public class chart extends ApplicationFrame {
                 
                 
                  String a = String.valueOf(thanh_tien);
-                 dataset.addValue(10, a, ngay_lap);
-                 dataset.addValue(15, a,ngay_lap);
-                 dataset.addValue(20, a,ngay_lap);
-                 
+                 dataset.addValue(thanh_tien, hangHK, ngay_lap);    
+                }
          }
          
       return dataset;
