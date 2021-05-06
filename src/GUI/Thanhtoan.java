@@ -281,10 +281,12 @@ public class Thanhtoan extends JFrame{
 	 //lÃ¡ÂºÂ¥y danh sÃƒÂ¡ch ChuyenBayDTO (gÃ¡Â»ï¿½i hÃƒÂ m getAllChuyenBay() trong ChuyenBayBLL)
 	 ArrayList<ChuyenBayDTO> arr = new ArrayList<ChuyenBayDTO>();
 	 ChuyenBayBLL ChuyenBayBLL = new ChuyenBayBLL();
-	 arr = ChuyenBayBLL.getAllChuyenBay();
+         ChuyenBayDTO ChuyenBayDTO = new ChuyenBayDTO();
+         ChuyenBayDTO.setMaChuyenbay(cb);
+	 arr = ChuyenBayBLL.getChuyenBayByma_cb(ChuyenBayDTO);
 	 
 	 //DuyÃ¡Â»â€¡t mÃ¡ÂºÂ£ng ChuyenBayDTO vÃ¡Â»Â«a lÃ¡ÂºÂ¥y Ã„â€˜Ã†Â°Ã¡Â»Â£c: arr
-	 ChuyenBayDTO ChuyenBayDTO = new ChuyenBayDTO();
+	 
 	 for (int i = 0; i < arr.size(); i++) {
 		 ChuyenBayDTO = arr.get(i);
 		 

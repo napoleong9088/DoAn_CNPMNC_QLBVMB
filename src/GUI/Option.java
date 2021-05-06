@@ -211,6 +211,8 @@ public class Option extends JFrame {
 		JScrollPane scrollPane_1 = new JScrollPane();
 		scrollPane_1.setBounds(10, 110, 735, 196);
 		panel_2.add(scrollPane_1);
+                
+                txtchuyenbayid = new JTextField();
 		
 		table_1 = new JTable();
 		table_1.setBorder(UIManager.getBorder("Table.scrollPaneBorder"));
@@ -222,7 +224,7 @@ public class Option extends JFrame {
 			 int row = table_1.getSelectedRow();
 			 if (row != -1) {
 			 txtchuyenbayid.setText(table_1.getValueAt(row, 0).toString());
-			 txtmaybayname.setText(table_1.getValueAt(row, 1).toString());
+			 //txtmaybayname.setText(table_1.getValueAt(row, 1).toString());
 			 
                          //ngaygio.setText(table_1.getValueAt(row, 2).toString());	
                          
@@ -230,11 +232,11 @@ public class Option extends JFrame {
 //                        String ngayGio;
 //                        ngayGio = df.format(ngaygio.getDate());
         
-			 textField.setText(table_1.getValueAt(row, 3).toString());
-			 txtsanbaydiname.setText(table_1.getValueAt(row, 4).toString());
-			 txtsanbaydenname.setText(table_1.getValueAt(row, 5).toString());
-			 txtgheh1.setText(table_1.getValueAt(row, 6).toString());
-			 txtgia.setText(table_1.getValueAt(row, 7).toString());
+			// textField.setText(table_1.getValueAt(row, 3).toString());
+			// txtsanbaydiname.setText(table_1.getValueAt(row, 4).toString());
+			// txtsanbaydenname.setText(table_1.getValueAt(row, 5).toString());
+			// txtgheh1.setText(table_1.getValueAt(row, 6).toString());
+			// txtgia.setText(table_1.getValueAt(row, 7).toString());
                         }
                     }
                 });
@@ -549,9 +551,6 @@ public class Option extends JFrame {
 		 //tạo row để add vào control DefaultTableModel*/
 		 Object[] row = { ten_kh, sdt,cmnd,ma_cb, ngay, thoigianbay, diem_di,diem_den, tt };
 		 dtm.addRow(row);
-                 if(row.length<1) {
-                     JOptionPane.showMessageDialog(null,"dữ Liệu trùng hoặc không tìm thấy ","",JOptionPane.ERROR_MESSAGE);
-                 }
 	 }	
 	 }catch (Exception e) {
 	 }
