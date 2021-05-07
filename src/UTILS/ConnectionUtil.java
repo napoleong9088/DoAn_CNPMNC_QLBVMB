@@ -7,9 +7,9 @@ import java.sql.SQLException;
 public class ConnectionUtil {
 	static String hostName = "localhost";//mặc định
 
-	static String dbName = "qlbvmb_nc";//tên database
+	static String dbName = "qlbvmb";//tên database
 	static String Username = "root";//mặc định
-	static String Password = "123456";//mặc định
+	static String Password = "";//mặc định
 	
 	
 	public static Connection getConnection() throws SQLException {
