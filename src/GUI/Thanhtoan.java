@@ -379,7 +379,7 @@ public class Thanhtoan extends JFrame{
 						e1.printStackTrace();
 					}
 					try {
-						String file_name="C:\\Users\\ASUS\\Desktop\\in.pdf";
+						String file_name="C:\\Users\\pc\\Desktop\\in.pdf"; //C:\Users\pc\Desktop
 						// Tạo đối tượng PdfWriter
 						PdfWriter.getInstance(document, new FileOutputStream(file_name));
 						// Mở file để thực hiện ghi
@@ -431,9 +431,9 @@ public class Thanhtoan extends JFrame{
 				}
 	public void ex() {
 		
-		        String jdbcURL = "jdbc:mysql://localhost:3306/qlbvmb_nc";
+		        String jdbcURL = "jdbc:mysql://localhost:3306/qlbvmb";
 		        String username = "root";
-		        String password = "123456";
+		        String password = "";
 		 
 		        String excelFilePath = "C:/Users/ASUS/Desktop/ex.xlsx";
 		 

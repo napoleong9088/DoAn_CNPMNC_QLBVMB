@@ -114,7 +114,7 @@ public class HoaDonDAL {
 		try {
 			//má»Ÿ káº¿t ná»‘i tá»›i CSDL	
 			conUtil = new ConnectionUtil();
-			con = conUtil.getConnection();
+			con = ConnectionUtil.getConnection();
 			//thá»±c thi cÃ¢u truy váº¥n
 			preparedStatement = con.prepareStatement(sqlInsert);
 			preparedStatement.setString(1, HoaDonDTO.getMa_hd());
